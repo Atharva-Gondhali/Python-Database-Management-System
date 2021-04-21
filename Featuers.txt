@@ -1,0 +1,12 @@
+Student management system
+
+student addmission
+classwise tree
+search option
+student marks
+student report analysis
+export in file
+
+employee payrole
+
+schedule manager
