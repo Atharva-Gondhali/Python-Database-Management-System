@@ -10,8 +10,8 @@ root.geometry( "400x600" )
 mydb = mysql.connector.connect(
         host = "localhost",
         user = "root",
-		    passwd = "atharva123@mysql",
-		    database = "project"
+		passwd = "atharva123@mysql",
+		database = "project"
     )
 
 # Check
@@ -19,5 +19,7 @@ mydb = mysql.connector.connect(
 
 # CREATE A CURSOR
 my_cursor = mydb.cursor()
+
+# CREATE TABLE
 
 root.mainloop()
