@@ -4,7 +4,7 @@ from tkinter import *
 from tkinter import ttk
 
 root = Tk()
-root.geometry( "880x550" )
+root.geometry( "900x550" )
 root.resizable( width = False, height = False )
 style = ttk.Style()
 
@@ -36,8 +36,8 @@ style = ttk.Style()
 
 # FRAMES
 frame_menu = ttk.Frame( root, borderwidth = 3, relief = GROOVE, width = 200, height = 510, padding = 15 )
-frame_dash = ttk.Frame( root, borderwidth = 3, relief = GROOVE, width = 620, height = 510 )
-frame_student = ttk.Frame( root, borderwidth = 3, relief = GROOVE, width = 620, height = 510 )
+frame_dash = ttk.Frame( root, borderwidth = 3, relief = GROOVE, width = 640, height = 510 )
+frame_student = ttk.Frame( root, borderwidth = 3, relief = GROOVE, width = 640, height = 510 )
 
 frm_lst = [ frame_menu, frame_dash, frame_student ]
 for i in frm_lst:
@@ -74,6 +74,7 @@ btn_student = ttk.Button( frame_menu, text = "Students", style = 'menu.TButton',
 btn_unknown1 = ttk.Button( frame_menu, text = ".........", style = 'menu.TButton' )
 btn_unknown2 = ttk.Button( frame_menu, text = ".........", style = 'menu.TButton' )
 btn_unknown3 = ttk.Button( frame_menu, text = "Settings", style = 'menu.TButton' )
+btn_back_student = ttk.Button( frame_menu, text = "Back" )
 
 btn_dash.grid( row = 0, column = 0, ipady = 23 )
 btn_student.grid( row = 1, column = 0, ipady = 23, pady = ( 10, 0 ) )
