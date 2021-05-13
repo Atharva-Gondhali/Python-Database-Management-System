@@ -4,7 +4,7 @@ from tkinter import *
 from tkinter import ttk
 
 root = Tk()
-root.geometry( "900x550" )
+root.geometry( "900x580" )
 root.resizable( width = False, height = False )
 
 # mydb = mysql.connector.connect(
@@ -34,9 +34,9 @@ root.resizable( width = False, height = False )
 
 
 # FRAMES
-frame_menu = ttk.Frame( root, borderwidth = 3, relief = GROOVE, width = 200, height = 510, padding = 15 )
-frame_dash = ttk.Frame( root, borderwidth = 3, relief = GROOVE, width = 640, height = 510 )
-frame_student = ttk.Frame( root, borderwidth = 3, relief = GROOVE, width = 640, height = 510 )
+frame_menu = ttk.Frame( root, borderwidth = 3, relief = GROOVE, width = 200, height = 540, padding = 15 )
+frame_dash = ttk.Frame( root, borderwidth = 3, relief = GROOVE, width = 640, height = 540 )
+frame_student = ttk.Frame( root, borderwidth = 3, relief = GROOVE, width = 640, height = 540 )
 
 frm_lst = [ frame_menu, frame_dash, frame_student ]
 for i in frm_lst:
@@ -70,13 +70,95 @@ lbl_dash.grid( row = 0, column = 0, padx = 50, pady = 50 )
 
 # FUNCTIONS
 def add_std():
-  frame_add_std = ttk.Frame( root, borderwidth = 3, relief = GROOVE, width = 640, height = 510 )
+  # FRAME
+  frame_add_std = ttk.Frame( root, borderwidth = 3, relief = GROOVE, width = 640, height = 540 )
   frame_add_std.grid( row = 0, column = 1, padx = ( 5, 20 ), pady = 20 )
   frame_add_std.grid_propagate(0)
   frm_lst.append( frame_add_std )
 
+
+  # LABELS
   lbl_add_std = ttk.Label( frame_add_std, text = "Admit Student", font = ( 'Helvetica', 15 ) )
-  lbl_add_std.grid( row = 0, column = 0, padx = 10, pady = 10 )
+  lbl_first_name = ttk.Label( frame_add_std, text = "First Name", font = ( 'Helvetica', 11 ) )
+  lbl_last_name = ttk.Label( frame_add_std, text = "Last Name", font = ( 'Helvetica', 11 ) )
+  lbl_father_name = ttk.Label( frame_add_std, text = "Father's Name", font = ( 'Helvetica', 11 ) )
+  lbl_email_id = ttk.Label( frame_add_std, text = "Email ID", font = ( 'Helvetica', 11 ) )
+  lbl_age = ttk.Label( frame_add_std, text = "Age", font = ( 'Helvetica', 11 ) )
+  lbl_age_group = ttk.Label( frame_add_std, text = "Age Group", font = ( 'Helvetica', 11 ) )
+  lbl_gender = ttk.Label( frame_add_std, text = "Gender", font = ( 'Helvetica', 11 ) )
+  lbl_course = ttk.Label( frame_add_std, text = "Course", font = ( 'Helvetica', 11 ) )
+  lbl_medical_com = ttk.Label( frame_add_std, text = "Medical Complications", font = ( 'Helvetica', 11 ) )
+  lbl_address = ttk.Label( frame_add_std, text = "Address", font = ( 'Helvetica', 11 ) )
+  lbl_phone_number = ttk.Label( frame_add_std, text = "Phone Number", font = ( 'Helvetica', 11 ) )
+  
+  lbl_add_std.grid( row = 0, column = 0, padx = 30, pady = 15, sticky = W )
+  lbl_first_name.grid( row = 1, column = 0, padx = ( 40, 5 ), pady = 8, sticky = W )
+  lbl_last_name.grid( row = 2, column = 0, padx = ( 40, 5 ), pady = 8, sticky = W )
+  lbl_father_name.grid( row = 3, column = 0, padx = ( 40, 5 ), pady = 8, sticky = W )
+  lbl_email_id.grid( row = 4, column = 0, padx = ( 40, 5 ), pady = 8, sticky = W )
+  lbl_age.grid( row = 5, column = 0, padx = ( 40, 5 ), pady = 8, sticky = W )
+  lbl_age_group.grid( row = 6, column = 0, padx = ( 40, 5 ), pady = 8, sticky = W )
+  lbl_gender.grid( row = 7, column = 0, padx = ( 40, 5 ), pady = 8, sticky = W )
+  lbl_course.grid( row = 8, column = 0, padx = ( 40, 5 ), pady = 8, sticky = W )
+  lbl_medical_com.grid( row = 9, column = 0, padx = ( 40, 5 ), pady = 8, sticky = W )
+  lbl_address.grid( row = 10, column = 0, padx = ( 40, 5 ), pady = 8, sticky = W )
+  lbl_phone_number.grid( row = 11, column = 0, padx = ( 40, 5 ), pady = 8, sticky = W )
+
+
+  # ENTRY BOX
+  ent_first_name = ttk.Entry( frame_add_std, width = 30 )
+  ent_last_name = ttk.Entry( frame_add_std, width = 30 )
+  ent_father_name = ttk.Entry( frame_add_std, width = 30 )
+  ent_email_id = ttk.Entry( frame_add_std, width = 30 )
+  ent_age = ttk.Entry( frame_add_std, width = 30 )
+  ent_medical_com = ttk.Entry( frame_add_std, width = 30 )
+  ent_address = ttk.Entry( frame_add_std, width = 30 )
+  ent_phone_number = ttk.Entry( frame_add_std, width = 30 )
+  
+  lst_entry_box = [ ent_first_name, ent_last_name, ent_father_name, ent_email_id, ent_age, ent_medical_com,
+    ent_address, ent_phone_number ]
+
+  ent_first_name.grid( row = 1, column = 1, padx = 15, pady = 8, sticky = E, ipady = 1 )
+  ent_last_name.grid( row = 2, column = 1, padx = 15, pady = 8, sticky = E, ipady = 1 )
+  ent_father_name.grid( row = 3, column = 1, padx = 15, pady = 8, sticky = E, ipady = 1 )
+  ent_email_id.grid( row = 4, column = 1, padx = 15, pady = 8, sticky = E, ipady = 1 )
+  ent_age.grid( row = 5, column = 1, padx = 15, pady = 8, sticky = E, ipady = 1 )
+  ent_medical_com.grid( row = 9, column = 1, padx = 15, pady = 8, sticky = E, ipady = 1 )
+  ent_address.grid( row = 10, column = 1, padx = 15, pady = 8, sticky = E, ipady = 1 )
+  ent_phone_number.grid( row = 11, column = 1, padx = 15, pady = 8, sticky = E, ipady = 1 )
+
+
+  # COMBO BOX
+  combo_age_group = ttk.Combobox( frame_add_std, values = [1, 2, 3], width = 27 )
+  combo_gender = ttk.Combobox( frame_add_std, values = ['M', 'F'], width = 27 )
+  combo_course = ttk.Combobox( frame_add_std, values = ['A', 'B', 'C'], width = 27 )
+  
+  lst_combobox = [ combo_age_group, combo_gender, combo_course ]
+  for i in lst_combobox:
+    i.current(0)
+
+  combo_age_group.grid( row = 6, column = 1, padx = 15, pady = 8, ipady = 1 )
+  combo_gender.grid( row = 7, column = 1, padx = 15, pady = 8, ipady = 1 )
+  combo_course.grid( row = 8, column = 1, padx = 15, pady = 8, ipady = 1 )
+
+
+  # FUNCTIONS
+  def cancel():
+    frame_add_std.grid_remove()
+
+  def clear_fields():
+    for i in lst_entry_box:
+      i.delete( 0, END )
+
+
+  # BUTTONS
+  btn_add_std = ttk.Button( frame_add_std, text = "Add Student" )
+  btn_cancel = ttk.Button( frame_add_std, text = "Cancel", command = cancel )
+  btn_clr_field = ttk.Button( frame_add_std, text = "Clear fields", command = clear_fields )
+
+  btn_add_std.grid( row = 12, column = 3, pady = 8, padx = 10, ipadx = 6 )
+  btn_cancel.grid( row = 12, column = 2, pady = 8, padx = 10, ipadx = 6 )
+  btn_clr_field.grid( row = 12, column = 1, pady = 8, padx = 10, ipadx = 6, sticky = E )
 
 
 def open_menu_items( frame ):
@@ -112,22 +194,5 @@ btn_edit_std = ttk.Button( frame_student, text = "Edit Student" )
 
 btn_add_std.grid( row = 1, column = 0, padx = 10, pady = 10 )
 btn_edit_std.grid( row = 2, column = 0, padx = 10, pady = 10 )
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 root.mainloop()
