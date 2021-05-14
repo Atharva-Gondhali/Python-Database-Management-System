@@ -249,14 +249,37 @@ def view_students():
   def back():
     frame_view_stds.grid_remove()
 
+  def set_filter_lev1( event ):
+    if combo_filter1.get() == 'Age Group':
+      value = [ 'U-12', 'U-14', 'U-16', 'U-18', 'U-25', 'Open' ]
+    elif combo_filter1.get() == 'Course':
+      value = ['A', 'B', 'C']
+    elif combo_filter1.get() == 'None':
+      value = []
+
+    combo_filter2.configure( values = value, state = 'readonly' )
+
   # BUTTONS
   btn_back = ttk.Button( frame_view_stds, text = "Back", command = back )
-  btn_back.grid( row = 2, column = 2, sticky = E, pady = ( 11, 0) )
+  btn_back.grid( row = 2, column = 2, sticky = E, pady = ( 11, 0 ) )
+
 
   # LABELS
-  lbl_filter = ttk.Label( frame_view_stds, text = "Filter" )
-  lbl_filter.grid( row = 2, column = 0, pady = ( 11, 0) )
+  lbl_filter = ttk.Label( frame_view_stds, text = "Filter", font = ( 'Helvetica', 10 ) )
+  lbl_filter.grid( row = 2, column = 0, pady = ( 11, 0 ), sticky = E )
 
+
+  # COMBOBOX
+  combo_filter1 = ttk.Combobox( frame_view_stds, values = [ 'None', 'Age Group', 'Course' ], state = 'readonly' )
+  combo_filter2 = ttk.Combobox( frame_view_stds, state = 'disabled')
+
+  combo_filter1.current(0)
+
+  combo_filter1.bind( "<FocusIn>", set_filter_lev1 )
+
+  combo_filter1.grid( row = 2, column = 1, pady = ( 11, 0 ) ) 
+  combo_filter2.grid( row = 2, column = 2, pady = ( 11, 0 ), sticky = W ) 
+  
   #********************** REGION END **********************
 
 
