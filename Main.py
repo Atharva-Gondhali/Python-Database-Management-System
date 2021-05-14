@@ -181,6 +181,58 @@ def open_menu_items( frame ):
   frame.grid( row = 0, column = 1, padx = ( 5, 20 ), pady = 20 )
 
 
+def view_students():
+  frame_view_stds = ttk.Frame( root, borderwidth = 3, relief = GROOVE, width = 640, height = 540 )
+  frame_view_stds.grid( row = 0, column = 1, padx = ( 5, 20 ), pady = 20 )
+  frame_view_stds.grid_propagate(0)
+  frm_lst.append( frame_view_stds )
+
+  tree_std = ttk.Treeview( frame_view_stds, height = 23 )
+  tree_std.grid( row = 0, column = 0 )
+
+  tree_std['columns'] = ( "ID No.", "First Name", "Last Name", "Father's Name", "Age Group", "Course", "Phone No." )
+  
+  tree_std.column( "#0", width = 0, stretch = NO )
+  tree_std.column( "ID No.", width = 50, minwidth = 60, anchor = CENTER )
+  tree_std.column( "First Name", width = 95, minwidth = 100, anchor = W )
+  tree_std.column( "Last Name", width = 95, minwidth = 100, anchor = W )
+  tree_std.column( "Father's Name", width = 120, minwidth = 130, anchor = W )
+  tree_std.column( "Age Group", width = 75, minwidth = 80, anchor = CENTER )
+  tree_std.column( "Course", width = 80, minwidth = 90, anchor = W )
+  tree_std.column( "Phone No.", width = 100, minwidth = 110, anchor = CENTER )
+
+  tree_std.heading( "ID No.", text = "ID No.", anchor = CENTER )
+  tree_std.heading( "First Name", text = "First Name", anchor = W )
+  tree_std.heading( "Last Name", text = "Last Name", anchor = W )
+  tree_std.heading( "Father's Name", text = "Father's Name", anchor = W )
+  tree_std.heading( "Age Group", text = "Age Group", anchor = CENTER )
+  tree_std.heading( "Course", text = "Course", anchor = W )
+  tree_std.heading( "Phone No.", text = "Phone No.", anchor = CENTER )
+
+  id = 0
+  my_cursor.execute("SELECT * FROM students")
+  result = my_cursor.fetchall()
+  for i in result:
+    tree_std.insert( parent = '', index = 'end', iid = id, text = "", value = ( i[0], i[1], i[2], i[3], i[6], i[8], i[11] ) )
+    id += 1
+
+  v_scrollbar = ttk.Scrollbar( frame_view_stds, orient = 'vertical' )
+  v_scrollbar.configure( command = tree_std.yview )
+
+  h_scrollbar = ttk.Scrollbar( frame_view_stds, orient = 'horizontal' )
+  h_scrollbar.configure( command = tree_std.xview )
+  tree_std.configure( yscrollcommand = v_scrollbar.set, xscrollcommand = h_scrollbar.set )
+
+  h_scrollbar.grid( row = 1, column = 0, sticky = EW )
+  v_scrollbar.grid( row = 0, column = 1, sticky = NS )
+
+  def back():
+    frame_view_stds.grid_remove()
+
+  btn_back = ttk.Button( frame_view_stds, text = "Back", command = back )
+  btn_back.grid( row = 2, column = 0, sticky = E, pady = 2 )
+
+
 # BUTTONS 
 # Button Styles
 
@@ -202,7 +254,7 @@ btn_unknown3.grid( row = 4, column = 0, ipady = 23, pady = ( 10, 0 ) )
 # Buttons Students
 btn_add_std = ttk.Button( frame_student, text = "Admit Student", width = 20, command = add_std )
 btn_edit_std = ttk.Button( frame_student, text = "Edit Student", width = 20 )
-btn_show_std = ttk.Button( frame_student, text = "View Students", width = 20 )
+btn_show_std = ttk.Button( frame_student, text = "View Students", width = 20, command = view_students )
 
 btn_add_std.grid( row = 1, column = 0, padx = 10, pady = 10, ipady = 4 )
 btn_edit_std.grid( row = 1, column = 1, padx = 10, pady = 10, ipady = 4 )
