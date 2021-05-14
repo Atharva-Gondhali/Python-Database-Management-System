@@ -61,7 +61,24 @@ lbl_dash.grid( row = 0, column = 0, padx = 30, pady = 15, sticky = W )
 
 
 # FUNCTIONS
+# Functions Menu -
+def open_menu_items( frame ):
+  # REGION START
+
+  for i in frm_lst:
+    if not ( i == frame or i == frame_menu ): 
+      i.grid_forget()
+      
+  frame.grid_propagate(0)
+  frame.grid( row = 0, column = 1, padx = ( 5, 20 ), pady = 20 )
+
+  # REGION END
+
+
+# Functions Students -
 def add_std():
+  # REGION START
+
   # FRAME
   frame_add_std = ttk.Frame( root, borderwidth = 3, relief = GROOVE, width = 640, height = 540 )
   frame_add_std.grid( row = 0, column = 1, padx = ( 5, 20 ), pady = 20 )
@@ -171,27 +188,25 @@ def add_std():
   btn_cancel.grid( row = 12, column = 2, pady = 8, padx = 10, ipadx = 6 )
   btn_clr_field.grid( row = 12, column = 1, pady = 8, padx = 10, ipadx = 6, sticky = E )
 
-
-def open_menu_items( frame ):
-  for i in frm_lst:
-    if not ( i == frame or i == frame_menu ): 
-      i.grid_forget()
-      
-  frame.grid_propagate(0)
-  frame.grid( row = 0, column = 1, padx = ( 5, 20 ), pady = 20 )
-
+  # REGION END
 
 def view_students():
+  # ********************** REGION START **********************
+
+  # FRAME
   frame_view_stds = ttk.Frame( root, borderwidth = 3, relief = GROOVE, width = 640, height = 540 )
   frame_view_stds.grid( row = 0, column = 1, padx = ( 5, 20 ), pady = 20 )
   frame_view_stds.grid_propagate(0)
   frm_lst.append( frame_view_stds )
 
-  tree_std = ttk.Treeview( frame_view_stds, height = 23 )
-  tree_std.grid( row = 0, column = 0 )
+
+  # TREEVIEW
+  tree_std = ttk.Treeview( frame_view_stds, height = 22 )
+  tree_std.grid( row = 0, column = 0, columnspan = 3 )
 
   tree_std['columns'] = ( "ID No.", "First Name", "Last Name", "Father's Name", "Age Group", "Course", "Phone No." )
   
+  # TREEVIEW - Define columns
   tree_std.column( "#0", width = 0, stretch = NO )
   tree_std.column( "ID No.", width = 50, minwidth = 60, anchor = CENTER )
   tree_std.column( "First Name", width = 95, minwidth = 100, anchor = W )
@@ -201,6 +216,7 @@ def view_students():
   tree_std.column( "Course", width = 80, minwidth = 90, anchor = W )
   tree_std.column( "Phone No.", width = 100, minwidth = 110, anchor = CENTER )
 
+  # TREEVIEW - Define colmn headings
   tree_std.heading( "ID No.", text = "ID No.", anchor = CENTER )
   tree_std.heading( "First Name", text = "First Name", anchor = W )
   tree_std.heading( "Last Name", text = "Last Name", anchor = W )
@@ -209,6 +225,7 @@ def view_students():
   tree_std.heading( "Course", text = "Course", anchor = W )
   tree_std.heading( "Phone No.", text = "Phone No.", anchor = CENTER )
 
+  # TREEVIEW - Adding records 
   id = 0
   my_cursor.execute("SELECT * FROM students")
   result = my_cursor.fetchall()
@@ -216,26 +233,34 @@ def view_students():
     tree_std.insert( parent = '', index = 'end', iid = id, text = "", value = ( i[0], i[1], i[2], i[3], i[6], i[8], i[11] ) )
     id += 1
 
+  # TREEVIEW - Scrollbar
   v_scrollbar = ttk.Scrollbar( frame_view_stds, orient = 'vertical' )
-  v_scrollbar.configure( command = tree_std.yview )
-
   h_scrollbar = ttk.Scrollbar( frame_view_stds, orient = 'horizontal' )
+  
+  v_scrollbar.configure( command = tree_std.yview )
   h_scrollbar.configure( command = tree_std.xview )
+  
   tree_std.configure( yscrollcommand = v_scrollbar.set, xscrollcommand = h_scrollbar.set )
 
-  h_scrollbar.grid( row = 1, column = 0, sticky = EW )
-  v_scrollbar.grid( row = 0, column = 1, sticky = NS )
+  h_scrollbar.grid( row = 1, column = 0, columnspan = 3, sticky = EW )
+  v_scrollbar.grid( row = 0, column = 3, sticky = NS )
 
+  # FUNCTIONS
   def back():
     frame_view_stds.grid_remove()
 
+  # BUTTONS
   btn_back = ttk.Button( frame_view_stds, text = "Back", command = back )
-  btn_back.grid( row = 2, column = 0, sticky = E, pady = 2 )
+  btn_back.grid( row = 2, column = 2, sticky = E, pady = ( 11, 0) )
+
+  # LABELS
+  lbl_filter = ttk.Label( frame_view_stds, text = "Filter" )
+  lbl_filter.grid( row = 2, column = 0, pady = ( 11, 0) )
+
+  #********************** REGION END **********************
 
 
 # BUTTONS 
-# Button Styles
-
 # Buttons Menu
 btn_dash = ttk.Button( frame_menu, text = "Dashboard", style = 'menu.TButton', command = lambda: open_menu_items( frame_dash ) )
 btn_student = ttk.Button( frame_menu, text = "Students", style = 'menu.TButton', command = lambda: open_menu_items( frame_student ) )
@@ -259,5 +284,6 @@ btn_show_std = ttk.Button( frame_student, text = "View Students", width = 20, co
 btn_add_std.grid( row = 1, column = 0, padx = 10, pady = 10, ipady = 4 )
 btn_edit_std.grid( row = 1, column = 1, padx = 10, pady = 10, ipady = 4 )
 btn_show_std.grid( row = 2, column = 0, padx = 10, pady = 10, ipady = 4 )
+
 
 root.mainloop()
