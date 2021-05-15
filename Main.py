@@ -217,7 +217,7 @@ def view_students():
       for i in tree_std.get_children(): 
         tree_std.delete(i)
 
-      my_cursor.execute("SELECT * FROM students")
+      my_cursor.execute( "SELECT * FROM students" )
       result = my_cursor.fetchall()
 
       id = 0
@@ -236,7 +236,7 @@ def view_students():
     elif combo_filter1.get() == 'Course':
       value = 'course'
     
-    my_cursor.execute(f"SELECT * FROM students WHERE {value} = '{combo_filter2.get()}'")
+    my_cursor.execute( f"SELECT * FROM students WHERE {value} = '{combo_filter2.get()}'" )
     result = my_cursor.fetchall()
 
     for i in tree_std.get_children(): 
