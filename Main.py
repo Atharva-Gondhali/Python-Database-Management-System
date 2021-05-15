@@ -1,57 +1,30 @@
+# IMPORTS
 import mysql.connector
 
 from tkinter import *
 from tkinter import ttk
 
-root = Tk()
-root.geometry( "900x580" )
-root.resizable( width = False, height = False )
-
+# ********************** REGION MYSQL **********************
 # CONNECT TO DATABASE
 mydb = mysql.connector.connect( host = "localhost", user = "root", passwd = "atharva123@mysql", database = "project" )
 
 
 # CREATE A CURSOR
 my_cursor = mydb.cursor()
+# ******************** REGION MYSQL END ********************
 
 
-# FRAMES
-frame_menu = ttk.Frame( root, borderwidth = 3, relief = GROOVE, width = 200, height = 540, padding = 15 )
-frame_dash = ttk.Frame( root, borderwidth = 3, relief = GROOVE, width = 640, height = 540 )
-frame_student = ttk.Frame( root, borderwidth = 3, relief = GROOVE, width = 640, height = 540 )
-
-frm_lst = [ frame_menu, frame_dash, frame_student ]
-for i in frm_lst:
-  i.grid_propagate(0)
-
-frame_menu.grid( row = 0, column = 0, padx = ( 20, 15 ), pady = 20 )      
-frame_dash.grid( row = 0, column = 1, padx = ( 5, 20 ), pady = 20 )
-
-
-# STYLES
-style = ttk.Style()
-style.configure( 'menu.TButton', font = ( 'Helvetica', 10 ), width = 22 )
-style.configure( 'heading_text.TButton', font = ( 'Helvetica', 15 ) )
-
-
-# LABELS
-# Label menu
-lbl_logo = ttk.Label( frame_menu, text = "logo/app name" )
-lbl_logo.grid( row = 5, column = 0, pady = (30, 0) )
-
-# Label students
-lbl_student = ttk.Label( frame_student, text = "Manage Students", font = ( 'Helvetica', 15 ) )
-lbl_student.grid( row = 0, column = 0, padx = 30, pady = 15, sticky = W )
-
-# Label dashboard
-lbl_dash = ttk.Label( frame_dash, text = "Dashboard", font = ( 'Helvetica', 15 ) )
-lbl_dash.grid( row = 0, column = 0, padx = 30, pady = 15, sticky = W )
+# ********************** REGION TKINTER **********************
+# INITIALIZE TKINTER
+root = Tk()
+root.geometry( "900x580" )
+root.resizable( width = False, height = False )
 
 
 # FUNCTIONS
 # Functions Menu -
 def open_menu_items( frame ):
-  # ********************** REGION START **********************
+  # ********************* REGION START open_menu_items *********************
 
   for i in frm_lst:
     if not ( i == frame or i == frame_menu ): 
@@ -60,12 +33,13 @@ def open_menu_items( frame ):
   frame.grid_propagate(0)
   frame.grid( row = 0, column = 1, padx = ( 5, 20 ), pady = 20 )
 
-  # ********************** REGION END **********************
+  # ********************** REGION END open_menu_items **********************
+
 
 
 # Functions Students -
 def add_std():
-  # ********************** REGION START **********************
+  # ********************** REGION START add_std **********************
 
   # FRAME
   frame_add_std = ttk.Frame( root, borderwidth = 3, relief = GROOVE, width = 640, height = 540 )
@@ -169,10 +143,11 @@ def add_std():
   btn_cancel.grid( row = 12, column = 2, pady = 8, padx = 10, ipadx = 6 )
   btn_clr_field.grid( row = 12, column = 1, pady = 8, padx = 10, ipadx = 6, sticky = E )
 
-  # ********************** REGION END **********************
+  # ********************** REGION END add_std **********************
+
 
 def view_students():
-  # ********************** REGION START **********************
+  # ********************** REGION START view_students **********************
 
   # FRAME
   frame_view_stds = ttk.Frame( root, borderwidth = 3, relief = GROOVE, width = 640, height = 540 )
@@ -295,7 +270,41 @@ def view_students():
   combo_filter1.grid( row = 2, column = 1, pady = ( 11, 0 ) ) 
   combo_filter2.grid( row = 2, column = 2, pady = ( 11, 0 ), sticky = W ) 
   
-  # ********************** REGION END **********************
+  # ********************** REGION END view_students **********************
+
+
+
+# FRAMES
+frame_menu = ttk.Frame( root, borderwidth = 3, relief = GROOVE, width = 200, height = 540, padding = 15 )
+frame_dash = ttk.Frame( root, borderwidth = 3, relief = GROOVE, width = 640, height = 540 )
+frame_student = ttk.Frame( root, borderwidth = 3, relief = GROOVE, width = 640, height = 540 )
+
+frm_lst = [ frame_menu, frame_dash, frame_student ]
+for i in frm_lst:
+  i.grid_propagate(0)
+
+frame_menu.grid( row = 0, column = 0, padx = ( 20, 15 ), pady = 20 )      
+frame_dash.grid( row = 0, column = 1, padx = ( 5, 20 ), pady = 20 )
+
+
+# STYLES
+style = ttk.Style()
+style.configure( 'menu.TButton', font = ( 'Helvetica', 10 ), width = 22 )
+style.configure( 'heading_text.TButton', font = ( 'Helvetica', 15 ) ) 
+
+
+# LABELS
+# Label menu
+lbl_logo = ttk.Label( frame_menu, text = "logo/app name" )
+lbl_logo.grid( row = 5, column = 0, pady = (30, 0) )
+
+# Label students
+lbl_student = ttk.Label( frame_student, text = "Manage Students", font = ( 'Helvetica', 15 ) )
+lbl_student.grid( row = 0, column = 0, padx = 30, pady = 15, sticky = W )
+
+# Label dashboard
+lbl_dash = ttk.Label( frame_dash, text = "Dashboard", font = ( 'Helvetica', 15 ) )
+lbl_dash.grid( row = 0, column = 0, padx = 30, pady = 15, sticky = W )
 
 
 # BUTTONS 
@@ -325,3 +334,5 @@ btn_show_std.grid( row = 2, column = 0, padx = 10, pady = 10, ipady = 4 )
 
 
 root.mainloop()
+
+# ********************** REGION TKINTER END **********************
