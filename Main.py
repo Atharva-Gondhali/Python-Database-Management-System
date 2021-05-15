@@ -10,20 +10,10 @@ root.resizable( width = False, height = False )
 # CONNECT TO DATABASE
 mydb = mysql.connector.connect( host = "localhost", user = "root", passwd = "atharva123@mysql", database = "project" )
 
+
 # CREATE A CURSOR
 my_cursor = mydb.cursor()
 
-# CREATE A TABLE (TO BE RUN ONCE)
-# my_cursor.execute("CREATE TABLE IF NOT EXISTS students (student_id INT AUTO_INCREMENT PRIMARY KEY, \
-#   first_name VARCHAR(255), last_name VARCHAR(255), father_name VARCHAR(255), \
-#   email_id VARCHAR(255), age TINYINT(2), age_group VARCHAR(255), gender VARCHAR(255), \
-#   course VARCHAR(255), medical_com VARCHAR(255), address  VARCHAR(255), phone_no BIGINT(20))")
-
-# SHOW TABLE
-# my_cursor.execute("SELECT * FROM students")
-# result = my_cursor.fetchall()
-# for i in result:
-# 	print(i)
 
 # FRAMES
 frame_menu = ttk.Frame( root, borderwidth = 3, relief = GROOVE, width = 200, height = 540, padding = 15 )
@@ -37,26 +27,24 @@ for i in frm_lst:
 frame_menu.grid( row = 0, column = 0, padx = ( 20, 15 ), pady = 20 )      
 frame_dash.grid( row = 0, column = 1, padx = ( 5, 20 ), pady = 20 )
 
+
 # STYLES
 style = ttk.Style()
 style.configure( 'menu.TButton', font = ( 'Helvetica', 10 ), width = 22 )
 style.configure( 'heading_text.TButton', font = ( 'Helvetica', 15 ) )
 
-# LABELS
 
+# LABELS
 # Label menu
 lbl_logo = ttk.Label( frame_menu, text = "logo/app name" )
-
 lbl_logo.grid( row = 5, column = 0, pady = (30, 0) )
 
 # Label students
 lbl_student = ttk.Label( frame_student, text = "Manage Students", font = ( 'Helvetica', 15 ) )
-
 lbl_student.grid( row = 0, column = 0, padx = 30, pady = 15, sticky = W )
 
 # Label dashboard
 lbl_dash = ttk.Label( frame_dash, text = "Dashboard", font = ( 'Helvetica', 15 ) )
-
 lbl_dash.grid( row = 0, column = 0, padx = 30, pady = 15, sticky = W )
 
 
@@ -155,11 +143,9 @@ def add_std():
   def cancel():
     frame_add_std.grid_remove()
 
-
   def clear_fields():
     for i in lst_entry_box:
       i.delete( 0, END )
-
 
   def add_std_database():
     command = "INSERT INTO students (first_name, last_name, father_name, email_id, age, age_group, gender, \
@@ -172,11 +158,6 @@ def add_std():
     my_cursor.execute( command, values )
     mydb.commit()
     clear_fields()
-
-    my_cursor.execute("SELECT * FROM students")
-    result = my_cursor.fetchall()
-    for i in result:
-    	print(i)
 
 
   # BUTTONS
@@ -226,9 +207,10 @@ def view_students():
   tree_std.heading( "Phone No.", text = "Phone No.", anchor = CENTER )
 
   # TREEVIEW - Adding records 
-  id = 0
   my_cursor.execute("SELECT * FROM students")
   result = my_cursor.fetchall()
+
+  id = 0
   for i in result:
     tree_std.insert( parent = '', index = 'end', iid = id, text = "", value = ( i[0], i[1], i[2], i[3], i[6], i[8], i[11] ) )
     id += 1
@@ -250,14 +232,15 @@ def view_students():
     frame_view_stds.grid_remove()
 
   def set_filter_lev1( event ):
-    if combo_filter1.get() == 'Age Group': value = [ 'U-12', 'U-14', 'U-16', 'U-18', 'U-25', 'Open' ]
-    
-    elif combo_filter1.get() == 'Course': value = ['A', 'B', 'C']
-    
+    if combo_filter1.get() == 'Age Group': 
+      value = [ 'U-12', 'U-14', 'U-16', 'U-18', 'U-25', 'Open' ]
+    elif combo_filter1.get() == 'Course': 
+      value = ['A', 'B', 'C']
     elif combo_filter1.get() == 'None': 
       combo_filter2.configure( state = 'disabled' )
 
-      for i in tree_std.get_children(): tree_std.delete(i)
+      for i in tree_std.get_children(): 
+        tree_std.delete(i)
 
       my_cursor.execute("SELECT * FROM students")
       result = my_cursor.fetchall()
@@ -273,13 +256,16 @@ def view_students():
       pass
 
   def set_filter_lev2( event ):
-    if combo_filter1.get() == 'Age Group': my_cursor.execute(f"SELECT * FROM students WHERE age_group = '{combo_filter2.get()}'")
-
-    elif combo_filter1.get() == 'Course': my_cursor.execute(f"SELECT * FROM students WHERE course = '{combo_filter2.get()}'")
-
+    if combo_filter1.get() == 'Age Group':
+      value = 'age_group'
+    elif combo_filter1.get() == 'Course':
+      value = 'course'
+    
+    my_cursor.execute(f"SELECT * FROM students WHERE {value} = '{combo_filter2.get()}'")
     result = my_cursor.fetchall()
 
-    for i in tree_std.get_children(): tree_std.delete(i)
+    for i in tree_std.get_children(): 
+      tree_std.delete(i)
     
     id = 0
     for i in result:
