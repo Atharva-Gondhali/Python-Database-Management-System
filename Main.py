@@ -144,19 +144,123 @@ def add_std():
   btn_clr_field.grid( row = 12, column = 1, pady = 8, padx = 10, ipadx = 6, sticky = E )
   # ********************** REGION END add_std **********************
 
-def view_students():
-  # ********************** REGION START view_students **********************
+def edit_std():
+  # ********************** REGION START edit_std **********************
   # FRAME
-  frame_view_stds = ttk.Frame( root, borderwidth = 3, relief = GROOVE, width = 640, height = 540 )
-  frame_view_stds.grid( row = 0, column = 1, padx = ( 5, 20 ), pady = 20 )
-  frame_view_stds.grid_propagate(0)
-  frm_lst.append( frame_view_stds )
+  frame_edit_std = ttk.Frame( root, borderwidth = 3, relief = GROOVE, width = 640, height = 540 )
+  frame_edit_std.grid( row = 0, column = 1, padx = ( 5, 20 ), pady = 20 )
+  frame_edit_std.grid_propagate(0)
+  frm_lst.append( frame_edit_std )
+
+
+  # INNER FUNCTIONS
+  def get_std( event ):
+    pass
+
+  def inp_num( event ):
+    value = ent_std_id.get()
+    ent_std_id.delete( 0, END )
+    
+    try:
+      int( value )
+      ent_std_id.insert( 0, value )
+    except ValueError:
+      value_cor = ""
+      for i in value:
+        if i.isnumeric():
+          value_cor += i
+      ent_std_id.insert( 0, value_cor )
+
+  # LABELS
+  lbl_sel_std = ttk.Label( frame_edit_std, text = "Select Student", font = ( 'Helvetica', 14 ) )
+  lbl_std_id = ttk.Label( frame_edit_std, text = "Student's ID No.", font = ( 'Helvetica', 11 ) )
+  lbl_edit_std = ttk.Label( frame_edit_std, text = "Edit Student", font = ( 'Helvetica', 14 ) )
+  lbl_first_name = ttk.Label( frame_edit_std, text = "First Name", font = ( 'Helvetica', 11 ) )
+  lbl_last_name = ttk.Label( frame_edit_std, text = "Last Name", font = ( 'Helvetica', 11 ) )
+  lbl_father_name = ttk.Label( frame_edit_std, text = "Father's Name", font = ( 'Helvetica', 11 ) )
+  lbl_email_id = ttk.Label( frame_edit_std, text = "Email ID", font = ( 'Helvetica', 11 ) )
+  lbl_age = ttk.Label( frame_edit_std, text = "Age", font = ( 'Helvetica', 11 ) )
+  lbl_age_group = ttk.Label( frame_edit_std, text = "Age Group", font = ( 'Helvetica', 11 ) )
+  lbl_gender = ttk.Label( frame_edit_std, text = "Gender", font = ( 'Helvetica', 11 ) )
+  lbl_course = ttk.Label( frame_edit_std, text = "Course", font = ( 'Helvetica', 11 ) )
+  lbl_medical_com = ttk.Label( frame_edit_std, text = "Medical Complications", font = ( 'Helvetica', 11 ) )
+  lbl_address = ttk.Label( frame_edit_std, text = "Address", font = ( 'Helvetica', 11 ) )
+  lbl_phone_number = ttk.Label( frame_edit_std, text = "Phone Number", font = ( 'Helvetica', 11 ) )
+
+  lbl_sel_std.grid( row = 0, column = 0, padx = 30, pady = 15, sticky = W )
+  lbl_std_id.grid( row = 1, column = 0, padx = 30, sticky = W )
+  lbl_edit_std.grid( row = 2, column = 0, padx = 30, pady = 15, sticky = W )
+  lbl_first_name.grid( row = 3, column = 0, padx = ( 40, 5 ), pady = 5, sticky = W )
+  lbl_last_name.grid( row = 4, column = 0, padx = ( 40, 5 ), pady = 5, sticky = W )
+  lbl_father_name.grid( row = 5, column = 0, padx = ( 40, 5 ), pady = 5, sticky = W )
+  lbl_email_id.grid( row = 6, column = 0, padx = ( 40, 5 ), pady = 5, sticky = W )
+  lbl_age.grid( row = 7, column = 0, padx = ( 40, 5 ), pady = 5, sticky = W )
+  lbl_age_group.grid( row = 8, column = 0, padx = ( 40, 5 ), pady = 5, sticky = W )
+  lbl_gender.grid( row = 9, column = 0, padx = ( 40, 5 ), pady = 5, sticky = W )
+  lbl_course.grid( row = 10, column = 0, padx = ( 40, 5 ), pady = 5, sticky = W )
+  lbl_medical_com.grid( row = 11, column = 0, padx = ( 40, 5 ), pady = 5, sticky = W )
+  lbl_address.grid( row = 12, column = 0, padx = ( 40, 5 ), pady = 5, sticky = W )
+  lbl_phone_number.grid( row = 13, column = 0, padx = ( 40, 5 ), pady = 5, sticky = W )
+
+
+  # ENTRY BOX
+  ent_std_id = ttk.Entry( frame_edit_std )
+  ent_std_id.bind( '<KeyRelease>', inp_num )
+  ent_first_name = ttk.Entry( frame_edit_std, width = 30 )
+  ent_last_name = ttk.Entry( frame_edit_std, width = 30 )
+  ent_father_name = ttk.Entry( frame_edit_std, width = 30 )
+  ent_email_id = ttk.Entry( frame_edit_std, width = 30 )
+  ent_age = ttk.Entry( frame_edit_std, width = 30 )
+  ent_medical_com = ttk.Entry( frame_edit_std, width = 30 )
+  ent_address = ttk.Entry( frame_edit_std, width = 30 )
+  ent_phone_number = ttk.Entry( frame_edit_std, width = 30 )
+  
+  lst_entry_box = [ ent_first_name, ent_last_name, ent_father_name, ent_email_id, ent_age, ent_medical_com,
+    ent_address, ent_phone_number ]
+
+  ent_std_id.grid( row = 1, column = 1, padx = 15, sticky = W )
+  ent_first_name.grid( row = 3, column = 1, padx = 15, pady = 5, sticky = E )
+  ent_last_name.grid( row = 4, column = 1, padx = 15, pady = 5, sticky = E )
+  ent_father_name.grid( row = 5, column = 1, padx = 15, pady = 5, sticky = E )
+  ent_email_id.grid( row = 6, column = 1, padx = 15, pady = 5, sticky = E )
+  ent_age.grid( row = 7, column = 1, padx = 15, pady = 5, sticky = E )
+  ent_medical_com.grid( row = 11, column = 1, padx = 15, pady = 5, sticky = E )
+  ent_address.grid( row = 12, column = 1, padx = 15, pady = 5, sticky = E )
+  ent_phone_number.grid( row = 13, column = 1, padx = 15, pady = 5, sticky = E )
+
+
+  # COMBO BOX
+  combo_age_group = ttk.Combobox( frame_edit_std, values = ['U-12', 'U-14', 'U-16', 'U-18', 'U-25', 'Open'], width = 27 )
+  combo_gender = ttk.Combobox( frame_edit_std, values = ['Male', 'Female', 'Other'], width = 27 )
+  combo_course = ttk.Combobox( frame_edit_std, values = ['A', 'B', 'C'], width = 27 )
+  
+  lst_combobox = [ combo_age_group, combo_gender, combo_course ]
+  for i in lst_combobox:
+    i.current(0)
+
+  combo_age_group.grid( row = 8, column = 1, padx = 15, pady = 8, ipady = 1 )
+  combo_gender.grid( row = 9, column = 1, padx = 15, pady = 8, ipady = 1 )
+  combo_course.grid( row = 10, column = 1, padx = 15, pady = 8, ipady = 1 )
+
+  lst_widgets_entries = lst_entry_box + lst_combobox
+  for i in lst_widgets_entries:
+    i.configure( state = 'disabled' )
+
+  # *********************** REGION END edit_std ***********************
+
+def view_std():
+  # ********************** REGION START view_std **********************
+  # FRAME
+  frame_view_std = ttk.Frame( root, borderwidth = 3, relief = GROOVE, width = 640, height = 540 )
+  frame_view_std.grid( row = 0, column = 1, padx = ( 5, 20 ), pady = 20 )
+  frame_view_std.grid_propagate(0)
+  frm_lst.append( frame_view_std )
 
 
   # INNER FUNCTIONS
   def back():
-    frm_lst.remove( frame_view_stds)
-    frame_view_stds.grid_remove()
+    frm_lst.remove( frame_view_std)
+    frame_view_std.grid_remove()
 
   def insert_records( con, value ):
     for i in tree_std.get_children(): 
@@ -201,7 +305,7 @@ def view_students():
 
 
   # TREEVIEW
-  tree_std = ttk.Treeview( frame_view_stds, height = 22 )
+  tree_std = ttk.Treeview( frame_view_std, height = 22 )
   tree_std.grid( row = 0, column = 0, columnspan = 3 )
 
   tree_std['columns'] = ( "ID No.", "First Name", "Last Name", "Father's Name", "Age Group", "Course", "Phone No." )
@@ -229,8 +333,8 @@ def view_students():
   insert_records( '', '' )
 
   # TREEVIEW - Scrollbar
-  v_scrollbar = ttk.Scrollbar( frame_view_stds, orient = 'vertical' )
-  h_scrollbar = ttk.Scrollbar( frame_view_stds, orient = 'horizontal' )
+  v_scrollbar = ttk.Scrollbar( frame_view_std, orient = 'vertical' )
+  h_scrollbar = ttk.Scrollbar( frame_view_std, orient = 'horizontal' )
   
   v_scrollbar.configure( command = tree_std.yview )
   h_scrollbar.configure( command = tree_std.xview )
@@ -242,18 +346,18 @@ def view_students():
 
 
   # BUTTONS
-  btn_back = ttk.Button( frame_view_stds, text = "Back", command = back )
+  btn_back = ttk.Button( frame_view_std, text = "Back", command = back )
   btn_back.grid( row = 2, column = 2, sticky = E, pady = ( 11, 0 ) )
 
 
   # LABELS
-  lbl_filter = ttk.Label( frame_view_stds, text = "Filter", font = ( 'Helvetica', 10 ) )
+  lbl_filter = ttk.Label( frame_view_std, text = "Filter", font = ( 'Helvetica', 10 ) )
   lbl_filter.grid( row = 2, column = 0, pady = ( 11, 0 ), sticky = E )
 
 
   # COMBOBOX
-  combo_filter1 = ttk.Combobox( frame_view_stds, values = [ 'None', 'Age Group', 'Course' ], state = 'readonly' )
-  combo_filter2 = ttk.Combobox( frame_view_stds, state = 'disabled')
+  combo_filter1 = ttk.Combobox( frame_view_std, values = [ 'None', 'Age Group', 'Course' ], state = 'readonly' )
+  combo_filter2 = ttk.Combobox( frame_view_std, state = 'disabled')
 
   combo_filter1.current(0)
 
@@ -262,7 +366,7 @@ def view_students():
 
   combo_filter1.grid( row = 2, column = 1, pady = ( 11, 0 ) ) 
   combo_filter2.grid( row = 2, column = 2, pady = ( 11, 0 ), sticky = W ) 
-  # ********************** REGION END view_students **********************
+  # ********************** REGION END view_std **********************
 
 
 # FRAMES
@@ -316,12 +420,12 @@ btn_unknown3.grid( row = 4, column = 0, ipady = 23, pady = ( 10, 0 ) )
 
 # Buttons Students
 btn_add_std = ttk.Button( frame_student, text = "Admit Student", width = 20, command = add_std )
-btn_edit_std = ttk.Button( frame_student, text = "Edit Student", width = 20 )
-btn_show_std = ttk.Button( frame_student, text = "View Students", width = 20, command = view_students )
+btn_edit_std = ttk.Button( frame_student, text = "Edit Student", width = 20, command = edit_std )
+btn_view_std = ttk.Button( frame_student, text = "View Students", width = 20, command = view_std )
 
 btn_add_std.grid( row = 1, column = 0, padx = 10, pady = 10, ipady = 4 )
 btn_edit_std.grid( row = 1, column = 1, padx = 10, pady = 10, ipady = 4 )
-btn_show_std.grid( row = 2, column = 0, padx = 10, pady = 10, ipady = 4 )
+btn_view_std.grid( row = 2, column = 0, padx = 10, pady = 10, ipady = 4 )
 
 root.mainloop()
 # ********************** REGION TKINTER END **********************
