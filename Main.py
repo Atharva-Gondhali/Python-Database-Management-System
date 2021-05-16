@@ -4,6 +4,7 @@ import mysql.connector
 from tkinter import *
 from tkinter import ttk
 
+
 # ********************** REGION MYSQL **********************
 # CONNECT TO DATABASE
 mydb = mysql.connector.connect( host = "localhost", user = "root", passwd = "atharva123@mysql", database = "project" )
@@ -36,16 +37,36 @@ def open_menu_items( frame ):
   # ********************** REGION END open_menu_items **********************
 
 
-
 # Functions Students -
 def add_std():
   # ********************** REGION START add_std **********************
-
   # FRAME
   frame_add_std = ttk.Frame( root, borderwidth = 3, relief = GROOVE, width = 640, height = 540 )
   frame_add_std.grid( row = 0, column = 1, padx = ( 5, 20 ), pady = 20 )
   frame_add_std.grid_propagate(0)
   frm_lst.append( frame_add_std )
+
+
+  # INNER FUNCTIONS
+  def cancel():
+    frm_lst.remove( frame_add_std )
+    frame_add_std.grid_remove()
+
+  def clear_fields():
+    for i in lst_entry_box:
+      i.delete( 0, END )
+
+  def add_std_database():
+    command = "INSERT INTO students (first_name, last_name, father_name, email_id, age, age_group, gender, \
+      course, medical_com, address, phone_no) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
+
+    values = ( ent_first_name.get(), ent_last_name.get(), ent_father_name.get(), ent_email_id.get(),
+      ent_age.get(), combo_age_group.get(), combo_gender.get(), combo_course.get(), ent_medical_com.get(),
+      ent_address.get(), ent_phone_number.get() )
+
+    my_cursor.execute( command, values )
+    mydb.commit()
+    clear_fields()
 
 
   # LABELS
@@ -113,27 +134,6 @@ def add_std():
   combo_course.grid( row = 8, column = 1, padx = 15, pady = 8, ipady = 1 )
 
 
-  # INNER FUNCTIONS
-  def cancel():
-    frame_add_std.grid_remove()
-
-  def clear_fields():
-    for i in lst_entry_box:
-      i.delete( 0, END )
-
-  def add_std_database():
-    command = "INSERT INTO students (first_name, last_name, father_name, email_id, age, age_group, gender, \
-      course, medical_com, address, phone_no) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
-
-    values = ( ent_first_name.get(), ent_last_name.get(), ent_father_name.get(), ent_email_id.get(),
-      ent_age.get(), combo_age_group.get(), combo_gender.get(), combo_course.get(), ent_medical_com.get(),
-      ent_address.get(), ent_phone_number.get() )
-
-    my_cursor.execute( command, values )
-    mydb.commit()
-    clear_fields()
-
-
   # BUTTONS
   btn_add_std = ttk.Button( frame_add_std, text = "Add Student", command = add_std_database )
   btn_cancel = ttk.Button( frame_add_std, text = "Cancel", command = cancel )
@@ -142,18 +142,62 @@ def add_std():
   btn_add_std.grid( row = 12, column = 3, pady = 8, padx = 10, ipadx = 6 )
   btn_cancel.grid( row = 12, column = 2, pady = 8, padx = 10, ipadx = 6 )
   btn_clr_field.grid( row = 12, column = 1, pady = 8, padx = 10, ipadx = 6, sticky = E )
-
   # ********************** REGION END add_std **********************
-
 
 def view_students():
   # ********************** REGION START view_students **********************
-
   # FRAME
   frame_view_stds = ttk.Frame( root, borderwidth = 3, relief = GROOVE, width = 640, height = 540 )
   frame_view_stds.grid( row = 0, column = 1, padx = ( 5, 20 ), pady = 20 )
   frame_view_stds.grid_propagate(0)
   frm_lst.append( frame_view_stds )
+
+
+  # INNER FUNCTIONS
+  def back():
+    frm_lst.remove( frame_view_stds)
+    frame_view_stds.grid_remove()
+
+  def insert_records( con, value ):
+    for i in tree_std.get_children(): 
+      tree_std.delete(i)
+
+    if len(con) == 0:
+      my_cursor.execute("SELECT * FROM students")
+    else:
+      my_cursor.execute( f"SELECT * FROM students WHERE {con} = '{value}'" )
+
+    result = my_cursor.fetchall()
+
+    id = 0
+    for i in result:
+      tree_std.insert( parent = '', index = 'end', iid = id, text = "", value = ( i[0], i[1], i[2], i[3], i[6], i[8], i[11] ) )
+      id += 1
+
+  def set_filter_lev1( event ):
+    if combo_filter1.get() == 'Age Group': 
+      value = [ 'U-12', 'U-14', 'U-16', 'U-18', 'U-25', 'Open' ]
+    elif combo_filter1.get() == 'Course': 
+      value = ['A', 'B', 'C']
+    elif combo_filter1.get() == 'None': 
+      combo_filter2.configure( state = 'disabled' )
+
+      for i in tree_std.get_children(): 
+        tree_std.delete(i)
+
+      insert_records( '', '')
+      
+    try:
+      combo_filter2.configure( values = value, state = 'readonly' )
+    except UnboundLocalError:
+      pass
+
+  def set_filter_lev2( event ):
+    if combo_filter1.get() == 'Age Group':
+      insert_records( 'age_group', combo_filter2.get() )
+
+    elif combo_filter1.get() == 'Course':
+      insert_records( 'course', combo_filter2.get() )
 
 
   # TREEVIEW
@@ -182,13 +226,7 @@ def view_students():
   tree_std.heading( "Phone No.", text = "Phone No.", anchor = CENTER )
 
   # TREEVIEW - Adding records 
-  my_cursor.execute("SELECT * FROM students")
-  result = my_cursor.fetchall()
-
-  id = 0
-  for i in result:
-    tree_std.insert( parent = '', index = 'end', iid = id, text = "", value = ( i[0], i[1], i[2], i[3], i[6], i[8], i[11] ) )
-    id += 1
+  insert_records( '', '' )
 
   # TREEVIEW - Scrollbar
   v_scrollbar = ttk.Scrollbar( frame_view_stds, orient = 'vertical' )
@@ -202,51 +240,6 @@ def view_students():
   h_scrollbar.grid( row = 1, column = 0, columnspan = 3, sticky = EW )
   v_scrollbar.grid( row = 0, column = 3, sticky = NS )
 
-  # INNER FUNCTIONS
-  def back():
-    frame_view_stds.grid_remove()
-
-  def set_filter_lev1( event ):
-    if combo_filter1.get() == 'Age Group': 
-      value = [ 'U-12', 'U-14', 'U-16', 'U-18', 'U-25', 'Open' ]
-    elif combo_filter1.get() == 'Course': 
-      value = ['A', 'B', 'C']
-    elif combo_filter1.get() == 'None': 
-      combo_filter2.configure( state = 'disabled' )
-
-      for i in tree_std.get_children(): 
-        tree_std.delete(i)
-
-      my_cursor.execute( "SELECT * FROM students" )
-      result = my_cursor.fetchall()
-
-      id = 0
-      for i in result:
-        tree_std.insert( parent = '', index = 'end', iid = id, text = "", value = ( i[0], i[1], i[2], i[3], i[6], i[8], i[11] ) )
-        id += 1
-
-    try:
-      combo_filter2.configure( values = value, state = 'readonly' )
-    except UnboundLocalError:
-      pass
-
-  def set_filter_lev2( event ):
-    if combo_filter1.get() == 'Age Group':
-      value = 'age_group'
-    elif combo_filter1.get() == 'Course':
-      value = 'course'
-    
-    my_cursor.execute( f"SELECT * FROM students WHERE {value} = '{combo_filter2.get()}'" )
-    result = my_cursor.fetchall()
-
-    for i in tree_std.get_children(): 
-      tree_std.delete(i)
-    
-    id = 0
-    for i in result:
-      tree_std.insert( parent = '', index = 'end', iid = id, text = "", value = ( i[0], i[1], i[2], i[3], i[6], i[8], i[11] ) )
-      id += 1
-    
 
   # BUTTONS
   btn_back = ttk.Button( frame_view_stds, text = "Back", command = back )
@@ -269,9 +262,7 @@ def view_students():
 
   combo_filter1.grid( row = 2, column = 1, pady = ( 11, 0 ) ) 
   combo_filter2.grid( row = 2, column = 2, pady = ( 11, 0 ), sticky = W ) 
-  
   # ********************** REGION END view_students **********************
-
 
 
 # FRAMES
@@ -332,7 +323,5 @@ btn_add_std.grid( row = 1, column = 0, padx = 10, pady = 10, ipady = 4 )
 btn_edit_std.grid( row = 1, column = 1, padx = 10, pady = 10, ipady = 4 )
 btn_show_std.grid( row = 2, column = 0, padx = 10, pady = 10, ipady = 4 )
 
-
 root.mainloop()
-
 # ********************** REGION TKINTER END **********************
