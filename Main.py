@@ -70,77 +70,77 @@ def add_std():
 
 
   	# LABELS
-	lbl_add_std = ttk.Label( frame_add_std, text = "Admit Student", font = ( 'Helvetica', 15 ) )
-	lbl_first_name = ttk.Label( frame_add_std, text = "First Name", font = ( 'Helvetica', 11 ) )
-	lbl_last_name = ttk.Label( frame_add_std, text = "Last Name", font = ( 'Helvetica', 11 ) )
-	lbl_father_name = ttk.Label( frame_add_std, text = "Father's Name", font = ( 'Helvetica', 11 ) )
-	lbl_email_id = ttk.Label( frame_add_std, text = "Email ID", font = ( 'Helvetica', 11 ) )
-	lbl_age = ttk.Label( frame_add_std, text = "Age", font = ( 'Helvetica', 11 ) )
-	lbl_age_group = ttk.Label( frame_add_std, text = "Age Group", font = ( 'Helvetica', 11 ) )
-	lbl_gender = ttk.Label( frame_add_std, text = "Gender", font = ( 'Helvetica', 11 ) )
-	lbl_course = ttk.Label( frame_add_std, text = "Course", font = ( 'Helvetica', 11 ) )
-	lbl_medical_com = ttk.Label( frame_add_std, text = "Medical Complications", font = ( 'Helvetica', 11 ) )
-	lbl_address = ttk.Label( frame_add_std, text = "Address", font = ( 'Helvetica', 11 ) )
-	lbl_phone_number = ttk.Label( frame_add_std, text = "Phone Number", font = ( 'Helvetica', 11 ) )
+	lbl_add_std = 		ttk.Label( frame_add_std, text = "Admit Student", 			font = ( 'Helvetica', 15 ) )
+	lbl_first_name = 	ttk.Label( frame_add_std, text = "First Name", 				font = ( 'Helvetica', 11 ) )
+	lbl_last_name = 	ttk.Label( frame_add_std, text = "Last Name", 				font = ( 'Helvetica', 11 ) )
+	lbl_father_name = 	ttk.Label( frame_add_std, text = "Father's Name", 			font = ( 'Helvetica', 11 ) )
+	lbl_email_id = 		ttk.Label( frame_add_std, text = "Email ID", 				font = ( 'Helvetica', 11 ) )
+	lbl_age = 			ttk.Label( frame_add_std, text = "Age", 					font = ( 'Helvetica', 11 ) )
+	lbl_age_group = 	ttk.Label( frame_add_std, text = "Age Group", 				font = ( 'Helvetica', 11 ) )
+	lbl_gender = 		ttk.Label( frame_add_std, text = "Gender", 					font = ( 'Helvetica', 11 ) )
+	lbl_course = 		ttk.Label( frame_add_std, text = "Course", 					font = ( 'Helvetica', 11 ) )
+	lbl_medical_com = 	ttk.Label( frame_add_std, text = "Medical Complications", 	font = ( 'Helvetica', 11 ) )
+	lbl_address = 		ttk.Label( frame_add_std, text = "Address", 				font = ( 'Helvetica', 11 ) )
+	lbl_phone_number = 	ttk.Label( frame_add_std, text = "Phone Number", 			font = ( 'Helvetica', 11 ) )
   
-	lbl_add_std.grid( row = 0, column = 0, padx = 30, pady = 15, sticky = W )
-	lbl_first_name.grid( row = 1, column = 0, padx = ( 40, 5 ), pady = 8, sticky = W )
-	lbl_last_name.grid( row = 2, column = 0, padx = ( 40, 5 ), pady = 8, sticky = W )
-	lbl_father_name.grid( row = 3, column = 0, padx = ( 40, 5 ), pady = 8, sticky = W )
-	lbl_email_id.grid( row = 4, column = 0, padx = ( 40, 5 ), pady = 8, sticky = W )
-	lbl_age.grid( row = 5, column = 0, padx = ( 40, 5 ), pady = 8, sticky = W )
-	lbl_age_group.grid( row = 6, column = 0, padx = ( 40, 5 ), pady = 8, sticky = W )
-	lbl_gender.grid( row = 7, column = 0, padx = ( 40, 5 ), pady = 8, sticky = W )
-	lbl_course.grid( row = 8, column = 0, padx = ( 40, 5 ), pady = 8, sticky = W )
-	lbl_medical_com.grid( row = 9, column = 0, padx = ( 40, 5 ), pady = 8, sticky = W )
-	lbl_address.grid( row = 10, column = 0, padx = ( 40, 5 ), pady = 8, sticky = W )
-	lbl_phone_number.grid( row = 11, column = 0, padx = ( 40, 5 ), pady = 8, sticky = W )
+	lbl_add_std.grid( 		row = 0, 	column = 0, padx = 30, 	      pady = 15, 	sticky = W )
+	lbl_first_name.grid( 	row = 1, 	column = 0, padx = ( 40, 5 ), pady = 8, 	sticky = W )
+	lbl_last_name.grid( 	row = 2, 	column = 0, padx = ( 40, 5 ), pady = 8, 	sticky = W )
+	lbl_father_name.grid( 	row = 3, 	column = 0, padx = ( 40, 5 ), pady = 8, 	sticky = W )
+	lbl_email_id.grid( 		row = 4, 	column = 0, padx = ( 40, 5 ), pady = 8, 	sticky = W )
+	lbl_age.grid( 			row = 5, 	column = 0, padx = ( 40, 5 ), pady = 8, 	sticky = W )
+	lbl_age_group.grid( 	row = 6, 	column = 0, padx = ( 40, 5 ), pady = 8, 	sticky = W )
+	lbl_gender.grid( 		row = 7, 	column = 0, padx = ( 40, 5 ), pady = 8, 	sticky = W )
+	lbl_course.grid( 		row = 8, 	column = 0, padx = ( 40, 5 ), pady = 8, 	sticky = W )
+	lbl_medical_com.grid( 	row = 9, 	column = 0, padx = ( 40, 5 ), pady = 8, 	sticky = W )
+	lbl_address.grid( 		row = 10, 	column = 0, padx = ( 40, 5 ), pady = 8, 	sticky = W )
+	lbl_phone_number.grid( 	row = 11, 	column = 0, padx = ( 40, 5 ), pady = 8, 	sticky = W )
 
 
   	# ENTRY BOX
-	ent_first_name = ttk.Entry( frame_add_std, width = 30 )
-	ent_last_name = ttk.Entry( frame_add_std, width = 30 )
-	ent_father_name = ttk.Entry( frame_add_std, width = 30 )
-	ent_email_id = ttk.Entry( frame_add_std, width = 30 )
-	ent_age = ttk.Entry( frame_add_std, width = 30 )
-	ent_medical_com = ttk.Entry( frame_add_std, width = 30 )
-	ent_address = ttk.Entry( frame_add_std, width = 30 )
-	ent_phone_number = ttk.Entry( frame_add_std, width = 30 )
+	ent_first_name = ttk.Entry( 	frame_add_std, width = 30 )
+	ent_last_name = ttk.Entry( 		frame_add_std, width = 30 )
+	ent_father_name = ttk.Entry( 	frame_add_std, width = 30 )
+	ent_email_id = ttk.Entry( 		frame_add_std, width = 30 )
+	ent_age = ttk.Entry( 			frame_add_std, width = 30 )
+	ent_medical_com = ttk.Entry( 	frame_add_std, width = 30 )
+	ent_address = ttk.Entry( 		frame_add_std, width = 30 )
+	ent_phone_number = ttk.Entry( 	frame_add_std, width = 30 )
   
 	lst_entry_box = [ ent_first_name, ent_last_name, ent_father_name, ent_email_id, ent_age, ent_medical_com,
 		ent_address, ent_phone_number ]
 
-	ent_first_name.grid( row = 1, column = 1, padx = 15, pady = 8, sticky = E, ipady = 1 )
-	ent_last_name.grid( row = 2, column = 1, padx = 15, pady = 8, sticky = E, ipady = 1 )
-	ent_father_name.grid( row = 3, column = 1, padx = 15, pady = 8, sticky = E, ipady = 1 )
-	ent_email_id.grid( row = 4, column = 1, padx = 15, pady = 8, sticky = E, ipady = 1 )
-	ent_age.grid( row = 5, column = 1, padx = 15, pady = 8, sticky = E, ipady = 1 )
-	ent_medical_com.grid( row = 9, column = 1, padx = 15, pady = 8, sticky = E, ipady = 1 )
-	ent_address.grid( row = 10, column = 1, padx = 15, pady = 8, sticky = E, ipady = 1 )
-	ent_phone_number.grid( row = 11, column = 1, padx = 15, pady = 8, sticky = E, ipady = 1 )
+	ent_first_name.grid( 	row = 1, 	column = 1, 	padx = 15, 	pady = 8, 	sticky = E, 	ipady = 1 )
+	ent_last_name.grid( 	row = 2, 	column = 1, 	padx = 15, 	pady = 8, 	sticky = E, 	ipady = 1 )
+	ent_father_name.grid( 	row = 3, 	column = 1, 	padx = 15, 	pady = 8, 	sticky = E, 	ipady = 1 )
+	ent_email_id.grid( 		row = 4, 	column = 1, 	padx = 15, 	pady = 8, 	sticky = E, 	ipady = 1 )
+	ent_age.grid( 			row = 5, 	column = 1, 	padx = 15, 	pady = 8, 	sticky = E, 	ipady = 1 )
+	ent_medical_com.grid( 	row = 9, 	column = 1, 	padx = 15, 	pady = 8, 	sticky = E, 	ipady = 1 )
+	ent_address.grid( 		row = 10, 	column = 1, 	padx = 15, 	pady = 8, 	sticky = E, 	ipady = 1 )
+	ent_phone_number.grid( 	row = 11, 	column = 1, 	padx = 15, 	pady = 8, 	sticky = E, 	ipady = 1 )
 
 
 	# COMBO BOX
 	combo_age_group = ttk.Combobox( frame_add_std, values = ['U-12', 'U-14', 'U-16', 'U-18', 'U-25', 'Open'], width = 27 )
-	combo_gender = ttk.Combobox( frame_add_std, values = ['Male', 'Female', 'Other'], width = 27 )
-	combo_course = ttk.Combobox( frame_add_std, values = ['A', 'B', 'C'], width = 27 )
+	combo_gender = ttk.Combobox( 	frame_add_std, values = ['Male', 'Female', 'Other'],						width = 27 )
+	combo_course = ttk.Combobox( 	frame_add_std, values = ['A', 'B', 'C'], 									width = 27 )
   
 	lst_combobox = [ combo_age_group, combo_gender, combo_course ]
 	for i in lst_combobox:
 		i.current(0)
 
-	combo_age_group.grid( row = 6, column = 1, padx = 15, pady = 8, ipady = 1 )
-	combo_gender.grid( row = 7, column = 1, padx = 15, pady = 8, ipady = 1 )
-	combo_course.grid( row = 8, column = 1, padx = 15, pady = 8, ipady = 1 )
+	combo_age_group.grid( 	row = 6, column = 1, padx = 15, pady = 8, ipady = 1 )
+	combo_gender.grid( 		row = 7, column = 1, padx = 15, pady = 8, ipady = 1 )
+	combo_course.grid( 		row = 8, column = 1, padx = 15, pady = 8, ipady = 1 )
 
 
 	# BUTTONS
-	btn_add_std = ttk.Button( frame_add_std, text = "Add Student", command = add_std_database )
-	btn_cancel = ttk.Button( frame_add_std, text = "Cancel", command = cancel )
-	btn_clr_field = ttk.Button( frame_add_std, text = "Clear fields", command = clear_fields )
+	btn_add_std = ttk.Button( 	frame_add_std, text = "Add Student", 	command = add_std_database )
+	btn_cancel = ttk.Button( 	frame_add_std, text = "Cancel", 		command = cancel )
+	btn_clr_field = ttk.Button( frame_add_std, text = "Clear fields", 	command = clear_fields )
 
-	btn_add_std.grid( row = 12, column = 3, pady = 8, padx = 10, ipadx = 6 )
-	btn_cancel.grid( row = 12, column = 2, pady = 8, padx = 10, ipadx = 6 )
+	btn_add_std.grid( 	row = 12, column = 3, pady = 8, padx = 10, ipadx = 6 )
+	btn_cancel.grid(	row = 12, column = 2, pady = 8, padx = 10, ipadx = 6 )
 	btn_clr_field.grid( row = 12, column = 1, pady = 8, padx = 10, ipadx = 6, sticky = E )
 	# ********************** REGION END add_std **********************
 
@@ -172,75 +172,76 @@ def edit_std():
 			ent_std_id.insert( 0, value_cor )
 
   # LABELS
-	lbl_sel_std = ttk.Label( frame_edit_std, text = "Select Student", font = ( 'Helvetica', 14 ) )
-	lbl_std_id = ttk.Label( frame_edit_std, text = "Student's ID No.", font = ( 'Helvetica', 11 ) )
-	lbl_edit_std = ttk.Label( frame_edit_std, text = "Edit Student", font = ( 'Helvetica', 14 ) )
-	lbl_first_name = ttk.Label( frame_edit_std, text = "First Name", font = ( 'Helvetica', 11 ) )
-	lbl_last_name = ttk.Label( frame_edit_std, text = "Last Name", font = ( 'Helvetica', 11 ) )
-	lbl_father_name = ttk.Label( frame_edit_std, text = "Father's Name", font = ( 'Helvetica', 11 ) )
-	lbl_email_id = ttk.Label( frame_edit_std, text = "Email ID", font = ( 'Helvetica', 11 ) )
-	lbl_age = ttk.Label( frame_edit_std, text = "Age", font = ( 'Helvetica', 11 ) )
-	lbl_age_group = ttk.Label( frame_edit_std, text = "Age Group", font = ( 'Helvetica', 11 ) )
-	lbl_gender = ttk.Label( frame_edit_std, text = "Gender", font = ( 'Helvetica', 11 ) )
-	lbl_course = ttk.Label( frame_edit_std, text = "Course", font = ( 'Helvetica', 11 ) )
-	lbl_medical_com = ttk.Label( frame_edit_std, text = "Medical Complications", font = ( 'Helvetica', 11 ) )
-	lbl_address = ttk.Label( frame_edit_std, text = "Address", font = ( 'Helvetica', 11 ) )
-	lbl_phone_number = ttk.Label( frame_edit_std, text = "Phone Number", font = ( 'Helvetica', 11 ) )
+	lbl_sel_std = ttk.Label( 		frame_edit_std, text = "Select Student", 		font = ( 'Helvetica', 14 ) )
+	lbl_std_id = ttk.Label( 		frame_edit_std, text = "Student's ID No.", 		font = ( 'Helvetica', 11 ) )
+	lbl_edit_std = ttk.Label( 		frame_edit_std, text = "Edit Student", 			font = ( 'Helvetica', 14 ) )
+	lbl_first_name = ttk.Label( 	frame_edit_std, text = "First Name", 			font = ( 'Helvetica', 11 ) )
+	lbl_last_name = ttk.Label( 		frame_edit_std, text = "Last Name", 			font = ( 'Helvetica', 11 ) )
+	lbl_father_name = ttk.Label( 	frame_edit_std, text = "Father's Name", 		font = ( 'Helvetica', 11 ) )
+	lbl_email_id = ttk.Label( 		frame_edit_std, text = "Email ID", 				font = ( 'Helvetica', 11 ) )
+	lbl_age = ttk.Label( 			frame_edit_std, text = "Age", 					font = ( 'Helvetica', 11 ) )
+	lbl_age_group = ttk.Label( 		frame_edit_std, text = "Age Group", 			font = ( 'Helvetica', 11 ) )
+	lbl_gender = ttk.Label( 		frame_edit_std, text = "Gender", 				font = ( 'Helvetica', 11 ) )
+	lbl_course = ttk.Label( 		frame_edit_std, text = "Course", 				font = ( 'Helvetica', 11 ) )
+	lbl_medical_com = ttk.Label( 	frame_edit_std, text = "Medical Complications", font = ( 'Helvetica', 11 ) )
+	lbl_address = ttk.Label( 		frame_edit_std, text = "Address", 				font = ( 'Helvetica', 11 ) )
+	lbl_phone_number = ttk.Label( 	frame_edit_std, text = "Phone Number", 			font = ( 'Helvetica', 11 ) )
 
-	lbl_sel_std.grid( row = 0, column = 0, padx = 30, pady = 15, sticky = W )
-	lbl_std_id.grid( row = 1, column = 0, padx = 30, sticky = W )
-	lbl_edit_std.grid( row = 2, column = 0, padx = 30, pady = 15, sticky = W )
-	lbl_first_name.grid( row = 3, column = 0, padx = ( 40, 5 ), pady = 5, sticky = W )
-	lbl_last_name.grid( row = 4, column = 0, padx = ( 40, 5 ), pady = 5, sticky = W )
-	lbl_father_name.grid( row = 5, column = 0, padx = ( 40, 5 ), pady = 5, sticky = W )
-	lbl_email_id.grid( row = 6, column = 0, padx = ( 40, 5 ), pady = 5, sticky = W )
-	lbl_age.grid( row = 7, column = 0, padx = ( 40, 5 ), pady = 5, sticky = W )
-	lbl_age_group.grid( row = 8, column = 0, padx = ( 40, 5 ), pady = 5, sticky = W )
-	lbl_gender.grid( row = 9, column = 0, padx = ( 40, 5 ), pady = 5, sticky = W )
-	lbl_course.grid( row = 10, column = 0, padx = ( 40, 5 ), pady = 5, sticky = W )
-	lbl_medical_com.grid( row = 11, column = 0, padx = ( 40, 5 ), pady = 5, sticky = W )
-	lbl_address.grid( row = 12, column = 0, padx = ( 40, 5 ), pady = 5, sticky = W )
-	lbl_phone_number.grid( row = 13, column = 0, padx = ( 40, 5 ), pady = 5, sticky = W )
+	lbl_sel_std.grid( 		row = 0, 	column = 0, padx = 30, 			pady = 15, 	sticky = W )
+	lbl_std_id.grid( 		row = 1, 	column = 0, padx = 30, 						sticky = W )
+	lbl_edit_std.grid( 		row = 2, 	column = 0, padx = 30, 			pady = 15, 	sticky = W )
+	lbl_first_name.grid( 	row = 3, 	column = 0, padx = ( 40, 5 ), 	pady = 5, 	sticky = W )
+	lbl_last_name.grid( 	row = 4, 	column = 0, padx = ( 40, 5 ), 	pady = 5, 	sticky = W )
+	lbl_father_name.grid( 	row = 5, 	column = 0, padx = ( 40, 5 ), 	pady = 5, 	sticky = W )
+	lbl_email_id.grid( 		row = 6, 	column = 0, padx = ( 40, 5 ), 	pady = 5, 	sticky = W )
+	lbl_age.grid( 			row = 7, 	column = 0, padx = ( 40, 5 ), 	pady = 5, 	sticky = W )
+	lbl_age_group.grid( 	row = 8, 	column = 0, padx = ( 40, 5 ), 	pady = 5, 	sticky = W )
+	lbl_gender.grid( 		row = 9, 	column = 0, padx = ( 40, 5 ), 	pady = 5, 	sticky = W )
+	lbl_course.grid( 		row = 10, 	column = 0, padx = ( 40, 5 ), 	pady = 5, 	sticky = W )
+	lbl_medical_com.grid( 	row = 11, 	column = 0, padx = ( 40, 5 ), 	pady = 5, 	sticky = W )
+	lbl_address.grid( 		row = 12, 	column = 0, padx = ( 40, 5 ), 	pady = 5, 	sticky = W )
+	lbl_phone_number.grid( 	row = 13, 	column = 0, padx = ( 40, 5 ), 	pady = 5, 	sticky = W )
 
 
 	# ENTRY BOX
-	ent_std_id = ttk.Entry( frame_edit_std )
+	ent_std_id = ttk.Entry( 		frame_edit_std )
+	ent_first_name = ttk.Entry( 	frame_edit_std, width = 30 )
+	ent_last_name = ttk.Entry( 		frame_edit_std, width = 30 )
+	ent_father_name = ttk.Entry( 	frame_edit_std, width = 30 )
+	ent_email_id = ttk.Entry( 		frame_edit_std, width = 30 )
+	ent_age = ttk.Entry( 			frame_edit_std, width = 30 )
+	ent_medical_com = ttk.Entry( 	frame_edit_std, width = 30 )
+	ent_address = ttk.Entry( 		frame_edit_std, width = 30 )
+	ent_phone_number = ttk.Entry( 	frame_edit_std, width = 30 )
+
 	ent_std_id.bind( '<KeyRelease>', inp_num )
-	ent_first_name = ttk.Entry( frame_edit_std, width = 30 )
-	ent_last_name = ttk.Entry( frame_edit_std, width = 30 )
-	ent_father_name = ttk.Entry( frame_edit_std, width = 30 )
-	ent_email_id = ttk.Entry( frame_edit_std, width = 30 )
-	ent_age = ttk.Entry( frame_edit_std, width = 30 )
-	ent_medical_com = ttk.Entry( frame_edit_std, width = 30 )
-	ent_address = ttk.Entry( frame_edit_std, width = 30 )
-	ent_phone_number = ttk.Entry( frame_edit_std, width = 30 )
   
 	lst_entry_box = [ ent_first_name, ent_last_name, ent_father_name, ent_email_id, ent_age, ent_medical_com,
 		ent_address, ent_phone_number ]
 
-	ent_std_id.grid( row = 1, column = 1, padx = 15, sticky = W )
-	ent_first_name.grid( row = 3, column = 1, padx = 15, pady = 5, sticky = E )
-	ent_last_name.grid( row = 4, column = 1, padx = 15, pady = 5, sticky = E )
-	ent_father_name.grid( row = 5, column = 1, padx = 15, pady = 5, sticky = E )
-	ent_email_id.grid( row = 6, column = 1, padx = 15, pady = 5, sticky = E )
-	ent_age.grid( row = 7, column = 1, padx = 15, pady = 5, sticky = E )
-	ent_medical_com.grid( row = 11, column = 1, padx = 15, pady = 5, sticky = E )
-	ent_address.grid( row = 12, column = 1, padx = 15, pady = 5, sticky = E )
-	ent_phone_number.grid( row = 13, column = 1, padx = 15, pady = 5, sticky = E )
+	ent_std_id.grid( 		row = 1, 	column = 1, padx = 15, 				sticky = W )
+	ent_first_name.grid( 	row = 3, 	column = 1, padx = 15, pady = 5, 	sticky = E )
+	ent_last_name.grid( 	row = 4, 	column = 1, padx = 15, pady = 5, 	sticky = E )
+	ent_father_name.grid( 	row = 5, 	column = 1, padx = 15, pady = 5, 	sticky = E )
+	ent_email_id.grid( 		row = 6, 	column = 1, padx = 15, pady = 5, 	sticky = E )
+	ent_age.grid( 			row = 7, 	column = 1, padx = 15, pady = 5, 	sticky = E )
+	ent_medical_com.grid( 	row = 11, 	column = 1, padx = 15, pady = 5, 	sticky = E )
+	ent_address.grid( 		row = 12, 	column = 1, padx = 15, pady = 5, 	sticky = E )
+	ent_phone_number.grid( 	row = 13, 	column = 1, padx = 15, pady = 5, 	sticky = E )
 
 
 	# COMBO BOX
-	combo_age_group = ttk.Combobox( frame_edit_std, values = ['U-12', 'U-14', 'U-16', 'U-18', 'U-25', 'Open'], width = 27 )
-	combo_gender = ttk.Combobox( frame_edit_std, values = ['Male', 'Female', 'Other'], width = 27 )
-	combo_course = ttk.Combobox( frame_edit_std, values = ['A', 'B', 'C'], width = 27 )
+	combo_age_group = ttk.Combobox( frame_edit_std, values = ['U-12', 'U-14', 'U-16', 'U-18', 'U-25', 'Open'], 	width = 27 )
+	combo_gender = ttk.Combobox( 	frame_edit_std, values = ['Male', 'Female', 'Other'], 						width = 27 )
+	combo_course = ttk.Combobox( 	frame_edit_std, values = ['A', 'B', 'C'], 									width = 27 )
   
 	lst_combobox = [ combo_age_group, combo_gender, combo_course ]
 	for i in lst_combobox:
 		i.current(0)
 
-	combo_age_group.grid( row = 8, column = 1, padx = 15, pady = 8, ipady = 1 )
-	combo_gender.grid( row = 9, column = 1, padx = 15, pady = 8, ipady = 1 )
-	combo_course.grid( row = 10, column = 1, padx = 15, pady = 8, ipady = 1 )
+	combo_age_group.grid( 	row = 8, 	column = 1, padx = 15, pady = 8, ipady = 1 )
+	combo_gender.grid( 		row = 9, 	column = 1, padx = 15, pady = 8, ipady = 1 )
+	combo_course.grid( 		row = 10, 	column = 1, padx = 15, pady = 8, ipady = 1 )
 
 	lst_widgets_entries = lst_entry_box + lst_combobox
 	for i in lst_widgets_entries:
@@ -311,23 +312,23 @@ def view_std():
 	tree_std['columns'] = ( "ID No.", "First Name", "Last Name", "Father's Name", "Age Group", "Course", "Phone No." )
   
 	# TREEVIEW - Define columns
-	tree_std.column( "#0", width = 0, stretch = NO )
-	tree_std.column( "ID No.", width = 50, minwidth = 60, anchor = CENTER )
-	tree_std.column( "First Name", width = 95, minwidth = 100, anchor = W )
-	tree_std.column( "Last Name", width = 95, minwidth = 100, anchor = W )
-	tree_std.column( "Father's Name", width = 120, minwidth = 130, anchor = W )
-	tree_std.column( "Age Group", width = 75, minwidth = 80, anchor = CENTER )
-	tree_std.column( "Course", width = 80, minwidth = 90, anchor = W )
-	tree_std.column( "Phone No.", width = 100, minwidth = 110, anchor = CENTER )
+	tree_std.column( "#0", 				width = 0, stretch = NO )
+	tree_std.column( "ID No.", 			width = 50, 	minwidth = 60, 	anchor = CENTER )
+	tree_std.column( "First Name", 		width = 95, 	minwidth = 100, anchor = W )
+	tree_std.column( "Last Name", 		width = 95, 	minwidth = 100, anchor = W )
+	tree_std.column( "Father's Name", 	width = 120, 	minwidth = 130, anchor = W )
+	tree_std.column( "Age Group", 		width = 75, 	minwidth = 80, 	anchor = CENTER )
+	tree_std.column( "Course", 			width = 80, 	minwidth = 90, 	anchor = W )
+	tree_std.column( "Phone No.", 		width = 100, 	minwidth = 110, anchor = CENTER )
 
 	# TREEVIEW - Define colmn headings
-	tree_std.heading( "ID No.", text = "ID No.", anchor = CENTER )
-	tree_std.heading( "First Name", text = "First Name", anchor = W )
-	tree_std.heading( "Last Name", text = "Last Name", anchor = W )
-	tree_std.heading( "Father's Name", text = "Father's Name", anchor = W )
-	tree_std.heading( "Age Group", text = "Age Group", anchor = CENTER )
-	tree_std.heading( "Course", text = "Course", anchor = W )
-	tree_std.heading( "Phone No.", text = "Phone No.", anchor = CENTER )
+	tree_std.heading( "ID No.", 		text = "ID No.", 		anchor = CENTER )
+	tree_std.heading( "First Name", 	text = "First Name", 	anchor = W )
+	tree_std.heading( "Last Name", 		text = "Last Name", 	anchor = W )
+	tree_std.heading( "Father's Name", 	text = "Father's Name", anchor = W )
+	tree_std.heading( "Age Group", 		text = "Age Group", 	anchor = CENTER )
+	tree_std.heading( "Course", 		text = "Course", 		anchor = W )
+	tree_std.heading( "Phone No.", 		text = "Phone No.", 	anchor = CENTER )
 
 	# TREEVIEW - Adding records 
 	insert_records( '', '' )
@@ -356,8 +357,8 @@ def view_std():
 
 
 	# COMBOBOX
-	combo_filter1 = ttk.Combobox( frame_view_std, values = [ 'None', 'Age Group', 'Course' ], state = 'readonly' )
-	combo_filter2 = ttk.Combobox( frame_view_std, state = 'disabled')
+	combo_filter1 = ttk.Combobox( frame_view_std, values = [ 'None', 'Age Group', 'Course' ], 	state = 'readonly' )
+	combo_filter2 = ttk.Combobox( frame_view_std, 												state = 'disabled')
 
 	combo_filter1.current(0)
 
@@ -370,22 +371,22 @@ def view_std():
 
 
 # FRAMES
-frame_menu = ttk.Frame( root, borderwidth = 3, relief = GROOVE, width = 200, height = 540, padding = 15 )
-frame_dash = ttk.Frame( root, borderwidth = 3, relief = GROOVE, width = 640, height = 540 )
-frame_student = ttk.Frame( root, borderwidth = 3, relief = GROOVE, width = 640, height = 540 )
+frame_menu = ttk.Frame(		root, borderwidth = 3, relief = GROOVE, width = 200, height = 540, padding = 15 )
+frame_dash = ttk.Frame( 	root, borderwidth = 3, relief = GROOVE, width = 640, height = 540 )
+frame_student = ttk.Frame( 	root, borderwidth = 3, relief = GROOVE, width = 640, height = 540 )
 
 frm_lst = [ frame_menu, frame_dash, frame_student ]
 for i in frm_lst:
 	i.grid_propagate(0)
 
-frame_menu.grid( row = 0, column = 0, padx = ( 20, 15 ), pady = 20 )      
-frame_dash.grid( row = 0, column = 1, padx = ( 5, 20 ), pady = 20 )
+frame_menu.grid( row = 0, column = 0, padx = ( 20, 15 ), 	pady = 20 )      
+frame_dash.grid( row = 0, column = 1, padx = ( 5, 20 ), 	pady = 20 )
 
 
 # STYLES
 style = ttk.Style()
-style.configure( 'menu.TButton', font = ( 'Helvetica', 10 ), width = 22 )
-style.configure( 'heading_text.TButton', font = ( 'Helvetica', 15 ) ) 
+style.configure( 'menu.TButton', 			font = ( 'Helvetica', 10 ), width = 22 )
+style.configure( 'heading_text.TButton', 	font = ( 'Helvetica', 15 ) ) 
 
 
 # LABELS
@@ -404,28 +405,28 @@ lbl_dash.grid( row = 0, column = 0, padx = 30, pady = 15, sticky = W )
 
 # BUTTONS 
 # Buttons Menu
-btn_dash = ttk.Button( frame_menu, text = "Dashboard", style = 'menu.TButton', command = lambda: open_menu_items( frame_dash ) )
-btn_student = ttk.Button( frame_menu, text = "Students", style = 'menu.TButton', command = lambda: open_menu_items( frame_student ) )
-btn_unknown1 = ttk.Button( frame_menu, text = ".........", style = 'menu.TButton' )
-btn_unknown2 = ttk.Button( frame_menu, text = ".........", style = 'menu.TButton' )
-btn_unknown3 = ttk.Button( frame_menu, text = "Settings", style = 'menu.TButton' )
+btn_dash = ttk.Button( 		frame_menu, text = "Dashboard", style = 'menu.TButton', command = lambda: open_menu_items( frame_dash ) )
+btn_student = ttk.Button( 	frame_menu, text = "Students", 	style = 'menu.TButton', command = lambda: open_menu_items( frame_student ) )
+btn_unknown1 = ttk.Button( 	frame_menu, text = ".........", style = 'menu.TButton' )
+btn_unknown2 = ttk.Button( 	frame_menu, text = ".........", style = 'menu.TButton' )
+btn_unknown3 = ttk.Button( 	frame_menu, text = "Settings", 	style = 'menu.TButton' )
 
-btn_dash.grid( row = 0, column = 0, ipady = 23 )
-btn_student.grid( row = 1, column = 0, ipady = 23, pady = ( 10, 0 ) )
-btn_unknown1.grid( row = 2, column = 0, ipady = 23, pady = ( 10, 0 ) )
-btn_unknown2.grid( row = 3, column = 0, ipady = 23, pady = ( 10, 0 ) )
-btn_unknown3.grid( row = 4, column = 0, ipady = 23, pady = ( 10, 0 ) )
+btn_dash.grid( 		row = 0, column = 0, ipady = 23 )
+btn_student.grid(	row = 1, column = 0, ipady = 23, pady = ( 10, 0 ) )
+btn_unknown1.grid( 	row = 2, column = 0, ipady = 23, pady = ( 10, 0 ) )
+btn_unknown2.grid( 	row = 3, column = 0, ipady = 23, pady = ( 10, 0 ) )
+btn_unknown3.grid( 	row = 4, column = 0, ipady = 23, pady = ( 10, 0 ) )
 
 # Buttons Dashborad
 
 # Buttons Students
-btn_add_std = ttk.Button( frame_student, text = "Admit Student", width = 20, command = add_std )
-btn_edit_std = ttk.Button( frame_student, text = "Edit Student", width = 20, command = edit_std )
-btn_view_std = ttk.Button( frame_student, text = "View Students", width = 20, command = view_std )
+btn_add_std = ttk.Button( 	frame_student, text = "Admit Student", 	width = 20, command = add_std )
+btn_edit_std = ttk.Button( 	frame_student, text = "Edit Student", 	width = 20, command = edit_std )
+btn_view_std = ttk.Button( 	frame_student, text = "View Students", 	width = 20, command = view_std )
 
-btn_add_std.grid( row = 1, column = 0, padx = 10, pady = 10, ipady = 4 )
-btn_edit_std.grid( row = 1, column = 1, padx = 10, pady = 10, ipady = 4 )
-btn_view_std.grid( row = 2, column = 0, padx = 10, pady = 10, ipady = 4 )
+btn_add_std.grid( 	row = 1, column = 0, padx = 10, pady = 10, ipady = 4 )
+btn_edit_std.grid( 	row = 1, column = 1, padx = 10, pady = 10, ipady = 4 )
+btn_view_std.grid( 	row = 2, column = 0, padx = 10, pady = 10, ipady = 4 )
 
 root.mainloop()
 # ********************** REGION TKINTER END **********************
