@@ -5,17 +5,17 @@ from tkinter import *
 from tkinter import ttk
 
 
-# ********************** REGION MYSQL **********************
+# **************************** REGION MYSQL START ****************************
 # CONNECT TO DATABASE
 mydb = mysql.connector.connect( host = "localhost", user = "root", passwd = "atharva123@mysql", database = "project" )
 
 
 # CREATE A CURSOR
 my_cursor = mydb.cursor()
-# ******************** REGION MYSQL END ********************
+# ***************************** REGION MYSQL END *****************************
 
 
-# ********************** REGION TKINTER **********************
+# *************************** REGION TKINTER START ***************************
 # INITIALIZE TKINTER
 root = Tk()
 root.geometry( "900x580" )
@@ -38,8 +38,25 @@ def open_menu_items( frame ):
 
 
 # Functions Students -
+def inp_num( event, ent ):
+	# ************************* REGION START inp_num *************************
+	value = ent.get()	
+	ent.delete( 0, END )
+
+	try:
+		int( value )
+		ent.insert( 0, value )
+	except ValueError:
+		value_cor = ""
+		for i in value:
+			if i.isnumeric():
+				value_cor += i
+		ent.insert( 0, value_cor )
+	# ************************** REGION END inp_num **************************
+
+
 def add_std():
-  	# ********************** REGION START add_std **********************
+  	# ************************* REGION START add_std *************************
   	# FRAME
 	frame_add_std = ttk.Frame( root, borderwidth = 3, relief = GROOVE, width = 640, height = 540 )
 	frame_add_std.grid( row = 0, column = 1, padx = ( 5, 20 ), pady = 20 )
@@ -106,6 +123,9 @@ def add_std():
 	ent_medical_com = ttk.Entry( 	frame_add_std, width = 30 )
 	ent_address = ttk.Entry( 		frame_add_std, width = 30 )
 	ent_phone_number = ttk.Entry( 	frame_add_std, width = 30 )
+
+	ent_age.bind( 			"<KeyRelease>", lambda event, ent = ent_age: 			inp_num( event, ent ) )
+	ent_phone_number.bind( 	"<KeyRelease>", lambda event, ent = ent_phone_number: 	inp_num( event, ent ) )
   
 	lst_entry_box = [ ent_first_name, ent_last_name, ent_father_name, ent_email_id, ent_age, ent_medical_com,
 		ent_address, ent_phone_number ]
@@ -121,7 +141,7 @@ def add_std():
 
 
 	# COMBO BOX
-	combo_age_group = ttk.Combobox( frame_add_std, values = ['U-12', 'U-14', 'U-16', 'U-18', 'U-25', 'Open'], width = 27 )
+	combo_age_group = ttk.Combobox( frame_add_std, values = ['U-12', 'U-14', 'U-16', 'U-18', 'U-25', 'Open'], 	width = 27 )
 	combo_gender = ttk.Combobox( 	frame_add_std, values = ['Male', 'Female', 'Other'],						width = 27 )
 	combo_course = ttk.Combobox( 	frame_add_std, values = ['A', 'B', 'C'], 									width = 27 )
   
@@ -142,10 +162,10 @@ def add_std():
 	btn_add_std.grid( 	row = 12, column = 3, pady = 8, padx = 10, ipadx = 6 )
 	btn_cancel.grid(	row = 12, column = 2, pady = 8, padx = 10, ipadx = 6 )
 	btn_clr_field.grid( row = 12, column = 1, pady = 8, padx = 10, ipadx = 6, sticky = E )
-	# ********************** REGION END add_std **********************
+	# ************************** REGION END add_std **************************
 
 def edit_std():
-	# ********************** REGION START edit_std **********************
+	#************************* REGION START edit_std *************************
 	# FRAME
 	frame_edit_std = ttk.Frame( root, borderwidth = 3, relief = GROOVE, width = 640, height = 540 )
 	frame_edit_std.grid( row = 0, column = 1, padx = ( 5, 20 ), pady = 20 )
@@ -157,21 +177,8 @@ def edit_std():
 	def get_std( event ):
 		pass
 
-	def inp_num( event ):
-		value = ent_std_id.get()	
-		ent_std_id.delete( 0, END )
-    
-		try:
-			int( value )
-			ent_std_id.insert( 0, value )
-		except ValueError:
-			value_cor = ""
-			for i in value:
-				if i.isnumeric():
-					value_cor += i
-			ent_std_id.insert( 0, value_cor )
 
-  # LABELS
+  	# LABELS
 	lbl_sel_std = ttk.Label( 		frame_edit_std, text = "Select Student", 		font = ( 'Helvetica', 14 ) )
 	lbl_std_id = ttk.Label( 		frame_edit_std, text = "Student's ID No.", 		font = ( 'Helvetica', 11 ) )
 	lbl_edit_std = ttk.Label( 		frame_edit_std, text = "Edit Student", 			font = ( 'Helvetica', 14 ) )
@@ -214,7 +221,7 @@ def edit_std():
 	ent_address = ttk.Entry( 		frame_edit_std, width = 30 )
 	ent_phone_number = ttk.Entry( 	frame_edit_std, width = 30 )
 
-	ent_std_id.bind( '<KeyRelease>', inp_num )
+	ent_std_id.bind( '<KeyRelease>', lambda event, ent = ent_std_id: inp_num( event, ent ) )
   
 	lst_entry_box = [ ent_first_name, ent_last_name, ent_father_name, ent_email_id, ent_age, ent_medical_com,
 		ent_address, ent_phone_number ]
@@ -247,10 +254,10 @@ def edit_std():
 	for i in lst_widgets_entries:
 		i.configure( state = 'disabled' )
 
-  	# *********************** REGION END edit_std ***********************
+  	#************************** REGION END edit_std **************************
 
 def view_std():
-  	# ********************** REGION START view_std **********************
+  	#************************* REGION START view_std *************************
   	# FRAME
 	frame_view_std = ttk.Frame( root, borderwidth = 3, relief = GROOVE, width = 640, height = 540 )
 	frame_view_std.grid( row = 0, column = 1, padx = ( 5, 20 ), pady = 20 )
@@ -367,7 +374,7 @@ def view_std():
 
 	combo_filter1.grid( row = 2, column = 1, pady = ( 11, 0 ) ) 
 	combo_filter2.grid( row = 2, column = 2, pady = ( 11, 0 ), sticky = W ) 
-  	# ********************** REGION END view_std **********************
+  	#************************** REGION END view_std **************************
 
 
 # FRAMES
@@ -429,4 +436,4 @@ btn_edit_std.grid( 	row = 1, column = 1, padx = 10, pady = 10, ipady = 4 )
 btn_view_std.grid( 	row = 2, column = 0, padx = 10, pady = 10, ipady = 4 )
 
 root.mainloop()
-# ********************** REGION TKINTER END **********************
+# **************************** REGION TKINTER END ****************************
