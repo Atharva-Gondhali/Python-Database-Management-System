@@ -174,7 +174,7 @@ def edit_std():
 
 
 	# INNER FUNCTIONS
-	def get_std( event ):
+	def get_std():
 		pass
 
 
@@ -211,30 +211,30 @@ def edit_std():
 
 
 	# ENTRY BOX
-	ent_std_id = ttk.Entry( 		frame_edit_std )
-	ent_first_name = ttk.Entry( 	frame_edit_std, width = 30 )
-	ent_last_name = ttk.Entry( 		frame_edit_std, width = 30 )
-	ent_father_name = ttk.Entry( 	frame_edit_std, width = 30 )
-	ent_email_id = ttk.Entry( 		frame_edit_std, width = 30 )
-	ent_age = ttk.Entry( 			frame_edit_std, width = 30 )
-	ent_medical_com = ttk.Entry( 	frame_edit_std, width = 30 )
-	ent_address = ttk.Entry( 		frame_edit_std, width = 30 )
-	ent_phone_number = ttk.Entry( 	frame_edit_std, width = 30 )
+	ent_std_id = ttk.Entry( 		frame_edit_std, width = 30 )
+	ent_first_name = ttk.Entry( 	frame_edit_std )
+	ent_last_name = ttk.Entry( 		frame_edit_std )
+	ent_father_name = ttk.Entry( 	frame_edit_std )
+	ent_email_id = ttk.Entry( 		frame_edit_std )
+	ent_age = ttk.Entry( 			frame_edit_std )
+	ent_medical_com = ttk.Entry( 	frame_edit_std )
+	ent_address = ttk.Entry( 		frame_edit_std )
+	ent_phone_number = ttk.Entry( 	frame_edit_std )
 
 	ent_std_id.bind( '<KeyRelease>', lambda event, ent = ent_std_id: inp_num( event, ent ) )
   
 	lst_entry_box = [ ent_first_name, ent_last_name, ent_father_name, ent_email_id, ent_age, ent_medical_com,
 		ent_address, ent_phone_number ]
 
-	ent_std_id.grid( 		row = 1, 	column = 1, padx = 15, 				sticky = W )
-	ent_first_name.grid( 	row = 3, 	column = 1, padx = 15, pady = 5, 	sticky = E )
-	ent_last_name.grid( 	row = 4, 	column = 1, padx = 15, pady = 5, 	sticky = E )
-	ent_father_name.grid( 	row = 5, 	column = 1, padx = 15, pady = 5, 	sticky = E )
-	ent_email_id.grid( 		row = 6, 	column = 1, padx = 15, pady = 5, 	sticky = E )
-	ent_age.grid( 			row = 7, 	column = 1, padx = 15, pady = 5, 	sticky = E )
-	ent_medical_com.grid( 	row = 11, 	column = 1, padx = 15, pady = 5, 	sticky = E )
-	ent_address.grid( 		row = 12, 	column = 1, padx = 15, pady = 5, 	sticky = E )
-	ent_phone_number.grid( 	row = 13, 	column = 1, padx = 15, pady = 5, 	sticky = E )
+	ent_std_id.grid( 		row = 1, 	column = 1, padx = 15 )
+	ent_first_name.grid( 	row = 3, 	column = 1, padx = 15, pady = 5, 	sticky = EW )
+	ent_last_name.grid( 	row = 4, 	column = 1, padx = 15, pady = 5, 	sticky = EW )
+	ent_father_name.grid( 	row = 5, 	column = 1, padx = 15, pady = 5, 	sticky = EW )
+	ent_email_id.grid( 		row = 6, 	column = 1, padx = 15, pady = 5, 	sticky = EW )
+	ent_age.grid( 			row = 7, 	column = 1, padx = 15, pady = 5, 	sticky = EW )
+	ent_medical_com.grid( 	row = 11, 	column = 1, padx = 15, pady = 5, 	sticky = EW )
+	ent_address.grid( 		row = 12, 	column = 1, padx = 15, pady = 5, 	sticky = EW )
+	ent_phone_number.grid( 	row = 13, 	column = 1, padx = 15, pady = 5, 	sticky = EW )
 
 
 	# COMBO BOX
@@ -253,6 +253,11 @@ def edit_std():
 	lst_widgets_entries = lst_entry_box + lst_combobox
 	for i in lst_widgets_entries:
 		i.configure( state = 'disabled' )
+
+	
+	# BUTTONS
+	btn_select = ttk.Button( frame_edit_std, text = "Select", width = 15, command = get_std )
+	btn_select.grid( row = 1, column = 2, sticky = W )
 
   	#************************** REGION END edit_std **************************
 
