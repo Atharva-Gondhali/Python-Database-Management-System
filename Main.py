@@ -55,6 +55,33 @@ def inp_num( event, ent ):
 	# ************************** REGION END inp_num **************************
 
 
+def ini_lbls( frm ):
+	global lbl_first_name
+	global lbl_last_name
+	global lbl_father_name
+	global lbl_email_id
+	global lbl_age
+	global lbl_age_group
+	global lbl_gender
+	global lbl_course
+	global lbl_medical_com
+	global lbl_address
+	global lbl_phone_number
+	
+	lbl_first_name = 	ttk.Label( frm, text = "First Name", 			font = ( 'Helvetica', 11 ) )
+	lbl_last_name = 	ttk.Label( frm, text = "Last Name", 			font = ( 'Helvetica', 11 ) )
+	lbl_father_name = 	ttk.Label( frm, text = "Father's Name", 		font = ( 'Helvetica', 11 ) )
+	lbl_email_id = 		ttk.Label( frm, text = "Email ID", 				font = ( 'Helvetica', 11 ) )
+	lbl_age = 			ttk.Label( frm, text = "Age", 					font = ( 'Helvetica', 11 ) )
+	lbl_age_group = 	ttk.Label( frm, text = "Age Group", 			font = ( 'Helvetica', 11 ) )
+	lbl_gender = 		ttk.Label( frm, text = "Gender", 				font = ( 'Helvetica', 11 ) )
+	lbl_course = 		ttk.Label( frm, text = "Course", 				font = ( 'Helvetica', 11 ) )
+	lbl_medical_com = 	ttk.Label( frm, text = "Medical Complications", font = ( 'Helvetica', 11 ) )
+	lbl_address = 		ttk.Label( frm, text = "Address", 				font = ( 'Helvetica', 11 ) )
+	lbl_phone_number = 	ttk.Label( frm, text = "Phone Number", 			font = ( 'Helvetica', 11 ) )
+
+
+
 def add_std():
   	# ************************* REGION START add_std *************************
   	# FRAME
@@ -62,7 +89,6 @@ def add_std():
 	frame_add_std.grid( row = 0, column = 1, padx = ( 5, 20 ), pady = 20 )
 	frame_add_std.grid_propagate(0)
 	frm_lst.append( frame_add_std )
-
 
   	# INNER FUNCTIONS
 	def cancel():
@@ -84,22 +110,12 @@ def add_std():
 		my_cursor.execute( command, values )
 		mydb.commit()
 		clear_fields()
-
+	
 
   	# LABELS
-	lbl_add_std = 		ttk.Label( frame_add_std, text = "Admit Student", 			font = ( 'Helvetica', 15 ) )
-	lbl_first_name = 	ttk.Label( frame_add_std, text = "First Name", 				font = ( 'Helvetica', 11 ) )
-	lbl_last_name = 	ttk.Label( frame_add_std, text = "Last Name", 				font = ( 'Helvetica', 11 ) )
-	lbl_father_name = 	ttk.Label( frame_add_std, text = "Father's Name", 			font = ( 'Helvetica', 11 ) )
-	lbl_email_id = 		ttk.Label( frame_add_std, text = "Email ID", 				font = ( 'Helvetica', 11 ) )
-	lbl_age = 			ttk.Label( frame_add_std, text = "Age", 					font = ( 'Helvetica', 11 ) )
-	lbl_age_group = 	ttk.Label( frame_add_std, text = "Age Group", 				font = ( 'Helvetica', 11 ) )
-	lbl_gender = 		ttk.Label( frame_add_std, text = "Gender", 					font = ( 'Helvetica', 11 ) )
-	lbl_course = 		ttk.Label( frame_add_std, text = "Course", 					font = ( 'Helvetica', 11 ) )
-	lbl_medical_com = 	ttk.Label( frame_add_std, text = "Medical Complications", 	font = ( 'Helvetica', 11 ) )
-	lbl_address = 		ttk.Label( frame_add_std, text = "Address", 				font = ( 'Helvetica', 11 ) )
-	lbl_phone_number = 	ttk.Label( frame_add_std, text = "Phone Number", 			font = ( 'Helvetica', 11 ) )
-  
+	ini_lbls( frame_add_std )
+	lbl_add_std = ttk.Label( frame_add_std, text = "Admit Student", font = ( 'Helvetica', 15 ) )
+
 	lbl_add_std.grid( 		row = 0, 	column = 0, padx = 30, 	      pady = 15, 	sticky = W )
 	lbl_first_name.grid( 	row = 1, 	column = 0, padx = ( 40, 5 ), pady = 8, 	sticky = W )
 	lbl_last_name.grid( 	row = 2, 	column = 0, padx = ( 40, 5 ), pady = 8, 	sticky = W )
@@ -179,20 +195,11 @@ def edit_std():
 
 
   	# LABELS
-	lbl_sel_std = ttk.Label( 		frame_edit_std, text = "Select Student", 		font = ( 'Helvetica', 14 ) )
-	lbl_std_id = ttk.Label( 		frame_edit_std, text = "Student's ID No.", 		font = ( 'Helvetica', 11 ) )
-	lbl_edit_std = ttk.Label( 		frame_edit_std, text = "Edit Student", 			font = ( 'Helvetica', 14 ) )
-	lbl_first_name = ttk.Label( 	frame_edit_std, text = "First Name", 			font = ( 'Helvetica', 11 ) )
-	lbl_last_name = ttk.Label( 		frame_edit_std, text = "Last Name", 			font = ( 'Helvetica', 11 ) )
-	lbl_father_name = ttk.Label( 	frame_edit_std, text = "Father's Name", 		font = ( 'Helvetica', 11 ) )
-	lbl_email_id = ttk.Label( 		frame_edit_std, text = "Email ID", 				font = ( 'Helvetica', 11 ) )
-	lbl_age = ttk.Label( 			frame_edit_std, text = "Age", 					font = ( 'Helvetica', 11 ) )
-	lbl_age_group = ttk.Label( 		frame_edit_std, text = "Age Group", 			font = ( 'Helvetica', 11 ) )
-	lbl_gender = ttk.Label( 		frame_edit_std, text = "Gender", 				font = ( 'Helvetica', 11 ) )
-	lbl_course = ttk.Label( 		frame_edit_std, text = "Course", 				font = ( 'Helvetica', 11 ) )
-	lbl_medical_com = ttk.Label( 	frame_edit_std, text = "Medical Complications", font = ( 'Helvetica', 11 ) )
-	lbl_address = ttk.Label( 		frame_edit_std, text = "Address", 				font = ( 'Helvetica', 11 ) )
-	lbl_phone_number = ttk.Label( 	frame_edit_std, text = "Phone Number", 			font = ( 'Helvetica', 11 ) )
+	ini_lbls( frame_edit_std )
+	lbl_sel_std = ttk.Label( 	frame_edit_std, text = "Select Student", 		font = ( 'Helvetica', 14 ) )
+	lbl_std_id = ttk.Label( 	frame_edit_std, text = "Student's ID No.", 		font = ( 'Helvetica', 11 ) )
+	lbl_edit_std = ttk.Label( 	frame_edit_std, text = "Edit Student", 			font = ( 'Helvetica', 14 ) )
+
 
 	lbl_sel_std.grid( 		row = 0, 	column = 0, padx = 30, 			pady = 15, 	sticky = W )
 	lbl_std_id.grid( 		row = 1, 	column = 0, padx = 30, 						sticky = W )
