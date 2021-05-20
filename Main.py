@@ -55,7 +55,7 @@ def inp_num( event, ent ):
 	# ************************** REGION END inp_num **************************
 
 
-def ini_lbls( frm ):
+def init_lbls( frm ):
 	global lbl_first_name
 	global lbl_last_name
 	global lbl_father_name
@@ -67,7 +67,7 @@ def ini_lbls( frm ):
 	global lbl_medical_com
 	global lbl_address
 	global lbl_phone_number
-	
+
 	lbl_first_name = 	ttk.Label( frm, text = "First Name", 			font = ( 'Helvetica', 11 ) )
 	lbl_last_name = 	ttk.Label( frm, text = "Last Name", 			font = ( 'Helvetica', 11 ) )
 	lbl_father_name = 	ttk.Label( frm, text = "Father's Name", 		font = ( 'Helvetica', 11 ) )
@@ -80,6 +80,45 @@ def ini_lbls( frm ):
 	lbl_address = 		ttk.Label( frm, text = "Address", 				font = ( 'Helvetica', 11 ) )
 	lbl_phone_number = 	ttk.Label( frm, text = "Phone Number", 			font = ( 'Helvetica', 11 ) )
 
+
+def init_ent_combo( frm ):
+	global ent_first_name
+	global ent_last_name
+	global ent_father_name
+	global ent_email_id
+	global ent_age
+	global ent_medical_com
+	global ent_address
+	global ent_phone_number
+	global lst_entry_box
+
+	global combo_age_group
+	global combo_gender 
+	global combo_course 
+	global lst_combobox
+
+	ent_first_name = ttk.Entry( 	frm, width = 30 )
+	ent_last_name = ttk.Entry( 		frm )
+	ent_father_name = ttk.Entry( 	frm )
+	ent_email_id = ttk.Entry( 		frm )
+	ent_age = ttk.Entry( 			frm )
+	ent_medical_com = ttk.Entry( 	frm )
+	ent_address = ttk.Entry( 		frm )
+	ent_phone_number = ttk.Entry( 	frm )
+
+	ent_age.bind( 			"<KeyRelease>", lambda event, ent = ent_age: 			inp_num( event, ent ) )
+	ent_phone_number.bind( 	"<KeyRelease>", lambda event, ent = ent_phone_number: 	inp_num( event, ent ) )
+	
+	lst_entry_box = [ ent_first_name, ent_last_name, ent_father_name, ent_email_id, ent_age, ent_medical_com,
+		ent_address, ent_phone_number ]
+
+	combo_age_group = ttk.Combobox( frm, values = ['U-12', 'U-14', 'U-16', 'U-18', 'U-25', 'Open'] )
+	combo_gender = ttk.Combobox( 	frm, values = ['Male', 'Female', 'Other'] )
+	combo_course = ttk.Combobox( 	frm, values = ['A', 'B', 'C'] )
+  
+	lst_combobox = [ combo_age_group, combo_gender, combo_course ]
+	for i in lst_combobox:
+		i.current(0)
 
 
 def add_std():
@@ -113,7 +152,7 @@ def add_std():
 	
 
   	# LABELS
-	ini_lbls( frame_add_std )
+	init_lbls( frame_add_std )
 	lbl_add_std = ttk.Label( frame_add_std, text = "Admit Student", font = ( 'Helvetica', 15 ) )
 
 	lbl_add_std.grid( 		row = 0, 	column = 0, padx = 30, 	      pady = 15, 	sticky = W )
@@ -131,43 +170,22 @@ def add_std():
 
 
   	# ENTRY BOX
-	ent_first_name = ttk.Entry( 	frame_add_std, width = 30 )
-	ent_last_name = ttk.Entry( 		frame_add_std, width = 30 )
-	ent_father_name = ttk.Entry( 	frame_add_std, width = 30 )
-	ent_email_id = ttk.Entry( 		frame_add_std, width = 30 )
-	ent_age = ttk.Entry( 			frame_add_std, width = 30 )
-	ent_medical_com = ttk.Entry( 	frame_add_std, width = 30 )
-	ent_address = ttk.Entry( 		frame_add_std, width = 30 )
-	ent_phone_number = ttk.Entry( 	frame_add_std, width = 30 )
-
-	ent_age.bind( 			"<KeyRelease>", lambda event, ent = ent_age: 			inp_num( event, ent ) )
-	ent_phone_number.bind( 	"<KeyRelease>", lambda event, ent = ent_phone_number: 	inp_num( event, ent ) )
-  
-	lst_entry_box = [ ent_first_name, ent_last_name, ent_father_name, ent_email_id, ent_age, ent_medical_com,
-		ent_address, ent_phone_number ]
+	init_ent_combo( frame_add_std )
 
 	ent_first_name.grid( 	row = 1, 	column = 1, 	padx = 15, 	pady = 8, 	sticky = E, 	ipady = 1 )
-	ent_last_name.grid( 	row = 2, 	column = 1, 	padx = 15, 	pady = 8, 	sticky = E, 	ipady = 1 )
-	ent_father_name.grid( 	row = 3, 	column = 1, 	padx = 15, 	pady = 8, 	sticky = E, 	ipady = 1 )
-	ent_email_id.grid( 		row = 4, 	column = 1, 	padx = 15, 	pady = 8, 	sticky = E, 	ipady = 1 )
-	ent_age.grid( 			row = 5, 	column = 1, 	padx = 15, 	pady = 8, 	sticky = E, 	ipady = 1 )
-	ent_medical_com.grid( 	row = 9, 	column = 1, 	padx = 15, 	pady = 8, 	sticky = E, 	ipady = 1 )
-	ent_address.grid( 		row = 10, 	column = 1, 	padx = 15, 	pady = 8, 	sticky = E, 	ipady = 1 )
-	ent_phone_number.grid( 	row = 11, 	column = 1, 	padx = 15, 	pady = 8, 	sticky = E, 	ipady = 1 )
+	ent_last_name.grid( 	row = 2, 	column = 1, 	padx = 15, 	pady = 8, 	sticky = EW, 	ipady = 1 )
+	ent_father_name.grid( 	row = 3, 	column = 1, 	padx = 15, 	pady = 8, 	sticky = EW, 	ipady = 1 )
+	ent_email_id.grid( 		row = 4, 	column = 1, 	padx = 15, 	pady = 8, 	sticky = EW, 	ipady = 1 )
+	ent_age.grid( 			row = 5, 	column = 1, 	padx = 15, 	pady = 8, 	sticky = EW, 	ipady = 1 )
+	ent_medical_com.grid( 	row = 9, 	column = 1, 	padx = 15, 	pady = 8, 	sticky = EW, 	ipady = 1 )
+	ent_address.grid( 		row = 10, 	column = 1, 	padx = 15, 	pady = 8, 	sticky = EW, 	ipady = 1 )
+	ent_phone_number.grid( 	row = 11, 	column = 1, 	padx = 15, 	pady = 8, 	sticky = EW, 	ipady = 1 )
 
 
 	# COMBO BOX
-	combo_age_group = ttk.Combobox( frame_add_std, values = ['U-12', 'U-14', 'U-16', 'U-18', 'U-25', 'Open'], 	width = 27 )
-	combo_gender = ttk.Combobox( 	frame_add_std, values = ['Male', 'Female', 'Other'],						width = 27 )
-	combo_course = ttk.Combobox( 	frame_add_std, values = ['A', 'B', 'C'], 									width = 27 )
-  
-	lst_combobox = [ combo_age_group, combo_gender, combo_course ]
-	for i in lst_combobox:
-		i.current(0)
-
-	combo_age_group.grid( 	row = 6, column = 1, padx = 15, pady = 8, ipady = 1 )
-	combo_gender.grid( 		row = 7, column = 1, padx = 15, pady = 8, ipady = 1 )
-	combo_course.grid( 		row = 8, column = 1, padx = 15, pady = 8, ipady = 1 )
+	combo_age_group.grid( 	row = 6, column = 1, padx = 15, pady = 8, ipady = 1, sticky = EW )
+	combo_gender.grid( 		row = 7, column = 1, padx = 15, pady = 8, ipady = 1, sticky = EW )
+	combo_course.grid( 		row = 8, column = 1, padx = 15, pady = 8, ipady = 1, sticky = EW )
 
 
 	# BUTTONS
@@ -195,11 +213,10 @@ def edit_std():
 
 
   	# LABELS
-	ini_lbls( frame_edit_std )
+	init_lbls( frame_edit_std )
 	lbl_sel_std = ttk.Label( 	frame_edit_std, text = "Select Student", 		font = ( 'Helvetica', 14 ) )
 	lbl_std_id = ttk.Label( 	frame_edit_std, text = "Student's ID No.", 		font = ( 'Helvetica', 11 ) )
 	lbl_edit_std = ttk.Label( 	frame_edit_std, text = "Edit Student", 			font = ( 'Helvetica', 14 ) )
-
 
 	lbl_sel_std.grid( 		row = 0, 	column = 0, padx = 30, 			pady = 15, 	sticky = W )
 	lbl_std_id.grid( 		row = 1, 	column = 0, padx = 30, 						sticky = W )
@@ -218,21 +235,10 @@ def edit_std():
 
 
 	# ENTRY BOX
-	ent_std_id = ttk.Entry( 		frame_edit_std, width = 30 )
-	ent_first_name = ttk.Entry( 	frame_edit_std )
-	ent_last_name = ttk.Entry( 		frame_edit_std )
-	ent_father_name = ttk.Entry( 	frame_edit_std )
-	ent_email_id = ttk.Entry( 		frame_edit_std )
-	ent_age = ttk.Entry( 			frame_edit_std )
-	ent_medical_com = ttk.Entry( 	frame_edit_std )
-	ent_address = ttk.Entry( 		frame_edit_std )
-	ent_phone_number = ttk.Entry( 	frame_edit_std )
-
+	init_ent_combo( frame_edit_std )
+	ent_std_id = ttk.Entry( frame_edit_std, width = 30 )
 	ent_std_id.bind( '<KeyRelease>', lambda event, ent = ent_std_id: inp_num( event, ent ) )
   
-	lst_entry_box = [ ent_first_name, ent_last_name, ent_father_name, ent_email_id, ent_age, ent_medical_com,
-		ent_address, ent_phone_number ]
-
 	ent_std_id.grid( 		row = 1, 	column = 1, padx = 15 )
 	ent_first_name.grid( 	row = 3, 	column = 1, padx = 15, pady = 5, 	sticky = EW )
 	ent_last_name.grid( 	row = 4, 	column = 1, padx = 15, pady = 5, 	sticky = EW )
@@ -245,17 +251,9 @@ def edit_std():
 
 
 	# COMBO BOX
-	combo_age_group = ttk.Combobox( frame_edit_std, values = ['U-12', 'U-14', 'U-16', 'U-18', 'U-25', 'Open'], 	width = 27 )
-	combo_gender = ttk.Combobox( 	frame_edit_std, values = ['Male', 'Female', 'Other'], 						width = 27 )
-	combo_course = ttk.Combobox( 	frame_edit_std, values = ['A', 'B', 'C'], 									width = 27 )
-  
-	lst_combobox = [ combo_age_group, combo_gender, combo_course ]
-	for i in lst_combobox:
-		i.current(0)
-
-	combo_age_group.grid( 	row = 8, 	column = 1, padx = 15, pady = 8, ipady = 1 )
-	combo_gender.grid( 		row = 9, 	column = 1, padx = 15, pady = 8, ipady = 1 )
-	combo_course.grid( 		row = 10, 	column = 1, padx = 15, pady = 8, ipady = 1 )
+	combo_age_group.grid( 	row = 8, 	column = 1, padx = 15, pady = 8, ipady = 1, sticky = EW )
+	combo_gender.grid( 		row = 9, 	column = 1, padx = 15, pady = 8, ipady = 1, sticky = EW )
+	combo_course.grid( 		row = 10, 	column = 1, padx = 15, pady = 8, ipady = 1, sticky = EW )
 
 	lst_widgets_entries = lst_entry_box + lst_combobox
 	for i in lst_widgets_entries:
