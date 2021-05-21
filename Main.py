@@ -54,7 +54,6 @@ def inp_num( event, ent ):
 		ent.insert( 0, value_cor )
 	# ************************** REGION END inp_num **************************
 
-
 def init_lbls( frm ):
 	global lbl_first_name
 	global lbl_last_name
@@ -79,7 +78,6 @@ def init_lbls( frm ):
 	lbl_medical_com = 	ttk.Label( frm, text = "Medical Complications", font = ( 'Helvetica', 11 ) )
 	lbl_address = 		ttk.Label( frm, text = "Address", 				font = ( 'Helvetica', 11 ) )
 	lbl_phone_number = 	ttk.Label( frm, text = "Phone Number", 			font = ( 'Helvetica', 11 ) )
-
 
 def init_ent_combo( frm ):
 	global ent_first_name
@@ -119,7 +117,6 @@ def init_ent_combo( frm ):
 	lst_combobox = [ combo_age_group, combo_gender, combo_course ]
 	for i in lst_combobox:
 		i.current(0)
-
 
 def add_std():
   	# ************************* REGION START add_std *************************
