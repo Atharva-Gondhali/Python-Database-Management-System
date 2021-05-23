@@ -227,9 +227,7 @@ def edit_std():
 				pos += 1
 		
 		except IndexError:
-			clear_fields()
 			change_state( 'disabled' )
-
 
 
   	# LABELS
@@ -411,8 +409,7 @@ frame_dash = ttk.Frame( 	root, borderwidth = 3, relief = GROOVE, width = 640, he
 frame_student = ttk.Frame( 	root, borderwidth = 3, relief = GROOVE, width = 640, height = 540 )
 
 frm_lst = [ frame_menu, frame_dash, frame_student ]
-for i in frm_lst:
-	i.grid_propagate(0)
+for i in frm_lst: i.grid_propagate(0)
 
 frame_menu.grid( row = 0, column = 0, padx = ( 20, 15 ), 	pady = 20 )      
 frame_dash.grid( row = 0, column = 1, padx = ( 5, 20 ), 	pady = 20 )
