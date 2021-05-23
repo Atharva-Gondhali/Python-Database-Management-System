@@ -38,6 +38,10 @@ def open_menu_items( frame ):
 
 
 # Functions Students -
+def clear_fields():
+	for i in lst_entry_box:
+		i.delete( 0, END )
+
 def inp_num( event, ent ):
 	# ************************* REGION START inp_num *************************
 	value = ent.get()	
@@ -94,6 +98,7 @@ def init_ent_combo( frm ):
 	global combo_gender 
 	global combo_course 
 	global lst_combobox
+	global lst_widgets_entries
 
 	ent_first_name = ttk.Entry( 	frm, width = 30 )
 	ent_last_name = ttk.Entry( 		frm )
@@ -113,7 +118,10 @@ def init_ent_combo( frm ):
 	combo_age_group = ttk.Combobox( frm, values = ['U-12', 'U-14', 'U-16', 'U-18', 'U-25', 'Open'] )
 	combo_gender = ttk.Combobox( 	frm, values = ['Male', 'Female', 'Other'] )
 	combo_course = ttk.Combobox( 	frm, values = ['A', 'B', 'C'] )
-  
+
+	lst_widgets_entries = [ ent_first_name, ent_last_name, ent_father_name, ent_email_id, ent_age, 
+		combo_age_group, combo_gender, combo_course, ent_medical_com, ent_address, ent_phone_number ]
+
 	lst_combobox = [ combo_age_group, combo_gender, combo_course ]
 	for i in lst_combobox:
 		i.current(0)
@@ -130,10 +138,6 @@ def add_std():
 	def cancel():
 		frm_lst.remove( frame_add_std )
 		frame_add_std.grid_remove()
-
-	def clear_fields():
-		for i in lst_entry_box:
-			i.delete( 0, END )
 
 	def add_std_database():
 		command = "INSERT INTO students (first_name, last_name, father_name, email_id, age, age_group, gender, \
@@ -205,8 +209,27 @@ def edit_std():
 
 
 	# INNER FUNCTIONS
-	def get_std():
-		pass
+	def change_state( state ):
+		for i in lst_widgets_entries:
+			i.configure( state = state )
+
+	def get_std( id ):
+		change_state( 'normal' )
+
+		my_cursor.execute( f"SELECT * FROM students WHERE student_id = '{id}'" )
+		std = my_cursor.fetchall()
+		
+		try:
+			pos = 1
+			for field in lst_widgets_entries:
+				field.delete( 0, END )
+				field.insert( 0, str( std[0][pos] ) )
+				pos += 1
+		
+		except IndexError:
+			clear_fields()
+			change_state( 'disabled' )
+
 
 
   	# LABELS
@@ -252,13 +275,11 @@ def edit_std():
 	combo_gender.grid( 		row = 9, 	column = 1, padx = 15, pady = 8, ipady = 1, sticky = EW )
 	combo_course.grid( 		row = 10, 	column = 1, padx = 15, pady = 8, ipady = 1, sticky = EW )
 
-	lst_widgets_entries = lst_entry_box + lst_combobox
-	for i in lst_widgets_entries:
-		i.configure( state = 'disabled' )
+	change_state( 'disabled' )
 
 	
 	# BUTTONS
-	btn_select = ttk.Button( frame_edit_std, text = "Select", width = 15, command = get_std )
+	btn_select = ttk.Button( frame_edit_std, text = "Select", width = 15, command = lambda: get_std( ent_std_id.get() ) )
 	btn_select.grid( row = 1, column = 2, sticky = W )
 
   	#************************** REGION END edit_std **************************
@@ -372,7 +393,7 @@ def view_std():
 
 	# COMBOBOX
 	combo_filter1 = ttk.Combobox( frame_view_std, values = [ 'None', 'Age Group', 'Course' ], 	state = 'readonly' )
-	combo_filter2 = ttk.Combobox( frame_view_std, 												state = 'disabled')
+	combo_filter2 = ttk.Combobox( frame_view_std, 												state = 'disabled' )
 
 	combo_filter1.current(0)
 
