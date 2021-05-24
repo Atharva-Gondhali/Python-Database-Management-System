@@ -36,6 +36,9 @@ def open_menu_items( frame ):
 
   	# ********************** REGION END open_menu_items **********************
 
+def back( frm ):
+		frm_lst.remove( frm)
+		frm.grid_remove()
 
 # Functions Students -
 def clear_fields():
@@ -135,10 +138,6 @@ def add_std():
 	frm_lst.append( frame_add_std )
 
   	# INNER FUNCTIONS
-	def cancel():
-		frm_lst.remove( frame_add_std )
-		frame_add_std.grid_remove()
-
 	def add_std_database():
 		command = "INSERT INTO students (first_name, last_name, father_name, email_id, age, age_group, gender, \
 			course, medical_com, address, phone_no) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
@@ -191,11 +190,11 @@ def add_std():
 
 	# BUTTONS
 	btn_add_std = ttk.Button( 	frame_add_std, text = "Add Student", 	command = add_std_database )
-	btn_cancel = ttk.Button( 	frame_add_std, text = "Cancel", 		command = cancel )
+	btn_back = ttk.Button( 	frame_add_std, text = "Back", 				command = lambda: back( frame_add_std ) )
 	btn_clr_field = ttk.Button( frame_add_std, text = "Clear fields", 	command = clear_fields )
 
-	btn_add_std.grid( 	row = 12, column = 3, pady = 8, padx = 10, ipadx = 6 )
-	btn_cancel.grid(	row = 12, column = 2, pady = 8, padx = 10, ipadx = 6 )
+	btn_add_std.grid( 	row = 12, column = 2, pady = 8, padx = 10, ipadx = 6 )
+	btn_back.grid(	row = 12, column = 3, pady = 8, padx = 10, ipadx = 6 )
 	btn_clr_field.grid( row = 12, column = 1, pady = 8, padx = 10, ipadx = 6, sticky = E )
 	# ************************** REGION END add_std **************************
 
@@ -213,10 +212,31 @@ def edit_std():
 		for i in lst_widgets_entries:
 			i.configure( state = state )
 
-	def get_std( id ):
+	def update_std():
+		my_cursor.execute(f"""UPDATE students SET
+			first_name = '{ent_first_name.get()}',
+			last_name = '{ent_last_name.get()}',
+			father_name = '{ent_father_name.get()}',
+			email_id = '{ent_email_id.get()}',
+			age = '{int( ent_age.get() )}',
+			age_group = '{combo_age_group.get()}',
+			gender = '{combo_gender.get()}',
+			course = '{combo_course.get()}',
+			medical_com = '{ent_medical_com.get()}',
+			address = '{ent_address.get()}',
+			phone_no = '{int(ent_phone_number.get() )}'
+			WHERE student_id = '{ent_std_id.get()}'""") 
+
+		mydb.commit()
+		
+		clear_fields()
+		ent_std_id.delete( 0, END )
+		change_state( 'disabled' )
+
+	def get_std():
 		change_state( 'normal' )
 
-		my_cursor.execute( f"SELECT * FROM students WHERE student_id = '{id}'" )
+		my_cursor.execute( f"SELECT * FROM students WHERE student_id = '{ent_std_id.get()}'" )
 		std = my_cursor.fetchall()
 		
 		try:
@@ -272,13 +292,17 @@ def edit_std():
 	combo_age_group.grid( 	row = 8, 	column = 1, padx = 15, pady = 8, ipady = 1, sticky = EW )
 	combo_gender.grid( 		row = 9, 	column = 1, padx = 15, pady = 8, ipady = 1, sticky = EW )
 	combo_course.grid( 		row = 10, 	column = 1, padx = 15, pady = 8, ipady = 1, sticky = EW )
-
 	change_state( 'disabled' )
 
-	
+
 	# BUTTONS
-	btn_select = ttk.Button( frame_edit_std, text = "Select", width = 15, command = lambda: get_std( ent_std_id.get() ) )
-	btn_select.grid( row = 1, column = 2, sticky = W )
+	btn_select = ttk.Button( 	frame_edit_std, 	text = "Select", 	width = 15, command = get_std )
+	btn_update = ttk.Button( 	frame_edit_std, 	text = "Update", 	width = 13,	command = update_std )
+	btn_back = ttk.Button( 		frame_edit_std, 	text = "Back",		width = 13,	command = lambda: back( frame_edit_std ) )
+	
+	btn_select.grid( 	row = 1, 	column = 2, 			sticky = W )
+	btn_update.grid( 	row = 14, 	column = 2, padx = 10 )
+	btn_back.grid( 		row = 14, 	column = 3, padx = 10 )
 
   	#************************** REGION END edit_std **************************
 
@@ -292,10 +316,6 @@ def view_std():
 
 
 	# INNER FUNCTIONS
-	def back():
-		frm_lst.remove( frame_view_std)
-		frame_view_std.grid_remove()
-
 	def insert_records( con, value ):
 		for i in tree_std.get_children(): 
 			tree_std.delete(i)
@@ -380,7 +400,7 @@ def view_std():
 
 
 	# BUTTONS
-	btn_back = ttk.Button( frame_view_std, text = "Back", command = back )
+	btn_back = ttk.Button( frame_view_std, text = "Back", command = lambda: back( frame_view_std ) )
 	btn_back.grid( row = 2, column = 2, sticky = E, pady = ( 11, 0 ) )
 
 
