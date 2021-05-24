@@ -5,6 +5,7 @@ from tkinter import *
 from tkinter import ttk
 
 
+
 # **************************** REGION MYSQL START ****************************
 # CONNECT TO DATABASE
 mydb = mysql.connector.connect( host = "localhost", user = "root", passwd = "atharva123@mysql", database = "project" )
