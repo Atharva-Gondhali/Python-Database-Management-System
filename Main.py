@@ -243,7 +243,6 @@ def edit_std():
 				field.delete( 0, END )
 				field.insert( 0, str( std[0][pos] ) )
 				pos += 1
-		
 		except IndexError:
 			change_state( 'disabled' )
 
