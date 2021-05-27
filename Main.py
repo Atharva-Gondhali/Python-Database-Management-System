@@ -34,31 +34,6 @@ def open_menu_items( frame ):
 
   	# ********************** REGION END open_menu_items **********************
 
-def back( frm ):
-	frm_lst.remove( frm)
-	frm.grid_remove()
-
-# Functions Students -
-def clear_fields():
-	for i in lst_entry_box:
-		i.delete( 0, END )
-
-def inp_num( event, ent ):
-	# ************************* REGION START inp_num *************************
-	value = ent.get()	
-	ent.delete( 0, END )
-
-	try:
-		int( value )
-		ent.insert( 0, value )
-	except ValueError:
-		value_cor = ""
-		for i in value:
-			if i.isnumeric():
-				value_cor += i
-		ent.insert( 0, value_cor )
-	# ************************** REGION END inp_num **************************
-
 def init_widgets( frm ):
 	global lbl_first_name
 	global lbl_last_name
@@ -88,6 +63,7 @@ def init_widgets( frm ):
 	global lst_entry_box
 	global lst_combobox
 	global lst_widgets_entries
+	global lst_widgets_all
 
 	lbl_first_name = ttk.Label( frm, text = "First Name", font = ( 'Helvetica', 11 ) )
 	lbl_last_name = ttk.Label( frm, text = "Last Name", font = ( 'Helvetica', 11 ) )
@@ -120,12 +96,44 @@ def init_widgets( frm ):
 	lst_entry_box = [ ent_first_name, ent_last_name, ent_father_name, ent_email_id, ent_age, ent_medical_com,
 		ent_address, ent_phone_number ]
 
-	lst_widgets_entries = [ ent_first_name, ent_last_name, ent_father_name, ent_email_id, ent_age, 
-		combo_age_group, combo_gender, combo_course, ent_medical_com, ent_address, ent_phone_number ]
-
 	lst_combobox = [ combo_age_group, combo_gender, combo_course ]
 	for i in lst_combobox:
 		i.current(0)
+
+	lst_widgets_entries = [ ent_first_name, ent_last_name, ent_father_name, ent_email_id, ent_age, 
+		combo_age_group, combo_gender, combo_course, ent_medical_com, ent_address, ent_phone_number ]
+
+	lst_widgets_all = lst_widgets_entries + [lbl_first_name, lbl_last_name, lbl_father_name, lbl_email_id, lbl_age,
+		lbl_age_group, lbl_gender, lbl_course, lbl_medical_com, 
+		lbl_address, lbl_phone_number ]
+
+def back( frm ):
+	for widgets in lst_widgets_all:
+		widgets.destroy()
+
+	frm_lst.remove( frm)
+	frm.grid_remove()
+
+# Functions Students -
+def clear_fields():
+	for i in lst_entry_box:
+		i.delete( 0, END )
+
+def inp_num( event, ent ):
+	# ************************* REGION START inp_num *************************
+	value = ent.get()	
+	ent.delete( 0, END )
+
+	try:
+		int( value )
+		ent.insert( 0, value )
+	except ValueError:
+		value_cor = ""
+		for i in value:
+			if i.isnumeric():
+				value_cor += i
+		ent.insert( 0, value_cor )
+	# ************************** REGION END inp_num **************************
 
 def add_std():
   	# ************************* REGION START add_std *************************
