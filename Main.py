@@ -4,6 +4,8 @@ import mysql.connector
 from tkinter import *
 from tkinter import ttk
 
+from Student_front import *
+
 # **************************** REGION MYSQL START ****************************
 # CONNECT TO DATABASE
 mydb = mysql.connector.connect( host = "localhost", user = "root", passwd = "atharva123@mysql", database = "project" )
@@ -25,12 +27,15 @@ root.resizable( width = False, height = False )
 def open_menu_items( frame ):
   	# ********************* REGION START open_menu_items *********************
 
-	for i in frm_lst:
-		if not ( i == frame or i == frame_menu ): 
-			i.grid_forget()
-      
-	frame.grid_propagate(0)
-	frame.grid( row = 0, column = 1, padx = ( 5, 20 ), pady = 20 )
+	# for i in frm_lst:
+	# 	if not ( i == frame or i == frame_menu ): 
+	# 		i.grid_forget()
+    #   
+	# frame.grid_propagate(0)
+	# frame.grid( row = 0, column = 1, padx = ( 5, 20 ), pady = 20 )
+
+	if frame == "Student":
+		frm = Student( frame_student )
 
   	# ********************** REGION END open_menu_items **********************
 
@@ -144,19 +149,26 @@ def add_std():
 	frm_lst.append( frame_add_std )
 
   	# INNER FUNCTIONS
-	def add_std_database():
-		command = "INSERT INTO students (first_name, last_name, father_name, email_id, age, age_group, gender, \
-			course, medical_com, address, phone_no) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
+	#def add_std_database():
+	#	command = "INSERT INTO students (first_name, last_name, father_name, email_id, age, age_group, gender, \
+	#		course, medical_com, address, phone_no) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
 
-		values = ( ent_first_name.get(), ent_last_name.get(), ent_father_name.get(), ent_email_id.get(),
-			ent_age.get(), combo_age_group.get(), combo_gender.get(), combo_course.get(), ent_medical_com.get(),
-			ent_address.get(), ent_phone_number.get() )
+	#	values = ( ent_first_name.get(), ent_last_name.get(), ent_father_name.get(), ent_email_id.get(),
+	#		ent_age.get(), combo_age_group.get(), combo_gender.get(), combo_course.get(), ent_medical_com.get(),
+	#		ent_address.get(), ent_phone_number.get() )
 
-		my_cursor.execute( command, values )
-		mydb.commit()
-		clear_fields()
+	#	my_cursor.execute( command, values )
+	#	mydb.commit()
+	#	clear_fields()
 	
 	init_widgets( frame_add_std )
+
+	values = ( ent_first_name.get(), ent_last_name.get(), ent_father_name.get(), ent_email_id.get(),
+		ent_age.get(), combo_age_group.get(), combo_gender.get(), combo_course.get(), ent_medical_com.get(),
+		ent_address.get(), ent_phone_number.get() )
+
+	
+
 
   	# LABELS
 	lbl_add_std = ttk.Label( frame_add_std, text = "Admit Student", font = ( 'Helvetica', 15 ) )
@@ -190,7 +202,7 @@ def add_std():
 	combo_course.grid( row = 8, column = 1, padx = 15, pady = 8, ipady = 1, sticky = EW )
 
 	# BUTTONS
-	btn_add_std = ttk.Button( frame_add_std, text = "Add Student", command = add_std_database )
+	btn_add_std = ttk.Button( frame_add_std, text = "Add Student", command = lambda: add_std_database( mydb, my_cursor, values ) )
 	btn_back = ttk.Button( frame_add_std, text = "Back", command = lambda: back( frame_add_std ) )
 	btn_clr_field = ttk.Button( frame_add_std, text = "Clear fields", command = clear_fields )
 
@@ -448,7 +460,7 @@ lbl_dash.grid( row = 0, column = 0, padx = 30, pady = 15, sticky = W )
 # BUTTONS 
 # Buttons Menu
 btn_dash = ttk.Button( frame_menu, text = "Dashboard", style = 'menu.TButton', command = lambda: open_menu_items( frame_dash ) )
-btn_student = ttk.Button( frame_menu, text = "Students", style = 'menu.TButton', command = lambda: open_menu_items( frame_student ) )
+btn_student = ttk.Button( frame_menu, text = "Students", style = 'menu.TButton', command = lambda: open_menu_items( "Student" ) )
 btn_unknown1 = ttk.Button( frame_menu, text = ".........", style = 'menu.TButton' )
 btn_unknown2 = ttk.Button( frame_menu, text = ".........", style = 'menu.TButton' )
 btn_unknown3 = ttk.Button( frame_menu, text = "Settings", style = 'menu.TButton' )
@@ -460,15 +472,6 @@ btn_unknown2.grid( row = 3, column = 0, ipady = 23, pady = ( 10, 0 ) )
 btn_unknown3.grid( row = 4, column = 0, ipady = 23, pady = ( 10, 0 ) )
 
 # Buttons Dashborad
-
-# Buttons Students
-btn_add_std = ttk.Button( frame_student, text = "Admit Student", width = 20, command = add_std )
-btn_edit_std = ttk.Button( frame_student, text = "Edit Student", width = 20, command = edit_std )
-btn_view_std = ttk.Button( frame_student, text = "View Students", width = 20, command = view_std )
-
-btn_add_std.grid( row = 1, column = 0, padx = 10, pady = 10, ipady = 4 )
-btn_edit_std.grid( row = 1, column = 1, padx = 10, pady = 10, ipady = 4 )
-btn_view_std.grid( row = 2, column = 0, padx = 10, pady = 10, ipady = 4 )
 
 root.mainloop()
 # **************************** REGION TKINTER END ****************************
