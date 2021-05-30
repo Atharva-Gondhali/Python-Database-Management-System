@@ -162,6 +162,16 @@ class AddStudent:
 					 		  self.ent_address, 
 					 		  self.ent_phone_number )
 
+		def clear_fields( self ):
+			for i in self.lst_entry_box:
+				i.delete( 0, END )
+
+			for i in self.lst_combo_box:
+				i.current(0)
+
+		def back( self ):
+			self.frm.destroy()
+
 		# WIDGETS
 		wdg = Widgets( self.frm )
 		
@@ -216,21 +226,21 @@ class AddStudent:
 				row = 8, column = 1, padx = 15, pady = 8, ipady = 1, sticky = EW )
 
 		widgets( wdg )
-		
+
 		lbl_add_std = ttk.Label( 
 			self.frm, text = "Admit Student", font = ( 'Helvetica', 15 ) )	
 
 		lbl_add_std.grid( 
 			row = 0, column = 0, padx = 30, pady = 15, sticky = W )
-		
-		
+
+
 		# BUTTONS
 		btn_add_std = ttk.Button( 
 			self.frm, text = "Add Student", command = lambda: add_std( wdg ) )
 		btn_back = ttk.Button( 
-			self.frm, text = "Back" )
+			self.frm, text = "Back", command = lambda: back( self ) )
 		btn_clr_field = ttk.Button( 
-			self.frm, text = "Clear fields" )
+			self.frm, text = "Clear fields", command = lambda: clear_fields( wdg ) )
 
 		btn_add_std.grid( 
 			row = 12, column = 2, pady = 8, padx = 10, ipadx = 6 )
