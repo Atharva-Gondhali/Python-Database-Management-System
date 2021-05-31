@@ -82,20 +82,3 @@ class Main:
 
 obj = Main( root )
 root.mainloop()
-
-
-
-# FUNCTIONS
-def inp_num( event, ent ):
-	value = ent.get()	
-	ent.delete( 0, END )
-
-	try:
-		int( value )
-		ent.insert( 0, value )
-	except ValueError:
-		value_cor = ""
-		for i in value:
-			if i.isnumeric():
-				value_cor += i
-		ent.insert( 0, value_cor )
