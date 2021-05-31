@@ -12,7 +12,7 @@ from Dashboard_front import *
 root = Tk()
 
 
-class Main():
+class Main:
 	def __init__( self, win ):
 		self.win = win
 		self.win.geometry( "900x580" )
@@ -80,19 +80,12 @@ class Main():
 			row = 5, column = 0, pady = (30, 0) )
 
 
+obj = Main( root )
+root.mainloop()
+
+
+
 # FUNCTIONS
-def back( frm ):
-	for widgets in lst_widgets_all:
-		widgets.destroy()
-
-	frm_lst.remove( frm)
-	frm.grid_remove()
-
-# Functions Students -
-def clear_fields():
-	for i in lst_entry_box:
-		i.delete( 0, END )
-
 def inp_num( event, ent ):
 	# ************************* REGION START inp_num *************************
 	value = ent.get()	
@@ -108,109 +101,6 @@ def inp_num( event, ent ):
 				value_cor += i
 		ent.insert( 0, value_cor )
 	# ************************** REGION END inp_num **************************
-
-def edit_std():
-	#************************* REGION START edit_std *************************
-	# FRAME
-	frame_edit_std = ttk.Frame( root, borderwidth = 3, relief = GROOVE, width = 640, height = 540 )
-	frame_edit_std.grid( row = 0, column = 1, padx = ( 5, 20 ), pady = 20 )
-	frame_edit_std.grid_propagate(0)
-	frm_lst.append( frame_edit_std )
-
-	# INNER FUNCTIONS
-	def change_state( state ):
-		for i in lst_widgets_entries:
-			i.configure( state = state )
-
-	def update_std():
-		my_cursor.execute(f"""UPDATE students SET
-			first_name = '{ent_first_name.get()}',
-			last_name = '{ent_last_name.get()}',
-			father_name = '{ent_father_name.get()}',
-			email_id = '{ent_email_id.get()}',
-			age = '{int( ent_age.get() )}',
-			age_group = '{combo_age_group.get()}',
-			gender = '{combo_gender.get()}',
-			course = '{combo_course.get()}',
-			medical_com = '{ent_medical_com.get()}',
-			address = '{ent_address.get()}',
-			phone_no = '{int(ent_phone_number.get() )}'
-			WHERE student_id = '{ent_std_id.get()}'""") 
-
-		mydb.commit()
-		
-		clear_fields()
-		ent_std_id.delete( 0, END )
-		change_state( 'disabled' )
-
-	def get_std():
-		change_state( 'normal' )
-
-		my_cursor.execute( f"SELECT * FROM students WHERE student_id = '{ent_std_id.get()}'" )
-		std = my_cursor.fetchall()
-		
-		try:
-			pos = 1
-			for field in lst_widgets_entries:
-				field.delete( 0, END )
-				field.insert( 0, str( std[0][pos] ) )
-				pos += 1
-		except IndexError:
-			change_state( 'disabled' )
-
-	init_widgets( frame_edit_std )
-  	
-  	# LABELS
-	lbl_sel_std = ttk.Label( frame_edit_std, text = "Select Student", font = ( 'Helvetica', 14 ) )
-	lbl_std_id = ttk.Label( frame_edit_std, text = "Student's ID No.", font = ( 'Helvetica', 11 ) )
-	lbl_edit_std = ttk.Label( frame_edit_std, text = "Edit Student", font = ( 'Helvetica', 14 ) )
-
-	lbl_sel_std.grid( row = 0, column = 0, padx = 30, pady = 15, sticky = W )
-	lbl_std_id.grid( row = 1, column = 0, padx = 30, sticky = W )
-	lbl_edit_std.grid( row = 2, column = 0, padx = 30, pady = 15, sticky = W )
-	lbl_first_name.grid( row = 3, column = 0, padx = ( 40, 5 ), pady = 5, sticky = W )
-	lbl_last_name.grid( row = 4, column = 0, padx = ( 40, 5 ), pady = 5, sticky = W )
-	lbl_father_name.grid( row = 5, column = 0, padx = ( 40, 5 ), pady = 5, sticky = W )
-	lbl_email_id.grid( row = 6, column = 0, padx = ( 40, 5 ), pady = 5, sticky = W )
-	lbl_age.grid( row = 7, column = 0, padx = ( 40, 5 ), pady = 5, sticky = W )
-	lbl_age_group.grid( row = 8, column = 0, padx = ( 40, 5 ), pady = 5, sticky = W )
-	lbl_gender.grid( row = 9, column = 0, padx = ( 40, 5 ), pady = 5, sticky = W )
-	lbl_course.grid( row = 10, column = 0, padx = ( 40, 5 ), pady = 5, sticky = W )
-	lbl_medical_com.grid( row = 11, column = 0, padx = ( 40, 5 ), pady = 5, sticky = W )
-	lbl_address.grid( row = 12, column = 0, padx = ( 40, 5 ), pady = 5, sticky = W )
-	lbl_phone_number.grid( row = 13, column = 0, padx = ( 40, 5 ), pady = 5, sticky = W )
-
-	# ENTRY BOX
-	ent_std_id = ttk.Entry( frame_edit_std, width = 30 )
-	ent_std_id.bind( '<KeyRelease>', lambda event, ent = ent_std_id: inp_num( event, ent ) )
-  
-	ent_std_id.grid( row = 1, column = 1, padx = 15 )
-	ent_first_name.grid( row = 3, column = 1, padx = 15, pady = 5, sticky = EW )
-	ent_last_name.grid( row = 4, column = 1, padx = 15, pady = 5, sticky = EW )
-	ent_father_name.grid( row = 5, column = 1, padx = 15, pady = 5, sticky = EW )
-	ent_email_id.grid( row = 6, column = 1, padx = 15, pady = 5, sticky = EW )
-	ent_age.grid( row = 7, column = 1, padx = 15, pady = 5, sticky = EW )
-	ent_medical_com.grid( row = 11, column = 1, padx = 15, pady = 5, sticky = EW )
-	ent_address.grid( row = 12, column = 1, padx = 15, pady = 5, sticky = EW )
-	ent_phone_number.grid( row = 13, column = 1, padx = 15, pady = 5, sticky = EW )
-
-	# COMBO BOX
-	combo_age_group.grid( row = 8, column = 1, padx = 15, pady = 8, ipady = 1, sticky = EW )
-	combo_gender.grid( row = 9, column = 1, padx = 15, pady = 8, ipady = 1, sticky = EW )
-	combo_course.grid( row = 10, column = 1, padx = 15, pady = 8, ipady = 1, sticky = EW )
-	change_state( 'disabled' )
-
-	# BUTTONS
-	btn_select = ttk.Button( frame_edit_std, text = "Select", width = 15, command = get_std )
-	btn_update = ttk.Button( frame_edit_std, text = "Update", width = 13, command = update_std )
-	btn_back = ttk.Button( frame_edit_std, text = "Back", width = 13, command = lambda: back( frame_edit_std ) )
-	
-	btn_select.grid( row = 1, column = 2, sticky = W )
-	btn_update.grid( row = 14, column = 2, padx = 10 )
-	btn_back.grid( row = 14, column = 3, padx = 10 )
-
-  	#************************** REGION END edit_std **************************
-
 def view_std():
   	#************************* REGION START view_std *************************
   	# FRAME
@@ -323,6 +213,4 @@ def view_std():
   	#************************** REGION END view_std **************************
 
 
-obj = Main( root )
-root.mainloop()
 # **************************** REGION TKINTER END ****************************
