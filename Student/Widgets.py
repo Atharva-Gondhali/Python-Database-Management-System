@@ -5,6 +5,20 @@ class Widgets:
 	def __init__( self, frm ):
 		self.frm = frm
 
+		def inp_num( self, event, ent ):
+			value = ent.get()	
+			ent.delete( 0, END )
+
+			try:
+				int( value )
+				ent.insert( 0, value )
+			except ValueError:
+				value_cor = ""
+				for i in value:
+					if i.isnumeric():
+						value_cor += i
+				ent.insert( 0, value_cor )
+
 		self.lbl_first_name = ttk.Label( 
 			self.frm, text = "First Name", font = ('Helvetica', 11) )
 		self.lbl_last_name = ttk.Label( 
@@ -47,10 +61,10 @@ class Widgets:
 			self.frm )
 	
 		
-		# self.ent_age.bind( 
-		# 	"<KeyRelease>", lambda event, ent = self.ent_age: inp_num( event, ent ) )
-		# self.ent_phone_number.bind( 
-		# 	"<KeyRelease>", lambda event, ent = self.ent_phone_number: inp_num( event, ent ) )
+		self.ent_age.bind( 
+			"<KeyRelease>", lambda event, ent = self.ent_age: inp_num( self, event, ent ) )
+		self.ent_phone_number.bind( 
+			"<KeyRelease>", lambda event, ent = self.ent_phone_number: inp_num(self,  event, ent ) )
 	
 		
 		self.combo_age_group = ttk.Combobox( 

@@ -103,7 +103,7 @@ class EditStudent:
 			ent_std_id.delete( 0, END )
 			change_state( self, 'disabled' )
 
-		def inp_num( event, ent ):
+		def inp_num( self, event, ent ):
 			value = ent.get()	
 			ent.delete( 0, END )
 
@@ -149,7 +149,7 @@ class EditStudent:
 			row = 1, column = 1, padx = 15 )
 
 		ent_std_id.bind( 
-			'<KeyRelease>', lambda event, ent = ent_std_id: inp_num( event, ent ) )
+			'<KeyRelease>', lambda event, ent = ent_std_id: inp_num( self, event, ent ) )
 
 
 		# BUTTONS
