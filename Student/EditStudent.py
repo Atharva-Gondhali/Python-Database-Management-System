@@ -4,6 +4,8 @@ from tkinter import ttk
 from Student_back import *
 from Student.Widgets import *
 
+
+
 class EditStudent:
 	def __init__( self, frm ):
 		self.frm = frm
@@ -68,7 +70,11 @@ class EditStudent:
 				i.configure( state = state )
 
 		def clear_fields( self ):
-			clear( self.tpl_entry_box, self.tpl_combo_box )
+			for i in self.tpl_entry_box:
+				i.delete( 0, END )
+
+			for i in self.tpl_combo_box:
+				i.current(0)
 
 		def get_std( self ):
 			change_state( self, 'normal' )
@@ -96,6 +102,20 @@ class EditStudent:
 			clear_fields( wdg )
 			ent_std_id.delete( 0, END )
 			change_state( self, 'disabled' )
+
+		def inp_num( event, ent ):
+			value = ent.get()	
+			ent.delete( 0, END )
+
+			try:
+				int( value )
+				ent.insert( 0, value )
+			except ValueError:
+				value_cor = ""
+				for i in value:
+					if i.isnumeric():
+						value_cor += i
+				ent.insert( 0, value_cor )
 
 		def back( self ):
 			self.frm.destroy()
@@ -128,8 +148,8 @@ class EditStudent:
 		ent_std_id.grid( 
 			row = 1, column = 1, padx = 15 )
 
-		# ent_std_id.bind( 
-		# 	'<KeyRelease>', lambda event, ent = ent_std_id: inp_num( event, ent ) )
+		ent_std_id.bind( 
+			'<KeyRelease>', lambda event, ent = ent_std_id: inp_num( event, ent ) )
 
 
 		# BUTTONS

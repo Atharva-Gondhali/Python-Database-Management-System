@@ -5,14 +5,6 @@ from Student.AddStudent import *
 from Student.EditStudent import	*
 from Student.ViewStudent import *
 
-# Common Functions
-def clear( tpl_ent, tpl_combo ):
-			for i in tpl_ent:
-				i.delete( 0, END )
-
-			for i in tpl_combo:
-				i.current(0)
-
 # Classes
 class Student:
 	def __init__( self, frm ):
@@ -22,14 +14,22 @@ class Student:
 			row = 0, column = 1, padx = ( 5, 20 ), pady = 20 )
 
 		def add_std( self ):
-			frame_add_std = ttk.Frame( self.frm, width = 635, height = 535 )
+			frame_add_std = ttk.Frame( 
+				self.frm, width = 635, height = 535 )
 			
 			std = AddStudent( frame_add_std )
 
 		def edit_std( self ):
-			frame_edit_std = ttk.Frame( self.frm, width = 635, height = 535 )
+			frame_edit_std = ttk.Frame( 
+				self.frm, width = 635, height = 535 )
 
 			std = EditStudent( frame_edit_std )
+
+		def view_std( self ):
+			frame_view_std = ttk.Frame( 
+				self.frm, width = 635, height = 535 )
+
+			std = ViewStudent( frame_view_std )
 
 		# Label students
 		lbl_student = ttk.Label( 
@@ -44,7 +44,7 @@ class Student:
 		btn_edit_std = ttk.Button( 
 			self.frm, text = "Edit Student", width = 20, command = lambda: edit_std( self ) )
 		btn_view_std = ttk.Button( 
-			self.frm, text = "View Students", width = 20 )
+			self.frm, text = "View Students", width = 20, command = lambda: view_std( self ) )
 		
 		btn_add_std.grid( 
 			row = 1, column = 0, padx = 10, pady = 10, ipady = 4 )

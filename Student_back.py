@@ -44,3 +44,13 @@ def update_std_database( f1, f2, f3, f4, f5, f6, f7, f8, f9, f10, f11, f12 ):
 		WHERE student_id = '{f12.get()}'""") 
 
 	mydb.commit()
+
+def get_all_std_database( condition, value ):
+	if len(condition) == 0:
+		my_cursor.execute( "SELECT * FROM students" )
+	else:
+		my_cursor.execute( f"SELECT * FROM students WHERE {condition} = '{value}'" )
+
+	result = my_cursor.fetchall()
+
+	return result		
