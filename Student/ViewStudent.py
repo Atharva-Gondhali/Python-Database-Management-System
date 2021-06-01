@@ -3,6 +3,7 @@ from tkinter import ttk
 
 from Student_back import *
 
+
 class ViewStudent:
 	def __init__( self, frm ):
 		self.frm = frm

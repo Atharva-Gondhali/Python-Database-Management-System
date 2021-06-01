@@ -5,7 +5,6 @@ from Student_back import *
 from Student.Widgets import *
 
 
-
 class EditStudent:
 	def __init__( self, frm ):
 		self.frm = frm
@@ -103,23 +102,14 @@ class EditStudent:
 			ent_std_id.delete( 0, END )
 			change_state( self, 'disabled' )
 
-		def inp_num( self, event, ent ):
-			value = ent.get()	
-			ent.delete( 0, END )
-
-			try:
-				int( value )
-				ent.insert( 0, value )
-			except ValueError:
-				value_cor = ""
-				for i in value:
-					if i.isnumeric():
-						value_cor += i
-				ent.insert( 0, value_cor )
-
 		def back( self ):
 			self.frm.destroy()
 
+		def callback(P):
+			if str.isdigit(P) or P == "":
+				return True
+			else:
+				return False
 
 		# WIDGETS
 		wdg = Widgets( self.frm )
@@ -142,15 +132,14 @@ class EditStudent:
 
 
 		# ENTRY BOX
+		vcmd = ( self.frm.register( callback ) )
+		
 		ent_std_id = ttk.Entry( 
-			self.frm, width = 30 )
+			self.frm, width = 30, validate = 'all', validatecommand = ( vcmd, '%P' ) )
 		
 		ent_std_id.grid( 
 			row = 1, column = 1, padx = 15 )
-
-		ent_std_id.bind( 
-			'<KeyRelease>', lambda event, ent = ent_std_id: inp_num( self, event, ent ) )
-
+		
 
 		# BUTTONS
 		btn_select = ttk.Button( 

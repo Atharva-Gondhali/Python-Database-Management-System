@@ -1,23 +1,16 @@
 from tkinter import *
 from tkinter import ttk
 
+
 class Widgets:
 	def __init__( self, frm ):
 		self.frm = frm
 
-		def inp_num( self, event, ent ):
-			value = ent.get()	
-			ent.delete( 0, END )
-
-			try:
-				int( value )
-				ent.insert( 0, value )
-			except ValueError:
-				value_cor = ""
-				for i in value:
-					if i.isnumeric():
-						value_cor += i
-				ent.insert( 0, value_cor )
+		def callback(P):
+			if str.isdigit(P) or P == "":
+				return True
+			else:
+				return False
 
 		self.lbl_first_name = ttk.Label( 
 			self.frm, text = "First Name", font = ('Helvetica', 11) )
@@ -42,6 +35,7 @@ class Widgets:
 		self.lbl_phone_number = ttk.Label( 
 			self.frm, text = "Phone Number", font = ('Helvetica', 11) )
 
+		vcmd = ( self.frm.register( callback ) )
 		
 		self.ent_first_name = ttk.Entry( 
 			self.frm, width = 30 )
@@ -52,20 +46,14 @@ class Widgets:
 		self.ent_email_id = ttk.Entry( 
 			self.frm )
 		self.ent_age = ttk.Entry( 
-			self.frm )
+			self.frm, validate = 'all', validatecommand = ( vcmd, '%P' ) )
 		self.ent_medical_com = ttk.Entry( 
 			self.frm )
 		self.ent_address = ttk.Entry( 
 			self.frm )
 		self.ent_phone_number = ttk.Entry( 
-			self.frm )
-	
+			self.frm, validate = 'all', validatecommand = ( vcmd, '%P' ) )
 		
-		self.ent_age.bind( 
-			"<KeyRelease>", lambda event, ent = self.ent_age: inp_num( self, event, ent ) )
-		self.ent_phone_number.bind( 
-			"<KeyRelease>", lambda event, ent = self.ent_phone_number: inp_num(self,  event, ent ) )
-	
 		
 		self.combo_age_group = ttk.Combobox( 
 			self.frm, values = ['U-12', 'U-14', 'U-16', 'U-18', 'U-25', 'Open'] )

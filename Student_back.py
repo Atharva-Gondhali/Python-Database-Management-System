@@ -28,6 +28,7 @@ def get_std_databse( tpl_entries, std_id ):
 
 	return std
 
+
 def update_std_database( f1, f2, f3, f4, f5, f6, f7, f8, f9, f10, f11, f12 ):
 	my_cursor.execute(f"""UPDATE students SET
 		first_name = '{f1.get()}',
@@ -44,6 +45,7 @@ def update_std_database( f1, f2, f3, f4, f5, f6, f7, f8, f9, f10, f11, f12 ):
 		WHERE student_id = '{f12.get()}'""") 
 
 	mydb.commit()
+
 
 def get_all_std_database( condition, value ):
 	if len(condition) == 0:

@@ -7,10 +7,8 @@ from tkinter import ttk
 from Student_front import *
 from Dashboard_front import *
 
-# *************************** REGION TKINTER START ***************************
-# INITIALIZE TKINTER
-root = Tk()
 
+root = Tk()
 
 class Main:
 	def __init__( self, win ):
