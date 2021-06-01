@@ -8,8 +8,7 @@ class ViewStudent:
 	def __init__( self, frm ):
 		self.frm = frm
 		self.frm.grid_propagate(0)
-		self.frm.grid( 
-			row = 0, column = 0 )
+		self.frm.grid( row = 0, column = 0 )
 
 		# FUNCTIONS
 		def insert_records( self, condition, value ):
@@ -20,7 +19,8 @@ class ViewStudent:
 
 			id = 0
 			for i in result:
-				tree_std.insert( parent = '', index = 'end', iid = id, text = "", value = ( i[0], i[1], i[2], i[3], i[6], i[8], i[11] ) )
+				tree_std.insert( parent = '', index = 'end', iid = id, text = "", 
+					value = ( i[0], i[1], i[2], i[3], i[6], i[8], i[11] ) )
 				id += 1
 
 		def set_filter1( self, event ):

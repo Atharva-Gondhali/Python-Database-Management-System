@@ -9,8 +9,7 @@ class EditStudent:
 	def __init__( self, frm ):
 		self.frm = frm
 		self.frm.grid_propagate(0)
-		self.frm.grid( 
-			row = 0, column = 0 )
+		self.frm.grid( row = 0, column = 0 )
 
 
 		# FUNCTIONS
@@ -135,7 +134,8 @@ class EditStudent:
 		vcmd = ( self.frm.register( callback ) )
 		
 		ent_std_id = ttk.Entry( 
-			self.frm, width = 30, validate = 'all', validatecommand = ( vcmd, '%P' ) )
+			self.frm, width = 30, validate = 'all', 
+			validatecommand = ( vcmd, '%P' ) )
 		
 		ent_std_id.grid( 
 			row = 1, column = 1, padx = 15 )
@@ -143,11 +143,14 @@ class EditStudent:
 
 		# BUTTONS
 		btn_select = ttk.Button( 
-			self.frm, text = "Select", width = 15, command = lambda: get_std( wdg ) )
+			self.frm, text = "Select", width = 15, 
+			command = lambda: get_std( wdg ) )
 		btn_update = ttk.Button( 
-			self.frm, text = "Update", width = 13, command = lambda: update_std( wdg ) )
+			self.frm, text = "Update", width = 13, 
+			command = lambda: update_std( wdg ) )
 		btn_back = ttk.Button( 
-			self.frm, text = "Back", width = 13, command = lambda: back( self ) )
+			self.frm, text = "Back", width = 13, 
+			command = lambda: back( self ) )
 		
 		btn_select.grid( 
 			row = 1, column = 2, sticky = W )

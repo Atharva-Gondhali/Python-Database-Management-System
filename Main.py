@@ -31,9 +31,11 @@ class Main:
 
 		# FRAMES
 		frame_menu = ttk.Frame(	
-			self.win, borderwidth = 3, relief = GROOVE, width = 200, height = 540, padding = 15 )
+			self.win, borderwidth = 3, relief = GROOVE, width = 200, 
+			height = 540, padding = 15 )
 		frame_secondary = ttk.Frame( 
-			self.win, borderwidth = 3, relief = GROOVE, width = 640, height = 540 )
+			self.win, borderwidth = 3, relief = GROOVE, width = 640, 
+			height = 540 )
 
 		frame_menu.grid(
 			row = 0, column = 0, padx = ( 20, 15 ), pady = 20 )
@@ -44,14 +46,18 @@ class Main:
 
 		# STYLES
 		style = ttk.Style()
-		style.configure( 'menu.TButton', font = ( 'Helvetica', 10 ), width = 22 )
-		style.configure( 'heading_text.TButton', font = ( 'Helvetica', 15 ) ) 
+		style.configure( 
+			'menu.TButton', font = ( 'Helvetica', 10 ), width = 22 )
+		style.configure( 
+			'heading_text.TButton', font = ( 'Helvetica', 15 ) ) 
 
 		# Buttons Menu
 		btn_dash = ttk.Button( 
-			frame_menu, text = "Dashboard", style = 'menu.TButton', command = lambda: open_menu_items( "Dashboard" ) )
+			frame_menu, text = "Dashboard", style = 'menu.TButton', 
+			command = lambda: open_menu_items( "Dashboard" ) )
 		btn_student = ttk.Button( 
-			frame_menu, text = "Students", style = 'menu.TButton', command = lambda: open_menu_items( "Student" ) )
+			frame_menu, text = "Students", style = 'menu.TButton', 
+			command = lambda: open_menu_items( "Student" ) )
 		btn_unknown1 = ttk.Button( 
 			frame_menu, text = ".........", style = 'menu.TButton' )
 		btn_unknown2 = ttk.Button( 

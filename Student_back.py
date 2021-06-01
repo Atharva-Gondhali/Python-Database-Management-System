@@ -11,9 +11,9 @@ my_cursor = mydb.cursor()
 
 def add_std_database( f1, f2, f3, f4, f5, f6, f7, f8, f9, f10, f11 ):
 	command = "INSERT INTO students (first_name, last_name, father_name, \
-									email_id, age, age_group, gender, \
-									course, medical_com, address, phone_no) \
-									VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
+			   email_id, age, age_group, gender, course, medical_com, \
+			   address, phone_no) \
+			   VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
 
 	values = ( f1.get(), f2.get(), f3.get(), f4.get(), f5.get(), f6.get(), 
 			   f7.get(), f8.get(), f9.get(), f10.get(), f11.get() )
@@ -51,7 +51,8 @@ def get_all_std_database( condition, value ):
 	if len(condition) == 0:
 		my_cursor.execute( "SELECT * FROM students" )
 	else:
-		my_cursor.execute( f"SELECT * FROM students WHERE {condition} = '{value}'" )
+		my_cursor.execute( f"SELECT * FROM students \
+						   WHERE {condition} = '{value}'" )
 
 	result = my_cursor.fetchall()
 

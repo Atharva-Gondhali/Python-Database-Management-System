@@ -63,21 +63,27 @@ class Widgets:
 			self.frm, values = ['A', 'B', 'C'] )
 
 		
-		self.tpl_entry_box = ( self.ent_first_name, self.ent_last_name, self.ent_father_name, 
-							   self.ent_email_id, self.ent_age, self.ent_medical_com,
+		self.tpl_entry_box = ( self.ent_first_name, self.ent_last_name, 
+							   self.ent_father_name, self.ent_email_id, 
+							   self.ent_age, self.ent_medical_com,
 							   self.ent_address, self.ent_phone_number )
 
-		self.tpl_combo_box = ( self.combo_age_group, self.combo_gender, self.combo_course )
+		self.tpl_combo_box = ( self.combo_age_group, self.combo_gender, 
+							   self.combo_course )
 		
-		self.tpl_lbl = ( self.lbl_first_name, self.lbl_last_name, self.lbl_father_name, 
-						 self.lbl_email_id, self.lbl_age, self.lbl_age_group, 
-						 self.lbl_gender, self.lbl_course, self.lbl_medical_com, 
-						 self.lbl_address, self.lbl_phone_number )
+		self.tpl_lbl = ( self.lbl_first_name, self.lbl_last_name, 
+						 self.lbl_father_name, self.lbl_email_id, 
+						 self.lbl_age, self.lbl_age_group, 
+						 self.lbl_gender, self.lbl_course, 
+						 self.lbl_medical_com, self.lbl_address, 
+						 self.lbl_phone_number )
 
-		self.tpl_all_entries = ( self.ent_first_name, self.ent_last_name, self.ent_father_name, 
-								 self.ent_email_id, self.ent_age, self.combo_age_group, 
-								 self.combo_gender, self.combo_course, self.ent_medical_com, 
-								 self.ent_address, self.ent_phone_number )
+		self.tpl_all_entries = ( self.ent_first_name, self.ent_last_name, 
+								 self.ent_father_name, self.ent_email_id, 
+								 self.ent_age, self.combo_age_group, 
+								 self.combo_gender, self.combo_course, 
+								 self.ent_medical_com, self.ent_address, 
+								 self.ent_phone_number )
 
 		self.tpl_all_widgets = self.tpl_all_entries + self.tpl_lbl 
 
