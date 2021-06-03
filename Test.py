@@ -1,18 +1,12 @@
+import pickle
+acc = {'atharva' : 'atharva', 'gondhali' : 'atharva'}
 
-class variables:
-	def __init__( self ):
-		self.a = 10
-		self.b = 10
-		self.add = 0
+# Write
+file = open( 'data.pkl', 'wb' )
+pickle.dump( acc, file )
+file.close
 
-	def add(self):
-		self.add = self.a + self.b
-
-class calculate:
-	def display(self):
-		print( self.add )
-
-
-obj = variables()	
-obj.add()
-calculate.display( obj )
+#Read
+file = open("data.pkl", "rb")
+output = pickle.load(file)
+print(output)
