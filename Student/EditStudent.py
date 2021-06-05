@@ -77,8 +77,7 @@ class EditStudent:
 		def get_std( self ):
 			change_state( self, 'normal' )
 
-			std = get_std_databse( 
-				self.tpl_all_entries, ent_std_id.get() )
+			std = get_std_databse( ent_std_id.get() )
 
 			try:
 				pos = 1

@@ -22,7 +22,7 @@ def add_std_database( f1, f2, f3, f4, f5, f6, f7, f8, f9, f10, f11 ):
 	mydb.commit()
 
 
-def get_std_databse( tpl_entries, std_id ):
+def get_std_databse( std_id ):
 	my_cursor.execute( f"SELECT * FROM students WHERE student_id = '{std_id}'" )
 	std = my_cursor.fetchall()
 
