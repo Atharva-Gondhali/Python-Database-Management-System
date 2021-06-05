@@ -1,4 +1,3 @@
-from tkinter import *
 from tkinter import ttk
 
 from Dashboard_front import *

@@ -77,20 +77,6 @@ class AddStudent:
 			for i in self.tpl_combo_box:
 				i.current(0)	
 
-		def inp_num( self, event, ent ):
-			value = ent.get()	
-			ent.delete( 0, END )
-
-			try:
-				int( value )
-				ent.insert( 0, value )
-			except ValueError:
-				value_cor = ""
-				for i in value:
-					if i.isnumeric():
-						value_cor += i
-				ent.insert( 0, value_cor )
-
 		def back( self ):
 			self.frm.destroy() 	
 
