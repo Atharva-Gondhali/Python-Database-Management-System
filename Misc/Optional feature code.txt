@@ -9,3 +9,14 @@
 # result = my_cursor.fetchall()
 # for i in result:
 # 	print(i)
+
+
+# # Write
+# acc = {}
+# file = open( 'logger.pkl', 'wb' )
+# dump( acc, file )
+# file.close
+
+#Read
+# file = open("logger.pkl", "rb")
+# acc = load(file)

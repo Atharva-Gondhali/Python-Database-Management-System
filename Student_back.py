@@ -1,10 +1,14 @@
+import pickle
 import mysql.connector
 
+file = open( "back_info.pkl", "rb" )
+info = pickle.load( file )
+
 mydb = mysql.connector.connect( 
-	host = "localhost", 
-	user = "root", 
-	passwd = "atharva123@mysql", 
-	database = "project" )
+	host = info[0], 
+	user = info[1], 
+	passwd = info[2], 
+	database = info[3] )
 
 my_cursor = mydb.cursor()
 

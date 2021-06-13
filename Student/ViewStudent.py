@@ -100,23 +100,17 @@ class ViewStudent:
 		insert_records( self, '', '' )
 
 		# TREEVIEW - Scrollbar
-		v_scrollbar = ttk.Scrollbar( 
-			self.frm, orient = 'vertical' )
-		h_scrollbar = ttk.Scrollbar( 
-			self.frm, orient = 'horizontal' )
+		v_scrollbar = ttk.Scrollbar( self.frm, orient = 'vertical' )
+		h_scrollbar = ttk.Scrollbar( self.frm, orient = 'horizontal' )
   
-		v_scrollbar.configure( 
-			command = tree_std.yview )
-		h_scrollbar.configure( 
-			command = tree_std.xview )
+		v_scrollbar.configure( command = tree_std.yview )
+		h_scrollbar.configure( command = tree_std.xview )
   
-		tree_std.configure( 
-			yscrollcommand = v_scrollbar.set, xscrollcommand = h_scrollbar.set )
+		tree_std.configure( yscrollcommand = v_scrollbar.set,
+			xscrollcommand = h_scrollbar.set )
 
-		h_scrollbar.grid( 
-			row = 1, column = 0, columnspan = 3, sticky = EW )
-		v_scrollbar.grid( 
-			row = 0, column = 3, sticky = NS )
+		h_scrollbar.grid( row = 1, column = 0, columnspan = 3, sticky = EW )
+		v_scrollbar.grid( row = 0, column = 3, sticky = NS )
 
 
 		# BUTTONS

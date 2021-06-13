@@ -3,16 +3,13 @@ from tkinter import ttk
 from Main_window import *
 
 class Menu:
-	def __init__( self, win ):
-		self.win = win
-
-		self.frm = ttk.Frame(self.win, borderwidth = 3, relief = GROOVE, 
-			width = 200, height = 540, padding = 15 )
-		self.frm.grid( row = 0, column = 0, padx = ( 20, 15 ), pady = 20 )
+	def __init__( self, frm, frm_work ):
+		self.frm = frm
+		self.frm_work = frm_work
+		self.frm.grid( row = 1, column = 0, padx = ( 15, 10 ), pady = 20 )
 		self.frm.grid_propagate(0)
 
-
-		frm_workspace = Workspace( self.win )
+		frm_workspace = Workspace( frm_work )
 
 		# Functions Menu -
 		def open_menu_items( frame ):
