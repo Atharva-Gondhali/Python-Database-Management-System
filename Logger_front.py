@@ -1,20 +1,22 @@
 from tkinter import *
 from tkinter import ttk
 
+from Main_window import *
 from Logger_back import *
+
 
 class Logger:
 	def __init__( self, frm ):
 		self.frm = frm
-		self.mode = 0
 		
 		def sign_in():
 			if if_user_exists( ent_usenname.get() ):
 				if check_passwd( ent_usenname.get(), ent_password.get() ):
-					print( "Wellcome" )
+					obj = Main( root )
+				
 				else:
 					lbl_inc_pass.configure( foreground = 'black' )
-
+			
 			else:
 				lbl_inc_user.configure( foreground = 'black' )
 
@@ -31,19 +33,18 @@ class Logger:
 					ent_password.delete( 0, END )
 					error_lbl_reset()
 					sign_in_view()
+				
 				else:
 					lbl_inc_user.configure( text = "Username taken", foreground = "black" )
 
 
 		def sign_up_view():
 			error_lbl_reset()
-
 			btn_sign_in.configure( text = "Create User", command = create_user )
 			btn_sign_up.configure( text = "Sign In", command = sign_in_view )
 
 		def sign_in_view():
 			error_lbl_reset()
-
 			btn_sign_in.configure( text = "Sign In", command = sign_in )
 			btn_sign_up.configure( text = "Sign Up", command = sign_up_view )
 		

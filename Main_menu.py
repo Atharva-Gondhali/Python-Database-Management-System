@@ -1,6 +1,6 @@
 from tkinter import ttk
 
-from Main_window import *
+from Main_workspace import *
 
 class Menu:
 	def __init__( self, frm, frm_work ):

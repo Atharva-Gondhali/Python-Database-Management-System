@@ -1,24 +1,24 @@
+# IMPORTS
 from tkinter import ttk
 
-from Dashboard_front import *
-from Student_front import *
+from Main_menu import *
 
-class Workspace:
-	def __init__( self, frm ):
-		self.frm = frm
-		self.frm.grid( 
-			row = 1, column = 1, padx = ( 10, 15 ), pady = 20 )
-		self.frm.grid_propagate(0)
 
-		obj = Dashboard( self.frm )
+class Main:
+	def __init__( self, win ):
+		self.win = win
+		self.win.geometry( "915x680" )
+		self.win.resizable( width = False, height = False )
 
-	def change_dash( self ):
-		for widgets in self.frm.winfo_children():
-			widgets.destroy()
-		Dashboard( self.frm )
+		main_frame = ttk.Frame( self.win, borderwidth = 3, relief = GROOVE,
+			width = 895, height = 600 )
+		main_frame.grid_propagate(0)
+		main_frame.grid( row = 0, column = 0, padx = 10, pady = 10 )
 
-	def change_std( self ):
-		for widgets in self.frm.winfo_children():
-			widgets.destroy()
-		Student( self.frm )
+		menu_frame = ttk.Frame( main_frame, borderwidth = 3, relief = GROOVE, 
+			width = 200, height = 540, padding = 15 )
 
+		workspace_frame = ttk.Frame( main_frame, borderwidth = 3, 
+			relief = GROOVE, width = 640, height = 540 )
+
+		Menu( menu_frame, workspace_frame )
