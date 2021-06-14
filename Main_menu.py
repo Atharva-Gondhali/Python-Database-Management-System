@@ -6,7 +6,7 @@ class Menu:
 	def __init__( self, frm, frm_work ):
 		self.frm = frm
 		self.frm_work = frm_work
-		self.frm.grid( row = 1, column = 0, padx = ( 15, 10 ), pady = 20 )
+		self.frm.grid( row = 1, column = 0, padx = ( 15, 10 ), pady = (10, 15) )
 		self.frm.grid_propagate(0)
 
 		frm_workspace = Workspace( frm_work )
