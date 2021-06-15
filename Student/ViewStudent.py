@@ -63,38 +63,30 @@ class ViewStudent:
 								"Phone No." )
   
 		# TREEVIEW - Define columns
-		tree_std.column( 
-			"#0", width = 0, stretch = NO )
-		tree_std.column( 
-			"ID No.", width = 50, minwidth = 60, anchor = CENTER )
-		tree_std.column( 
-			"First Name", width = 95, minwidth = 100, anchor = W )
-		tree_std.column( 
-			"Last Name", width = 95, minwidth = 100, anchor = W )
-		tree_std.column( 
-			"Father's Name", width = 120, minwidth = 130, anchor = W )
-		tree_std.column( 
-			"Age Group", width = 75, minwidth = 80, anchor = CENTER )
-		tree_std.column( 
-			"Course", width = 80, minwidth = 90, anchor = W )
-		tree_std.column( 
-			"Phone No.", width = 100, minwidth = 110, anchor = CENTER )
+		tree_std.column( "#0", width = 0, stretch = NO )
+		tree_std.column( "ID No.", width = 50, minwidth = 60, 
+			anchor = CENTER )
+		tree_std.column( "First Name", width = 95, minwidth = 100, 
+			anchor = W )
+		tree_std.column( "Last Name", width = 95, minwidth = 100, 
+			anchor = W )
+		tree_std.column( "Father's Name", width = 120, minwidth = 130, 
+			anchor = W )
+		tree_std.column( "Age Group", width = 75, minwidth = 80, 
+			anchor = CENTER )
+		tree_std.column( "Course", width = 80, minwidth = 90, 
+			anchor = W )
+		tree_std.column( "Phone No.", width = 100, minwidth = 110, 
+			anchor = CENTER )
 
 		# TREEVIEW - Define colmn headings
-		tree_std.heading( 
-			"ID No.", text = "ID No.", anchor = CENTER )
-		tree_std.heading( 
-			"First Name", text = "First Name", anchor = W )
-		tree_std.heading( 
-			"Last Name", text = "Last Name", anchor = W )
-		tree_std.heading( 
-			"Father's Name", text = "Father's Name", anchor = W )
-		tree_std.heading( 
-			"Age Group", text = "Age Group", anchor = CENTER )
-		tree_std.heading( 
-			"Course", text = "Course", anchor = W )
-		tree_std.heading( 
-			"Phone No.", text = "Phone No.", anchor = CENTER )
+		tree_std.heading( "ID No.", text = "ID No.", anchor = CENTER )
+		tree_std.heading( "First Name", text = "First Name", anchor = W )
+		tree_std.heading( "Last Name", text = "Last Name", anchor = W )
+		tree_std.heading( "Father's Name", text = "Father's Name", anchor = W )
+		tree_std.heading( "Age Group", text = "Age Group", anchor = CENTER )
+		tree_std.heading( "Course", text = "Course", anchor = W )
+		tree_std.heading( "Phone No.", text = "Phone No.", anchor = CENTER )
 
 		# TREEVIEW - Adding records 
 		insert_records( self, '', '' )
@@ -114,31 +106,24 @@ class ViewStudent:
 
 
 		# BUTTONS
-		btn_back = ttk.Button( 
-			self.frm, text = "Back", command = lambda: back( self ) )
-		btn_back.grid( 
-			row = 2, column = 2, sticky = E, pady = ( 11, 0 ) )
+		btn_back = ttk.Button( self.frm, text = "Back", 
+			command = lambda: back( self ) )
+		btn_back.grid( row = 2, column = 2, sticky = E, pady = (11, 0) )
 
 		# LABELS
-		lbl_filter = ttk.Label( 
-			self.frm, text = "Filter", font = ( 'Helvetica', 10 ) )
-		lbl_filter.grid( 
-			row = 2, column = 0, pady = ( 11, 0 ), sticky = E )
+		lbl_filter = ttk.Label( self.frm, text = "Filter", 
+			font = ('Helvetica', 10) )
+		lbl_filter.grid( row = 2, column = 0, pady = (11, 0), sticky = E )
 
 		# COMBOBOX
-		combo_filter1 = ttk.Combobox( 
-			self.frm, values = [ 'None', 'Age Group', 'Course' ], state = 'readonly' )
-		combo_filter2 = ttk.Combobox( 
-			self.frm, state = 'disabled' )
+		combo_filter1 = ttk.Combobox( self.frm, 
+			values = [ 'None', 'Age Group', 'Course' ], state = 'readonly' )
+		combo_filter2 = ttk.Combobox( self.frm, state = 'disabled' )
 
 		combo_filter1.current(0)
 
-		combo_filter1.bind( 
-			"<FocusIn>", lambda event: set_filter1( self, event ) )
-		combo_filter2.bind( 
-			"<FocusIn>", lambda event: set_filter2( self, event ) )
+		combo_filter1.bind( "<FocusIn>", lambda event: set_filter1(self, event) )
+		combo_filter2.bind( "<FocusIn>", lambda event: set_filter2(self, event) )
 
-		combo_filter1.grid( 
-			row = 2, column = 1, pady = ( 11, 0 ) ) 
-		combo_filter2.grid( 
-			row = 2, column = 2, pady = ( 11, 0 ), sticky = W ) 
+		combo_filter1.grid( row = 2, column = 1, pady = (11, 0) ) 
+		combo_filter2.grid( row = 2, column = 2, pady = (11, 0), sticky = W ) 

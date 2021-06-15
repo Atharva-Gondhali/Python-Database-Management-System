@@ -21,8 +21,10 @@ class Logger:
 				lbl_inc_user.configure( foreground = 'black' )
 
 		def error_lbl_reset():
-			lbl_inc_user.configure( text = "User not found", foreground = "white" )
-			lbl_inc_pass.configure( text = "Incorrect Password", foreground = "white" )
+			lbl_inc_user.configure( text = "User not found", 
+				foreground = "white" )
+			lbl_inc_pass.configure( text = "Incorrect Password", 
+				foreground = "white" )
 
 		def create_user():
 			print( "create user" )
@@ -35,13 +37,15 @@ class Logger:
 					sign_in_view()
 				
 				else:
-					lbl_inc_user.configure( text = "Username taken", foreground = "black" )
-
+					lbl_inc_user.configure( text = "Username taken", 
+						foreground = "black" )
 
 		def sign_up_view():
 			error_lbl_reset()
-			btn_sign_in.configure( text = "Create User", command = create_user )
-			btn_sign_up.configure( text = "Sign In", command = sign_in_view )
+			btn_sign_in.configure( text = "Create User", 
+				command = create_user )
+			btn_sign_up.configure( text = "Sign In", 
+				command = sign_in_view )
 
 		def sign_in_view():
 			error_lbl_reset()
@@ -50,12 +54,18 @@ class Logger:
 		
 
 		# LABELS
-		lbl_greet = ttk.Label( self.frm, text = "Welcome", font = ("Helvetica", 18) )
-		lbl_username = ttk.Label( self.frm, text = "Username:", font = ("Helvetica", 12) )
-		lbl_password = ttk.Label( self.frm, text = "Password:", font = ("Helvetica", 12) )
-		lbl_or = ttk.Label( self.frm, text = "or", font = ("Helvetica", 10) ) 
-		lbl_inc_user = Label( self.frm, text = "User not found", foreground = 'white' ,font = ("Helvetica", 10) )
-		lbl_inc_pass = Label( self.frm, text = "Incorrect Password", foreground = 'white' ,font = ("Helvetica", 10) )
+		lbl_greet = ttk.Label( self.frm, text = "Welcome", 
+			font = ("Helvetica", 18) )
+		lbl_username = ttk.Label( self.frm, text = "Username:", 
+			font = ("Helvetica", 12) )
+		lbl_password = ttk.Label( self.frm, text = "Password:", 
+			font = ("Helvetica", 12) )
+		lbl_or = ttk.Label( self.frm, text = "or", 
+			font = ("Helvetica", 10) ) 
+		lbl_inc_user = Label( self.frm, text = "User not found", 
+			foreground = 'white' ,font = ("Helvetica", 10) )
+		lbl_inc_pass = Label( self.frm, text = "Incorrect Password", 
+			foreground = 'white' ,font = ("Helvetica", 10) )
 		
 		lbl_greet.grid( row = 0, column = 0, pady = (0, 25), columnspan = 2 )
 		lbl_username.grid( row = 1, column = 0, padx = (0,35), pady = (25, 7) )
@@ -74,11 +84,15 @@ class Logger:
 		
 		
 		# BUTTONS
-		btn_sign_in = ttk.Button( self.frm, text = "Sign In", command = sign_in )
-		btn_sign_up = ttk.Button( self.frm, text = "Sign Up", command = sign_up_view )
+		btn_sign_in = ttk.Button( self.frm, text = "Sign In", 
+			command = sign_in )
+		btn_sign_up = ttk.Button( self.frm, text = "Sign Up", 
+			command = sign_up_view )
 		
-		btn_sign_in.grid( row = 5, column = 0, columnspan = 2, pady = (7, 5), sticky = EW )
-		btn_sign_up.grid( row = 7, column = 0, columnspan = 2, pady = (5, 0), sticky = EW )
+		btn_sign_in.grid( row = 5, column = 0, columnspan = 2, pady = (7, 5), 
+			sticky = EW )
+		btn_sign_up.grid( row = 7, column = 0, columnspan = 2, pady = (5, 0), 
+			sticky = EW )
 
 
 root = Tk()

@@ -6,8 +6,7 @@ from Student_front import *
 class Workspace:
 	def __init__( self, frm ):
 		self.frm = frm
-		self.frm.grid( 
-			row = 1, column = 1, padx = ( 10, 15 ), pady = (10, 15) )
+		self.frm.grid( row = 1, column = 1, padx = (10, 15), pady = (10, 15) )
 		self.frm.grid_propagate(0)
 
 		obj = Dashboard( self.frm )
