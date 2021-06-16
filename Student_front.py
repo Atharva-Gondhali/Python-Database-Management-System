@@ -4,8 +4,6 @@ from Student.AddStudent import *
 from Student.EditStudent import *
 from Student.ViewStudent import *
 
-# Classes
-
 
 class Student:
     def __init__(self, frm):
