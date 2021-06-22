@@ -1,12 +1,16 @@
-# import pickle
-# acc = {'atharva' : 'atharva', 'gondhali' : 'atharva'}
+import pickle
+acc = {}
 
 # # Write
-# file = open( 'data.pkl', 'wb' )
+# file = open( 'logger.pkl', 'wb' )
 # pickle.dump( acc, file )
-# file.close
+# file.close()
 
-# #Read
-# file = open("data.pkl", "rb")
+# Read
+# file = open("E:\My Documents\Atharva\Coding\Project\logger.pkl", "rb")
 # output = pickle.load(file)
 # print(output)
+# file.close()
+
+l = [1,2,3,4]
+print( l.replace(2, 3) )

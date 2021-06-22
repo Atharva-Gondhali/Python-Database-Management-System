@@ -10,9 +10,10 @@ class Logger:
         self.frm = frm
 
         def sign_in():
-            if if_user_exists(ent_usenname.get()):
-                if check_passwd(ent_usenname.get(), ent_password.get()):
-                    obj = Main(root)
+            
+            if if_user_exists(ent_username.get()):
+                if check_passwd(ent_username.get(), ent_password.get()):
+                    obj = Main(root, ent_username.get())
 
                 else:
                     lbl_inc_pass.configure(foreground='black')
@@ -28,11 +29,13 @@ class Logger:
 
         def create_user():
             print("create user")
-            if len(ent_usenname.get()) > 0:
-                if not if_user_exists(ent_usenname.get()):
-                    add_user(ent_usenname.get(), ent_password.get())
-                    ent_usenname.delete(0, END)
+            if len(ent_username.get()) > 0:
+                if not if_user_exists(ent_username.get()):
+                    add_user(ent_username.get(), ent_password.get())
+                    
+                    ent_username.delete(0, END)
                     ent_password.delete(0, END)
+                    
                     error_lbl_reset()
                     sign_in_view()
 
@@ -74,10 +77,10 @@ class Logger:
         lbl_inc_pass.grid(row=4, column=1, sticky=E)
 
         # ENTRY BOX
-        ent_usenname = ttk.Entry(self.frm, width=28)
+        ent_username = ttk.Entry(self.frm, width=28)
         ent_password = ttk.Entry(self.frm, width=28)
 
-        ent_usenname.grid(row=1, column=1, pady=(20, 0))
+        ent_username.grid(row=1, column=1, pady=(20, 0))
         ent_password.grid(row=3, column=1, pady=(5, 0))
 
         # BUTTONS
