@@ -33,16 +33,16 @@ class Main:
             minute = strftime("%M")
             mer = strftime("%p")
 
-            lbl_clock.configure( text = day + ', ' + hour + ':' + minute + ' ' + mer )
-            lbl_clock.after( 1000, clock )
+            lbl_clock.configure(text=day + ', ' + hour +
+                                ':' + minute + ' ' + mer)
+            lbl_clock.after(1000, clock)
 
-        
-        lbl_clock = ttk.Label( account_frame, text = "", font = ('Helvetica', 10) )
-        lbl_user  = ttk.Label( account_frame, text = self.user, font = ('Helvetica', 16) )
+        lbl_clock = ttk.Label(account_frame, text="", font=('Helvetica', 10))
+        lbl_user = ttk.Label(account_frame, text=self.user,
+                             font=('Helvetica', 16))
 
-
-        lbl_user.pack( anchor = E, padx = (0, 10) )
-        lbl_clock.pack( anchor = E, padx = (0, 10) )
+        lbl_user.pack(anchor=E, padx=(0, 10))
+        lbl_clock.pack(anchor=E, padx=(0, 10))
 
         clock()
 
