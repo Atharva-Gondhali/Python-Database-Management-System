@@ -17,7 +17,6 @@ def login_db( user ):
     return db_name
 
 
-
 def if_user_exists(user):
     file = open("logger.pkl", "rb")
     acc = load(file)
