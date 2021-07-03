@@ -48,7 +48,8 @@ class Widgets:
                                           validatecommand=(vcmd, '%P'))
 
         self.combo_age_group = ttk.Combobox(self.frm,
-                                            values=['U-12', 'U-14', 'U-16', 'U-18', 'U-25', 'Open'])
+                                            values=['U-12', 'U-14', 'U-16', 
+                                                    'U-18', 'U-25', 'Open'])
         self.combo_gender = ttk.Combobox(self.frm,
                                          values=['Male', 'Female', 'Other'])
         self.combo_course = ttk.Combobox(self.frm,
