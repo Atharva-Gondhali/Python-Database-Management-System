@@ -20,6 +20,30 @@ def get_database():
     return info[3]
 
 
+def get_std_databse(std_id):
+    mydb.connect(database=get_database())
+    my_cursor.execute(f"SELECT * FROM students WHERE\
+                        student_id = '{std_id}'")
+    std = my_cursor.fetchall()
+
+    return std
+
+
+def get_all_std_database(condition, value):
+    mydb.connect(database=get_database())
+    if len(condition) == 0 and len(value) == 0:
+        my_cursor.execute("SELECT * FROM students")
+    elif len(condition) != 0 and len(value) == 0:
+        my_cursor.execute(f"SELECT {condition} FROM students")
+    else:
+        my_cursor.execute(f"SELECT * FROM students \
+						   WHERE {condition} = '{value}'")
+
+    result = my_cursor.fetchall()
+
+    return result
+
+
 def add_std_database(f1, f2, f3, f4, f5, f6, f7, f8, f9,
                      f10, f11):
     mydb.connect(database=get_database())
@@ -35,15 +59,6 @@ def add_std_database(f1, f2, f3, f4, f5, f6, f7, f8, f9,
 
     my_cursor.execute(command, values)
     mydb.commit()
-
-
-def get_std_databse(std_id):
-    mydb.connect(database=get_database())
-    my_cursor.execute(f"SELECT * FROM students WHERE\
-                        student_id = '{std_id}'")
-    std = my_cursor.fetchall()
-
-    return std
 
 
 def update_std_database(f1, f2, f3, f4, f5, f6, f7, f8,
@@ -64,16 +79,3 @@ def update_std_database(f1, f2, f3, f4, f5, f6, f7, f8,
 		WHERE student_id = '{f12.get()}'""")
 
     mydb.commit()
-
-
-def get_all_std_database(condition, value):
-    mydb.connect(database=get_database())
-    if len(condition) == 0:
-        my_cursor.execute("SELECT * FROM students")
-    else:
-        my_cursor.execute(f"SELECT * FROM students \
-						   WHERE {condition} = '{value}'")
-
-    result = my_cursor.fetchall()
-
-    return result
