@@ -10,7 +10,7 @@ class Logger:
         self.frm = frm
 
         def sign_in():
-            
+
             if if_user_exists(ent_username.get()):
                 if check_passwd(ent_username.get(), ent_password.get()):
                     obj = Main(root, ent_username.get())
@@ -33,10 +33,10 @@ class Logger:
             if len(ent_username.get()) > 0:
                 if not if_user_exists(ent_username.get()):
                     add_user(ent_username.get(), ent_password.get())
-                    
+
                     ent_username.delete(0, END)
                     ent_password.delete(0, END)
-                    
+
                     error_lbl_reset()
                     sign_in_view()
 

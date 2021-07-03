@@ -20,8 +20,8 @@ class ViewStudent:
             id = 0
             for i in result:
                 tree_std.insert(parent='', index='end', iid=id, text="",
-                                value=(i[0], i[1], i[2], i[3], i[6], 
-                                        i[8], i[11]))
+                                value=(i[0], i[1], i[2], i[3], i[6],
+                                       i[8], i[11]))
                 id += 1
 
         def set_filter1(self, event):
@@ -57,7 +57,7 @@ class ViewStudent:
         tree_std.grid(row=0, column=0, columnspan=3)
 
         tree_std['columns'] = ("ID No.", "First Name", "Last Name",
-                               "Father's Name", "Age Group", 
+                               "Father's Name", "Age Group",
                                "Course", "Phone No.")
 
         # TREEVIEW - Define columns
