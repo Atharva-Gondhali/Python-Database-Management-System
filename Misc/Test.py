@@ -1,16 +1,22 @@
-import pickle
-acc = {}
+from tkinter import *
+from tkinter import ttk
 
-# # Write
-# file = open( 'logger.pkl', 'wb' )
-# pickle.dump( acc, file )
-# file.close()
+root = Tk()
+root.geometry("500x300")
 
-# Read
-# file = open("E:\My Documents\Atharva\Coding\Project\logger.pkl", "rb")
-# output = pickle.load(file)
-# print(output)
-# file.close()
+lst = ["Dell", "Lenovo", "Asus", "Acer", "HP"]
 
-l = [1,2,3,4]
-print( l.replace(2, 3) )
+def update(event):
+    values = []
+    for i in lst:
+        if combo.get() in i and combo.get() != '':
+            values.append(i) 
+    
+    combo.configure(values = values )
+
+
+combo = ttk.Combobox(root)
+combo.grid(row = 0, column = 0, padx = 30, pady = 30)
+combo.bind("<KeyRelease>", update)
+
+root.mainloop()
