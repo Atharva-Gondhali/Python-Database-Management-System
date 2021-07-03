@@ -2,28 +2,43 @@ import mysql.connector
 from pickle import load
 from pickle import dump
 
-def login( user ):
-    file = open("back_info.pkl", "rb")
-    info = load(file)
-    info[3] = user
-    file.close()
-    file = open("back_info.pkl", "wb")
-    dump(info, file)
-    file.close()
 
-def login_db( user ):
+def login_db(user):
     db_name = user.lower().replace(" ", "") + "db"
     return db_name
+
+
+def check_passwd(user, passwd):
+    file = open("logger.pkl", "rb")
+    acc = load(file)
+    file.close()
+
+    if acc[user] == passwd:
+        return True
+
+    return False
 
 
 def if_user_exists(user):
     file = open("logger.pkl", "rb")
     acc = load(file)
     file.close()
+
     if user in acc:
         return True
-    else:
-        return False
+
+    return False
+
+
+def login(user):
+    file = open("back_info.pkl", "rb")
+    info = load(file)
+    info[3] = user
+    file.close()
+
+    file = open("back_info.pkl", "wb")
+    dump(info, file)
+    file.close()
 
 
 def add_user(user, passwd):
@@ -37,10 +52,7 @@ def add_user(user, passwd):
         passwd=info[2])
 
     my_cursor = mydb.cursor()
-
-    db_name = login_db( user )
-    my_cursor.execute(f"CREATE DATABASE {db_name}")
-
+    my_cursor.execute(f"CREATE DATABASE {login_db(user)}")
     my_cursor.close()
     mydb.close()
 
@@ -48,10 +60,9 @@ def add_user(user, passwd):
         host=info[0],
         user=info[1],
         passwd=info[2],
-        database=db_name)
+        database=login_db(user))
 
     my_cursor = mydb.cursor()
-
     my_cursor.execute("CREATE TABLE IF NOT EXISTS \
         students (student_id INT AUTO_INCREMENT PRIMARY KEY, \
         first_name VARCHAR(255), last_name VARCHAR(255), \
@@ -66,20 +77,9 @@ def add_user(user, passwd):
 
     file = open("logger.pkl", "rb")
     acc = load(file)
-    print(acc)
-    file.close()
     acc.update({user: passwd})
+    file.close()
+
     file = open('logger.pkl', 'wb')
     dump(acc, file)
     file.close()
-
-
-
-def check_passwd(user, passwd):
-    file = open("logger.pkl", "rb")
-    acc = load(file)
-    file.close()
-    if acc[user] == passwd:
-        return True
-    else:
-        return False
