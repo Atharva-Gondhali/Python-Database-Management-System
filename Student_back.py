@@ -8,13 +8,18 @@ file.close()
 mydb = mysql.connector.connect(
     host=info[0],
     user=info[1],
-    passwd=info[2],
-    database=info[3])
+    passwd=info[2],)
 
 my_cursor = mydb.cursor()
 
+def get_database():
+    file = open("back_info.pkl", "rb")
+    info = load(file)
+    file.close()
+    return info[3]
 
 def add_std_database(f1, f2, f3, f4, f5, f6, f7, f8, f9, f10, f11):
+    mydb.connect(database = get_database())
     command = "INSERT INTO students (first_name, last_name, father_name, \
 			   email_id, age, age_group, gender, course, medical_com, \
 			   address, phone_no) \
@@ -28,6 +33,7 @@ def add_std_database(f1, f2, f3, f4, f5, f6, f7, f8, f9, f10, f11):
 
 
 def get_std_databse(std_id):
+    mydb.connect(database = get_database())
     my_cursor.execute(f"SELECT * FROM students WHERE student_id = '{std_id}'")
     std = my_cursor.fetchall()
 
@@ -35,6 +41,7 @@ def get_std_databse(std_id):
 
 
 def update_std_database(f1, f2, f3, f4, f5, f6, f7, f8, f9, f10, f11, f12):
+    mydb.connect(database = get_database())
     my_cursor.execute(f"""UPDATE students SET
 		first_name = '{f1.get()}',
 		last_name = '{f2.get()}',
@@ -53,6 +60,7 @@ def update_std_database(f1, f2, f3, f4, f5, f6, f7, f8, f9, f10, f11, f12):
 
 
 def get_all_std_database(condition, value):
+    mydb.connect(database = get_database())
     if len(condition) == 0:
         my_cursor.execute("SELECT * FROM students")
     else:

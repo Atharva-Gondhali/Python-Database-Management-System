@@ -2,18 +2,17 @@ import mysql.connector
 from pickle import load
 from pickle import dump
 
+def login( user ):
+    file = open("back_info.pkl", "rb")
+    info = load(file)
+    info[3] = user
+    file.close()
+    file = open("back_info.pkl", "wb")
+    dump(info, file)
+    file.close()
 
 def login_db( user ):
-    db_name = user.lower() + "db"
-
-    # file = open("back_info.pkl", "rb")
-    # info = load(file)
-    # file.close
-    # info[3] = db_name
-    # file = open('logger.pkl', 'wb')
-    # dump(info, file)
-    # file.close()
-
+    db_name = user.lower().replace(" ", "") + "db"
     return db_name
 
 
@@ -39,7 +38,7 @@ def add_user(user, passwd):
 
     my_cursor = mydb.cursor()
 
-    db_name = user.replace(" ", "") + "db"
+    db_name = login_db( user )
     my_cursor.execute(f"CREATE DATABASE {db_name}")
 
     my_cursor.close()
@@ -67,6 +66,7 @@ def add_user(user, passwd):
 
     file = open("logger.pkl", "rb")
     acc = load(file)
+    print(acc)
     file.close()
     acc.update({user: passwd})
     file = open('logger.pkl', 'wb')

@@ -69,6 +69,7 @@ class AddStudent:
                              self.combo_gender, self.combo_course,
                              self.ent_medical_com, self.ent_address,
                              self.ent_phone_number)
+            clear_fields(self)
 
         def clear_fields(self):
             for i in self.tpl_entry_box:

@@ -14,6 +14,7 @@ class Logger:
             if if_user_exists(ent_username.get()):
                 if check_passwd(ent_username.get(), ent_password.get()):
                     obj = Main(root, ent_username.get())
+                    login(login_db(ent_username.get()))
 
                 else:
                     lbl_inc_pass.configure(foreground='black')
