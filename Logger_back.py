@@ -1,6 +1,5 @@
 import mysql.connector
-from pickle import load
-from pickle import dump
+from pickle import load, dump
 
 
 def login_db(user):

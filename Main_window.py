@@ -1,8 +1,7 @@
-# IMPORTS
-from time import strftime
+from tkinter import *
 from tkinter import ttk
-
-from Main_menu import *
+from time import strftime
+from Main_menu import Menu
 
 
 class Main:
@@ -11,6 +10,18 @@ class Main:
         self.win = win
         self.win.geometry("915x665")
         self.win.resizable(width=False, height=False)
+
+
+        def clock():
+            day = strftime("%A")
+            hour = strftime("%I")
+            minute = strftime("%M")
+            mer = strftime("%p")
+
+            lbl_clock.configure(text=day + ', ' + hour +
+                                ':' + minute + ' ' + mer)
+            lbl_clock.after(1000, clock)
+
 
         main_frame = ttk.Frame(self.win, width=895, height=660)
         menu_frame = ttk.Frame(main_frame, borderwidth=3,
@@ -29,15 +40,6 @@ class Main:
         account_frame.grid(row=0, column=0, padx=15, pady=(15, 0),
                            columnspan=2, sticky=EW)
 
-        def clock():
-            day = strftime("%A")
-            hour = strftime("%I")
-            minute = strftime("%M")
-            mer = strftime("%p")
-
-            lbl_clock.configure(text=day + ', ' + hour +
-                                ':' + minute + ' ' + mer)
-            lbl_clock.after(1000, clock)
 
         lbl_clock = ttk.Label(account_frame, text="",
                               font=('Helvetica', 10))

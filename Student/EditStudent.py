@@ -1,8 +1,7 @@
 from tkinter import *
 from tkinter import ttk
-
-from Student_back import *
-from Student.Widgets import *
+from Student.Widgets import Widgets
+from Student_back import get_std_databse, update_std_database
 
 
 class EditStudent:
@@ -12,6 +11,59 @@ class EditStudent:
         self.frm.grid(row=0, column=0)
 
         # FUNCTIONS
+        def back(self):
+            self.frm.destroy()
+
+
+        def change_state(self, state):
+            for i in self.tpl_all_entries:
+                i.configure(state=state)
+
+
+        def callback(P):
+            if str.isdigit(P) or P == "":
+                return True
+            else:
+                return False
+
+
+        def clear_fields(self):
+            for i in self.tpl_entry_box:
+                i.delete(0, END)
+
+            for i in self.tpl_combo_box:
+                i.current(0)
+
+
+        def update_std(self):
+            update_std_database(self.ent_first_name, self.ent_last_name,
+                                self.ent_father_name, self.ent_email_id,
+                                self.ent_age, self.combo_age_group,
+                                self.combo_gender, self.combo_course,
+                                self.ent_medical_com, self.ent_address,
+                                self.ent_phone_number, ent_std_id)
+
+            clear_fields(wdg)
+            ent_std_id.delete(0, END)
+            change_state(self, 'disabled')
+
+
+        def get_std(self):
+            change_state(self, 'normal')
+
+            std = get_std_databse(ent_std_id.get())
+
+            try:
+                pos = 1
+                for field in self.tpl_all_entries:
+                    field.delete(0, END)
+                    field.insert(0, str(std[0][pos]))
+                    pos += 1
+
+            except IndexError:
+                change_state(self, 'disabled')
+
+
         def widgets(self):
             self.lbl_first_name.grid(row=3, column=0, padx=(40, 5),
                                      pady=5, sticky=W)
@@ -62,51 +114,6 @@ class EditStudent:
             self.combo_course.grid(row=10, column=1, padx=15,
                                    pady=8, ipady=1, sticky=EW)
 
-        def change_state(self, state):
-            for i in self.tpl_all_entries:
-                i.configure(state=state)
-
-        def clear_fields(self):
-            for i in self.tpl_entry_box:
-                i.delete(0, END)
-
-            for i in self.tpl_combo_box:
-                i.current(0)
-
-        def get_std(self):
-            change_state(self, 'normal')
-
-            std = get_std_databse(ent_std_id.get())
-
-            try:
-                pos = 1
-                for field in self.tpl_all_entries:
-                    field.delete(0, END)
-                    field.insert(0, str(std[0][pos]))
-                    pos += 1
-            except IndexError:
-                change_state(self, 'disabled')
-
-        def update_std(self):
-            update_std_database(self.ent_first_name, self.ent_last_name,
-                                self.ent_father_name, self.ent_email_id,
-                                self.ent_age, self.combo_age_group,
-                                self.combo_gender, self.combo_course,
-                                self.ent_medical_com, self.ent_address,
-                                self.ent_phone_number, ent_std_id)
-
-            clear_fields(wdg)
-            ent_std_id.delete(0, END)
-            change_state(self, 'disabled')
-
-        def back(self):
-            self.frm.destroy()
-
-        def callback(P):
-            if str.isdigit(P) or P == "":
-                return True
-            else:
-                return False
 
         # WIDGETS
         wdg = Widgets(self.frm)

@@ -1,18 +1,41 @@
 from tkinter import *
 from tkinter import ttk
-
-from Main_window import *
 from Logger_back import *
+from Main_window import Main
 
 
 class Logger:
     def __init__(self, frm):
         self.frm = frm
 
-        def sign_in():
+        # FUNCTIONS
+        def error_lbl_reset():
+            lbl_inc_user.configure(text="User not found",
+                                   foreground="white")
+            lbl_inc_pass.configure(text="Incorrect Password",
+                                   foreground="white")
 
+
+        def sign_in_view():
+            error_lbl_reset()
+            
+            btn_sign_in.configure(text="Sign In", command=sign_in)
+            btn_sign_up.configure(text="Sign Up", command=sign_up_view)
+
+
+        def sign_up_view():
+            error_lbl_reset()
+            
+            btn_sign_in.configure(text="Create User",
+                                  command=create_user)
+            btn_sign_up.configure(text="Sign In",
+                                  command=sign_in_view)
+
+
+        def sign_in():
             if if_user_exists(ent_username.get()):
                 if check_passwd(ent_username.get(), ent_password.get()):
+                    
                     obj = Main(root, ent_username.get())
                     login(login_db(ent_username.get()))
 
@@ -22,11 +45,6 @@ class Logger:
             else:
                 lbl_inc_user.configure(foreground='black')
 
-        def error_lbl_reset():
-            lbl_inc_user.configure(text="User not found",
-                                   foreground="white")
-            lbl_inc_pass.configure(text="Incorrect Password",
-                                   foreground="white")
 
         def create_user():
             print("create user")
@@ -44,17 +62,6 @@ class Logger:
                     lbl_inc_user.configure(text="Username taken",
                                            foreground="black")
 
-        def sign_up_view():
-            error_lbl_reset()
-            btn_sign_in.configure(text="Create User",
-                                  command=create_user)
-            btn_sign_up.configure(text="Sign In",
-                                  command=sign_in_view)
-
-        def sign_in_view():
-            error_lbl_reset()
-            btn_sign_in.configure(text="Sign In", command=sign_in)
-            btn_sign_up.configure(text="Sign Up", command=sign_up_view)
 
         # LABELS
         lbl_greet = ttk.Label(self.frm, text="Welcome",

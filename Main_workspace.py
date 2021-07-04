@@ -1,7 +1,6 @@
 from tkinter import ttk
-
-from Dashboard_front import *
-from Student_front import *
+from Student_front import Student
+from Dashboard_front import Dashboard
 
 
 class Workspace:

@@ -1,7 +1,6 @@
 from tkinter import *
 from tkinter import ttk
-
-from Student_back import *
+from Student_back import get_all_std_database
 
 
 class ViewStudent:
@@ -11,18 +10,32 @@ class ViewStudent:
         self.frm.grid(row=0, column=0)
 
         # FUNCTIONS
+        def back(self):
+            self.frm.destroy()
+
+
+        def set_filter2(self, event):
+            if combo_filter1.get() == 'Age Group':
+                insert_records(self, 'age_group', combo_filter2.get())
+
+            elif combo_filter1.get() == 'Course':
+                insert_records(self, 'course', combo_filter2.get())
+
+
         def insert_records(self, condition, value):
             for i in tree_std.get_children():
                 tree_std.delete(i)
 
             result = get_all_std_database(condition, value)
-
             id = 0
+            
             for i in result:
                 tree_std.insert(parent='', index='end', iid=id, text="",
                                 value=(i[0], i[1], i[2], i[3], i[6],
                                        i[8], i[11]))
                 id += 1
+
+
 
         def set_filter1(self, event):
             if combo_filter1.get() == 'Age Group':
@@ -39,18 +52,11 @@ class ViewStudent:
 
             try:
                 combo_filter2.configure(values=value, state='readonly')
+            
             except UnboundLocalError:
                 pass
 
-        def set_filter2(self, event):
-            if combo_filter1.get() == 'Age Group':
-                insert_records(self, 'age_group', combo_filter2.get())
 
-            elif combo_filter1.get() == 'Course':
-                insert_records(self, 'course', combo_filter2.get())
-
-        def back(self):
-            self.frm.destroy()
 
         # TREEVIEW
         tree_std = ttk.Treeview(self.frm, height=22)

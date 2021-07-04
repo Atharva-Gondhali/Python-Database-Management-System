@@ -1,8 +1,9 @@
+from tkinter import *
 from tkinter import ttk
-
-from Student.AddStudent import *
-from Student.EditStudent import *
-from Student.ViewStudent import *
+from Student.AddStudent import AddStudent
+from Student.EditStudent import EditStudent
+from Student.ViewStudent import ViewStudent
+from Student_back import get_all_std_database
 
 
 class Student:
@@ -24,10 +25,9 @@ class Student:
 
             std = ViewStudent(frame_view_std)
 
-        def update(self, event, condition):
+        def update_record(self, event, condition):
             values = []
             tpl = get_data(self, condition)
-            print(tpl)
             for i in tpl:
                 for j in i:
                     if combo_main.get() in str(j) and combo_main.get() != '':
@@ -71,6 +71,7 @@ class Student:
                                   width=20, command=lambda: edit_std(self))
         btn_view_std = ttk.Button(self.frm, text="View Students",
                                   width=20, command=lambda: view_std(self))
+        btn_search_std = ttk.Button(self.frm, text="Select")
 
         btn_add_std.grid(row=4, column=0, padx=10, pady=15,
                          ipady=8)
@@ -78,22 +79,23 @@ class Student:
                           ipady=8)
         btn_view_std.grid(row=6, column=0, padx=10, pady=15,
                           ipady=8)
+        btn_search_std.grid(row = 2, column = 2, padx = 10)
 
         
         # COMBO BOX
         filters = ['Search by...', 'First name', 'Last name', 'Father\'s name',
                     'Email id', 'Phone number']
-        combo_main = ttk.Combobox(self.frm, width = 24, 
-                                  font = ('Helvetica', 12))
+        combo_main = ttk.Combobox(self.frm, width = 26, 
+                                  font = ('Helvetica', 10))
         combo_select = ttk.Combobox(self.frm, width = 15, 
-                                    font = ('Helvetica', 12), 
+                                    font = ('Helvetica', 10), 
                                     values = filters)
         
         combo_select.current(0)
         combo_main.bind("<KeyRelease>", lambda event: 
-                        update(self, event, combo_select.get()))
+                        update_record(self, event, combo_select.get()))
 
         combo_main.grid(row = 2, column = 0, padx = (30, 5),
-                        pady = (5, 20))
+                        pady = (20, 20))
         combo_select.grid(row = 2, column = 1, padx = (10, 5),
-                        pady = (14, 30), sticky = W)
+                        pady = (28, 30), sticky = W)
