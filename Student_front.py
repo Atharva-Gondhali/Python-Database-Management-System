@@ -3,6 +3,7 @@ from tkinter import ttk
 from Student.AddStudent import AddStudent
 from Student.EditStudent import EditStudent
 from Student.ViewStudent import ViewStudent
+from Student.SearchStudent import SearchStudent
 from Student_back import get_all_std_database
 
 
@@ -29,9 +30,8 @@ class Student:
             values = []
             tpl = get_data(self, condition)
             for i in tpl:
-                for j in i:
-                    if combo_main.get() in str(j) and combo_main.get() != '':
-                        values.append(j) 
+                if combo_main.get() in str(i[1]) and combo_main.get() != '':
+                    values.append(str(i[0])+'. '+str(i[1])) 
     
             combo_main.configure(values = values)
 
@@ -48,6 +48,14 @@ class Student:
                 return get_all_std_database('phone_no', '')
             else:
                 return get_all_std_database('first_name', '')
+
+        def show_std(value):
+            id = value[0]
+            tpl = get_all_std_database('student_id', id)
+
+            frame_sea_std = ttk.Frame(self.frm, width=635, height=535)
+            std = SearchStudent(frame_sea_std, tpl[0])
+
 
         # Label students
         lbl_student = ttk.Label(self.frm, text="Manage Students",
@@ -71,7 +79,8 @@ class Student:
                                   width=20, command=lambda: edit_std(self))
         btn_view_std = ttk.Button(self.frm, text="View Students",
                                   width=20, command=lambda: view_std(self))
-        btn_search_std = ttk.Button(self.frm, text="Select")
+        btn_search_std = ttk.Button(self.frm, text="Select", 
+                                    command = lambda: show_std(combo_main.get()))
 
         btn_add_std.grid(row=4, column=0, padx=10, pady=15,
                          ipady=8)

@@ -35,7 +35,8 @@ def get_all_std_database(condition, value):
     if len(condition) == 0 and len(value) == 0:
         my_cursor.execute("SELECT * FROM students")
     elif len(condition) != 0 and len(value) == 0:
-        my_cursor.execute(f"SELECT {condition} FROM students")
+        my_cursor.execute(f"SELECT student_id,\
+                          {condition} FROM students")
     else:
         my_cursor.execute(f"SELECT * FROM students \
 						   WHERE {condition} = '{value}'")
