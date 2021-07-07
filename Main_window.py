@@ -11,7 +11,6 @@ class Main:
         self.win.geometry("915x665")
         self.win.resizable(width=False, height=False)
 
-
         def clock():
             day = strftime("%A")
             hour = strftime("%I")
@@ -21,7 +20,6 @@ class Main:
             lbl_clock.configure(text=day + ', ' + hour +
                                 ':' + minute + ' ' + mer)
             lbl_clock.after(1000, clock)
-
 
         main_frame = ttk.Frame(self.win, width=895, height=660)
         menu_frame = ttk.Frame(main_frame, borderwidth=3,
@@ -39,7 +37,6 @@ class Main:
         main_frame.grid(row=0, column=0, padx=10, pady=10)
         account_frame.grid(row=0, column=0, padx=15, pady=(15, 0),
                            columnspan=2, sticky=EW)
-
 
         lbl_clock = ttk.Label(account_frame, text="",
                               font=('Helvetica', 10))

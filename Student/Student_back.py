@@ -1,5 +1,5 @@
-from pickle import load
 import mysql.connector
+from pickle import load
 
 file = open("back_info.pkl", "rb")
 info = load(file)
@@ -17,7 +17,7 @@ def get_database():
     file = open("back_info.pkl", "rb")
     info = load(file)
     file.close()
-    
+
     return info[3]
 
 

@@ -1,7 +1,7 @@
 from tkinter import *
 from tkinter import ttk
 from Student.Widgets import Widgets
-from Student_back import add_std_database
+from Student.Student_back import add_std_database
 
 
 class AddStudent:
@@ -14,14 +14,12 @@ class AddStudent:
         def back(self):
             self.frm.destroy()
 
-
         def clear_fields(self):
             for i in self.tpl_entry_box:
                 i.delete(0, END)
 
             for i in self.tpl_combo_box:
                 i.current(0)
-
 
         def add_std(self):
             add_std_database(self.ent_first_name, self.ent_last_name,
@@ -31,7 +29,6 @@ class AddStudent:
                              self.ent_medical_com, self.ent_address,
                              self.ent_phone_number)
             clear_fields(self)
-
 
         def widgets(self):
             self.lbl_first_name.grid(row=1, column=0, padx=(40, 5),
@@ -82,7 +79,6 @@ class AddStudent:
                                    pady=8, ipady=1, sticky=EW)
             self.combo_course.grid(row=8, column=1, padx=15,
                                    pady=8, ipady=1, sticky=EW)
-
 
         # WIDGETS
         wdg = Widgets(self.frm)

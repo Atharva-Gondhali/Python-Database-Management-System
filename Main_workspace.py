@@ -1,5 +1,5 @@
 from tkinter import ttk
-from Student_front import Student
+from Student.Student_front import Student
 from Dashboard_front import Dashboard
 
 
