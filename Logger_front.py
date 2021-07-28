@@ -9,6 +9,10 @@ class Logger:
         self.frm = frm
 
         # FUNCTIONS
+        def clear():
+            ent_username.delete(0, END)
+            ent_password.delete(0, END)
+
         def error_lbl_reset():
             lbl_inc_user.configure(text="User not found",
                                    foreground="white")
@@ -30,11 +34,14 @@ class Logger:
                                   command=sign_in_view)
 
         def sign_in():
-            if if_user_exists(ent_username.get()):
-                if check_passwd(ent_username.get(), ent_password.get()):
-
-                    obj = Main(root, ent_username.get())
-                    login(login_db(ent_username.get()))
+            username = ent_username.get()
+            password = ent_password.get()
+            if if_user_exists(username):
+                if check_passwd(username, password):
+                    clear()
+                    frm = ttk.Frame(root)
+                    obj = Main(frm, username)
+                    login(login_db(username))
 
                 else:
                     lbl_inc_pass.configure(foreground='black')
@@ -99,8 +106,7 @@ class Logger:
 
 
 root = Tk()
-root.geometry("438x430")
-
+root.resizable(width = False, height = False)
 main_frame = ttk.Frame(root, borderwidth=5, relief=GROOVE, padding=40)
 main_frame.grid(row=0, column=0, padx=30, pady=30)
 

@@ -3,21 +3,28 @@ from Main_workspace import Workspace
 
 
 class Menu:
-    def __init__(self, frm, frm_work):
+    def __init__(self, main_frame, frm, frm_work):
         self.frm = frm
         self.frm_work = frm_work
+        self.main_frm = main_frame
         self.frm.grid(row=1, column=0, padx=(15, 10), pady=(10, 15))
         self.frm.grid_propagate(0)
 
         frm_workspace = Workspace(frm_work)
 
         # Functions Menu -
+        def logout():
+            main_frame.destroy()
+
         def open_menu_items(frame):
             if frame == "Dashboard":
                 frm_workspace.change_dash()
 
             elif frame == "Student":
                 frm_workspace.change_std()
+
+            elif frame == "Settings":
+                frm_workspace.change_set()
 
         # STYLES
         style = ttk.Style()
@@ -33,17 +40,19 @@ class Menu:
                                  style='menu.TButton',
                                  command=lambda: open_menu_items("Student"))
         btn_unknown1 = ttk.Button(self.frm, text=".........",
-                                  style='menu.TButton')
+                                  style='menu.TButton', 
+                                  command= logout)
         btn_unknown2 = ttk.Button(self.frm, text=".........",
                                   style='menu.TButton')
-        btn_unknown3 = ttk.Button(self.frm, text="Settings",
-                                  style='menu.TButton')
+        btn_settings = ttk.Button(self.frm, text="Settings",
+                                  style='menu.TButton',
+                                  command = lambda: open_menu_items("Settings"))
 
         btn_dash.grid(row=0, column=0, ipady=23)
         btn_student.grid(row=1, column=0, ipady=23, pady=(10, 0))
         btn_unknown1.grid(row=2, column=0, ipady=23, pady=(10, 0))
         btn_unknown2.grid(row=3, column=0, ipady=23, pady=(10, 0))
-        btn_unknown3.grid(row=4, column=0, ipady=23, pady=(10, 0))
+        btn_settings.grid(row=4, column=0, ipady=23, pady=(10, 0))
 
         # Label menu
         lbl_logo = ttk.Label(self.frm, text="logo/app name")
