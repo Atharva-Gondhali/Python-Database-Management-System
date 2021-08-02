@@ -2,8 +2,12 @@ from tkinter import *
 from tkinter import ttk
 
 class Settings:
-    def __init__(self, frm):
+    def __init__(self, frm, main_frame):
         self.frm = frm
+
+
+        def logout():
+            main_frame.destroy()
 
 
         lbl_settings = ttk.Label(self.frm, text="Settings",
@@ -14,10 +18,10 @@ class Settings:
 
         btn_chn_pass = ttk.Button(self.frm, text = "Change Password",
                                   width = 20)
-        btn_del_usr = ttk.Button(self.frm, text = "Delete User",
+        btn_del_usr = ttk.Button(self.frm, text = "Delete Account",
                                   width = 20)
         btn_logout = ttk.Button(self.frm, text = "Logout",
-                                  width = 20)
+                                  width = 20, command = logout)
 
         btn_chn_pass.grid(row = 1, column = 0, padx=50, pady=(30, 15),
                           ipady=8 )

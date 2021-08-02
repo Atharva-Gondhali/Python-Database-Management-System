@@ -13,9 +13,6 @@ class Menu:
         frm_workspace = Workspace(frm_work)
 
         # Functions Menu -
-        def logout():
-            main_frame.destroy()
-
         def open_menu_items(frame):
             if frame == "Dashboard":
                 frm_workspace.change_dash()
@@ -24,7 +21,7 @@ class Menu:
                 frm_workspace.change_std()
 
             elif frame == "Settings":
-                frm_workspace.change_set()
+                frm_workspace.change_set(main_frame)
 
         # STYLES
         style = ttk.Style()
@@ -40,8 +37,7 @@ class Menu:
                                  style='menu.TButton',
                                  command=lambda: open_menu_items("Student"))
         btn_unknown1 = ttk.Button(self.frm, text=".........",
-                                  style='menu.TButton', 
-                                  command= logout)
+                                  style='menu.TButton')
         btn_unknown2 = ttk.Button(self.frm, text=".........",
                                   style='menu.TButton')
         btn_settings = ttk.Button(self.frm, text="Settings",
