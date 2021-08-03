@@ -33,12 +33,12 @@ class Logger:
             btn_sign_up.configure(text="Sign In",
                                   command=sign_in_view)
 
-        def sign_in():
-            username = ent_username.get()
-            password = ent_password.get()
+        def sign_in(): 
+            username, password = ent_username.get(), ent_password.get()
             if if_user_exists(username):
                 if check_passwd(username, password):
                     clear()
+                    error_lbl_reset()
                     frm = ttk.Frame(root)
                     obj = Main(frm, username)
                     login(login_db(username))
@@ -50,7 +50,6 @@ class Logger:
                 lbl_inc_user.configure(foreground='black')
 
         def create_user():
-            print("create user")
             if len(ent_username.get()) > 0:
                 if not if_user_exists(ent_username.get()):
                     add_user(ent_username.get(), ent_password.get())

@@ -1,13 +1,23 @@
 from tkinter import *
 from tkinter import ttk
+from Settings.Settings_back import *
+from Settings.ChnPassword import *
 
 class Settings:
-    def __init__(self, frm, main_frame):
+    def __init__(self, frm, main_frame, user):
         self.frm = frm
 
 
         def logout():
             main_frame.destroy()
+
+        def delete():
+            delete_user(user)
+            logout()
+
+        def chn_pass():
+            frame_chn_pass = ttk.Frame(self.frm, width=635, height=535)
+            ChnPassword(frame_chn_pass, user)
 
 
         lbl_settings = ttk.Label(self.frm, text="Settings",
@@ -17,9 +27,9 @@ class Settings:
                          sticky=W)
 
         btn_chn_pass = ttk.Button(self.frm, text = "Change Password",
-                                  width = 20)
+                                  width = 20, command = chn_pass)
         btn_del_usr = ttk.Button(self.frm, text = "Delete Account",
-                                  width = 20)
+                                  width = 20, command = delete)
         btn_logout = ttk.Button(self.frm, text = "Logout",
                                   width = 20, command = logout)
 

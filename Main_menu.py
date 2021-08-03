@@ -3,7 +3,7 @@ from Main_workspace import Workspace
 
 
 class Menu:
-    def __init__(self, main_frame, frm, frm_work):
+    def __init__(self, main_frame, frm, frm_work, user):
         self.frm = frm
         self.frm_work = frm_work
         self.main_frm = main_frame
@@ -21,7 +21,7 @@ class Menu:
                 frm_workspace.change_std()
 
             elif frame == "Settings":
-                frm_workspace.change_set(main_frame)
+                frm_workspace.change_set(main_frame, user)
 
         # STYLES
         style = ttk.Style()

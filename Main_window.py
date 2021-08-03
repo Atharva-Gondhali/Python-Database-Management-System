@@ -47,4 +47,4 @@ class Main:
 
         clock()
 
-        Menu(self.frm, menu_frame, workspace_frame)
+        Menu(self.frm, menu_frame, workspace_frame, self.user)

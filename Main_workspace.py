@@ -22,7 +22,7 @@ class Workspace:
             widgets.destroy()
         Student(self.frm)
 
-    def change_set(self, main_frame):
+    def change_set(self, main_frame, user):
         for widgets in self.frm.winfo_children():
             widgets.destroy()
-        Settings(self.frm, main_frame)
+        Settings(self.frm, main_frame, user)
