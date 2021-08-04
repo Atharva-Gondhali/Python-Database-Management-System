@@ -1,16 +1,19 @@
-from tkinter import ttk
+from tkinter import ttk     # Tkiner Imports
 
 
 class Widgets:
-    def __init__(self, frm):
+    def __init__(self, frm):    # initaializing frame and class
         self.frm = frm
 
-        def callback(P):
+        def callback(P):  # To validate some entry box to an integer input
             if str.isdigit(P) or P == "":
                 return True
             else:
                 return False
 
+        # WIDGETS
+        # Widget - Labels
+        # Defining
         self.lbl_first_name = ttk.Label(self.frm, text="First Name",
                                         font=('Helvetica', 11))
         self.lbl_last_name = ttk.Label(self.frm, text="Last Name",
@@ -34,8 +37,10 @@ class Widgets:
         self.lbl_phone_number = ttk.Label(self.frm, text="Phone Number",
                                           font=('Helvetica', 11))
 
-        vcmd = (self.frm.register(callback))
+        vcmd = (self.frm.register(callback))  # Validating input
 
+        # Widget - Entry box
+        # Defining
         self.ent_first_name = ttk.Entry(self.frm, width=30)
         self.ent_last_name = ttk.Entry(self.frm)
         self.ent_father_name = ttk.Entry(self.frm)
@@ -47,6 +52,8 @@ class Widgets:
         self.ent_phone_number = ttk.Entry(self.frm, validate='all',
                                           validatecommand=(vcmd, '%P'))
 
+        # Widget - Combo box
+        # Defining
         self.combo_age_group = ttk.Combobox(self.frm,
                                             values=['U-12', 'U-14', 'U-16',
                                                     'U-18', 'U-25', 'Open'])
@@ -55,6 +62,8 @@ class Widgets:
         self.combo_course = ttk.Combobox(self.frm,
                                          values=['A', 'B', 'C'])
 
+        # Variables
+        # Tuples of widgets
         self.tpl_entry_box = (self.ent_first_name, self.ent_last_name,
                               self.ent_father_name, self.ent_email_id,
                               self.ent_age, self.ent_medical_com,
@@ -79,5 +88,6 @@ class Widgets:
 
         self.tpl_all_widgets = self.tpl_all_entries + self.tpl_lbl
 
+        # Setting initial values to combo box
         for i in self.tpl_combo_box:
             i.current(0)

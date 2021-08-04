@@ -1,27 +1,30 @@
+# IMPORTS
 from tkinter import *
-from tkinter import ttk
-from Student.Widgets import Widgets
+from tkinter import ttk     # Tkinter imports
+from Student.Widgets import Widgets     # Widgets imports
 from Student.Student_back import add_std_database
+# Backend functions imports
 
 
 class AddStudent:
     def __init__(self, frm):
         self.frm = frm
-        self.frm.grid_propagate(0)
+        self.frm.grid_propagate(0)      # initaializing frame and class
         self.frm.grid(row=0, column=0)
 
         # FUNCTIONS
-        def back(self):
+        def back(self):     # Back Function to go back a menu
             self.frm.destroy()
 
-        def clear_fields(self):
+        def clear_fields(self):     # To clear all fields
             for i in self.tpl_entry_box:
                 i.delete(0, END)
 
             for i in self.tpl_combo_box:
                 i.current(0)
 
-        def add_std(self):
+        def add_std(self):      # To add student to database
+            # Function from backend file
             add_std_database(self.ent_first_name, self.ent_last_name,
                              self.ent_father_name, self.ent_email_id,
                              self.ent_age, self.combo_age_group,
@@ -30,7 +33,8 @@ class AddStudent:
                              self.ent_phone_number)
             clear_fields(self)
 
-        def widgets(self):
+        def widgets(self):  # Placing widgets
+            # Placing label widgets
             self.lbl_first_name.grid(row=1, column=0, padx=(40, 5),
                                      pady=8, sticky=W)
             self.lbl_last_name.grid(row=2, column=0, padx=(40, 5),
@@ -54,7 +58,7 @@ class AddStudent:
             self.lbl_phone_number.grid(row=11, column=0, padx=(40, 5),
                                        pady=8, sticky=W)
 
-            # ENTRY BOX
+            # Placing entry box widgets
             self.ent_first_name.grid(row=1, column=1, padx=15,
                                      pady=8, sticky=E, ipady=1)
             self.ent_last_name.grid(row=2, column=1, padx=15,
@@ -72,7 +76,7 @@ class AddStudent:
             self.ent_phone_number.grid(row=11, column=1, padx=15,
                                        pady=8, sticky=EW, ipady=1)
 
-            # COMBO BOX
+            # Placing combo box widgets
             self.combo_age_group.grid(row=6, column=1, padx=15,
                                       pady=8, ipady=1, sticky=EW)
             self.combo_gender.grid(row=7, column=1, padx=15,
@@ -81,16 +85,20 @@ class AddStudent:
                                    pady=8, ipady=1, sticky=EW)
 
         # WIDGETS
-        wdg = Widgets(self.frm)
+        wdg = Widgets(self.frm)     # Initaializing widget class
         widgets(wdg)
 
+        # Widgets - Labels
+        # Defining
         lbl_add_std = ttk.Label(self.frm, text="Admit Student",
                                 font=('Helvetica', 15))
 
+        # Placing
         lbl_add_std.grid(row=0, column=0, padx=30, pady=15,
                          sticky=W)
 
-        # BUTTONS
+        # Widgets - Buttons
+        # Defining
         btn_add_std = ttk.Button(self.frm, text="Add Student",
                                  command=lambda: add_std(wdg))
         btn_back = ttk.Button(self.frm, text="Back",
@@ -98,6 +106,7 @@ class AddStudent:
         btn_clr_field = ttk.Button(self.frm, text="Clear fields",
                                    command=lambda: clear_fields(wdg))
 
+        # Placing
         btn_add_std.grid(row=12, column=2, pady=8, padx=10,
                          ipadx=6)
         btn_back.grid(row=12, column=3, pady=8, padx=10,

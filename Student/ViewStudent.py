@@ -1,27 +1,50 @@
+# IMPORT
 from tkinter import *
-from tkinter import ttk
+from tkinter import ttk  # Tkiner Imports
 from Student.Student_back import get_all_std_database
+# Backend functions imports
 
 
 class ViewStudent:
-    def __init__(self, frm):
+    def __init__(self, frm):    # initaializing frame and class
         self.frm = frm
         self.frm.grid_propagate(0)
         self.frm.grid(row=0, column=0)
 
         # FUNCTIONS
-        def back(self):
+        def back(self):  # Back Function to go back a menu
             self.frm.destroy()
 
-        def set_filter2(self, event):
+        def set_filter2(self, event):  # Funtion for the second combo box
+            # Getting final condition and updating tree
             if combo_filter1.get() == 'Age Group':
                 insert_records(self, 'age_group', combo_filter2.get())
 
             elif combo_filter1.get() == 'Course':
                 insert_records(self, 'course', combo_filter2.get())
 
-        def insert_records(self, condition, value):
-            for i in tree_std.get_children():
+        def set_filter1(self, event):  # Funtion for the first combo box
+            # Checking selected contition and loading the next combo box
+            if combo_filter1.get() == 'Age Group':
+                value = ['U-12', 'U-14', 'U-16', 'U-18', 'U-25', 'Open']
+            elif combo_filter1.get() == 'Course':
+                value = ['A', 'B', 'C']
+            elif combo_filter1.get() == 'None':
+                combo_filter2.configure(state='disabled')
+                # Refreshing the tree
+                for i in tree_std.get_children():
+                    tree_std.delete(i)
+
+                insert_records(self, '', '')
+            # Fixing unknown error
+            try:
+                combo_filter2.configure(values=value, state='readonly')
+
+            except UnboundLocalError:
+                pass
+
+        def insert_records(self, condition, value):  # Function to
+            for i in tree_std.get_children():  # insert filtered values
                 tree_std.delete(i)
 
             result = get_all_std_database(condition, value)
@@ -36,29 +59,11 @@ class ViewStudent:
             except IndexError:
                 pass
 
-        def set_filter1(self, event):
-            if combo_filter1.get() == 'Age Group':
-                value = ['U-12', 'U-14', 'U-16', 'U-18', 'U-25', 'Open']
-            elif combo_filter1.get() == 'Course':
-                value = ['A', 'B', 'C']
-            elif combo_filter1.get() == 'None':
-                combo_filter2.configure(state='disabled')
-
-                for i in tree_std.get_children():
-                    tree_std.delete(i)
-
-                insert_records(self, '', '')
-
-            try:
-                combo_filter2.configure(values=value, state='readonly')
-
-            except UnboundLocalError:
-                pass
-
         # TREEVIEW
+        # Initializing tree view
         tree_std = ttk.Treeview(self.frm, height=22)
         tree_std.grid(row=0, column=0, columnspan=3)
-
+        # Treview fields
         tree_std['columns'] = ("ID No.", "First Name", "Last Name",
                                "Father's Name", "Age Group",
                                "Course", "Phone No.")
@@ -105,25 +110,34 @@ class ViewStudent:
         h_scrollbar.grid(row=1, column=0, columnspan=3, sticky=EW)
         v_scrollbar.grid(row=0, column=3, sticky=NS)
 
-        # BUTTONS
+        # WIDGETS
+        # Widgets - Buttons
+        # Defining
         btn_back = ttk.Button(self.frm, text="Back",
                               command=lambda: back(self))
+
+        # Placing
         btn_back.grid(row=2, column=2, sticky=E, pady=(11, 0))
 
-        # LABELS
+        # Widgets - Labels
+        # Defining
         lbl_filter = ttk.Label(self.frm, text="Filter",
                                font=('Helvetica', 10))
+
+        # Placing
         lbl_filter.grid(row=2, column=0, pady=(11, 0), sticky=E)
 
-        # COMBOBOX
+        # Widgets - Labels
+        # Defining
         combo_filter1 = ttk.Combobox(self.frm,
                                      values=['None', 'Age Group', 'Course'], state='readonly')
         combo_filter2 = ttk.Combobox(self.frm, state='disabled')
 
         combo_filter1.current(0)
-
+        # Event binding
         combo_filter1.bind("<FocusIn>", lambda event: set_filter1(self, event))
         combo_filter2.bind("<FocusIn>", lambda event: set_filter2(self, event))
 
+        # Placing
         combo_filter1.grid(row=2, column=1, pady=(11, 0))
         combo_filter2.grid(row=2, column=2, pady=(11, 0), sticky=W)

@@ -1,19 +1,22 @@
-import mysql.connector
-from pickle import load
+# IMPORTS
+import mysql.connector  # MySQL Connector import
+from pickle import load  # Pickle module import
 
+# Extracting database login info from pickle file
 file = open("back_info.pkl", "rb")
 info = load(file)
 file.close()
 
+# Connecting to Database
 mydb = mysql.connector.connect(
     host=info[0],
     user=info[1],
     passwd=info[2],)
-
+# Initializing database cursor
 my_cursor = mydb.cursor()
 
-
-def get_database():
+# FUNCTIONS
+def get_database():  # To get user specific database
     file = open("back_info.pkl", "rb")
     info = load(file)
     file.close()
@@ -21,8 +24,8 @@ def get_database():
     return info[3]
 
 
-def get_std_databse(std_id):
-    mydb.connect(database=get_database())
+def get_std_databse(std_id):  # To get a student from database
+    mydb.connect(database=get_database())  # using student id
     my_cursor.execute(f"SELECT * FROM students WHERE\
                         student_id = '{std_id}'")
     std = my_cursor.fetchall()
@@ -30,24 +33,22 @@ def get_std_databse(std_id):
     return std
 
 
-def get_all_std_database(condition, value):
+def get_all_std_database(condition, value):  # To get all students
     mydb.connect(database=get_database())
-    if len(condition) == 0 and len(value) == 0:
+    if len(condition) == 0 and len(value) == 0:  # All students
         my_cursor.execute("SELECT * FROM students")
-    elif len(condition) != 0 and len(value) == 0:
+    elif len(condition) != 0 and len(value) == 0:  # Specific fields
         my_cursor.execute(f"SELECT student_id,\
                           {condition} FROM students")
-    else:
+    else:   # To get a specific student based on condition
         my_cursor.execute(f"SELECT * FROM students \
 						   WHERE {condition} = '{value}'")
 
-    result = my_cursor.fetchall()
-
-    return result
+    return my_cursor.fetchall()
 
 
 def add_std_database(f1, f2, f3, f4, f5, f6, f7, f8, f9,
-                     f10, f11):
+                     f10, f11):  # Add Student to database
     mydb.connect(database=get_database())
     command = "INSERT INTO students (first_name, last_name,\
                 father_name, email_id, age, age_group, gender,\
@@ -64,7 +65,7 @@ def add_std_database(f1, f2, f3, f4, f5, f6, f7, f8, f9,
 
 
 def update_std_database(f1, f2, f3, f4, f5, f6, f7, f8,
-                        f9, f10, f11, f12):
+                        f9, f10, f11, f12):  # Update a student
     mydb.connect(database=get_database())
     my_cursor.execute(f"""UPDATE students SET
 		first_name = '{f1.get()}',
