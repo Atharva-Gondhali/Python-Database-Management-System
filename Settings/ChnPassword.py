@@ -1,6 +1,7 @@
 from tkinter import *
 from tkinter import ttk
-from Settings.Settings_back import verify_password
+from Settings.Settings_back import verify_password, \
+    change_password
 
 class ChnPassword:
     def __init__(self, frm, user):
@@ -12,6 +13,10 @@ class ChnPassword:
         def back(self):
             self.frm.destroy()
 
+        def clear():
+            for i in [ent_cur_pass, ent_new_pass, ent_cnew_pass]:
+                i.delete(0, END)
+
         def change_war_state(state):
             lbl_var_pass.configure(foreground = state)
             lbl_inc_pass.configure(foreground = state)
@@ -19,6 +24,7 @@ class ChnPassword:
         def change_state(state):
             ent_new_pass.configure(state = state)
             ent_cnew_pass.configure(state = state)
+            btn_new_pass.configure(state = state)
 
         def check_pass(paswd):
             if verify_password(user, paswd):
@@ -27,6 +33,15 @@ class ChnPassword:
             else:
                 lbl_inc_pass.configure(foreground= 'black')
                 change_state('disable')
+
+        def set_pass(passwd, cpasswd):
+            if passwd == cpasswd:
+                change_password(user, passwd)
+                clear()
+                change_war_state('white')
+                change_state('disabled')
+            else:
+                lbl_var_pass.configure(foreground= 'black')
 
 
         lbl_chn_pass = ttk.Label(self.frm, text="Change Password",
@@ -62,7 +77,9 @@ class ChnPassword:
                                   width = 15, 
                                 command= lambda: check_pass(ent_cur_pass.get()))
         btn_new_pass = ttk.Button(self.frm, text = "Change", 
-                                  width = 15, state = 'disabled')
+                                  width = 15, state = 'disabled',
+                                  command = lambda: set_pass(ent_new_pass.get(), 
+                                                             ent_cnew_pass.get()))
         btn_back = ttk.Button(self.frm, text = "Back", 
                               width = 15,
                               command=lambda: back(self))

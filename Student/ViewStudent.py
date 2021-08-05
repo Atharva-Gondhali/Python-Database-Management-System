@@ -15,22 +15,22 @@ class ViewStudent:
         def back(self):  # Back Function to go back a menu
             self.frm.destroy()
 
-        def set_filter2(self, event):  # Funtion for the second combo box
+        def set_filter2(self, event, cond1, cond2):  # Funtion for the second combo box
             # Getting final condition and updating tree
-            if combo_filter1.get() == 'Age Group':
-                insert_records(self, 'age_group', combo_filter2.get())
+            if cond1 == 'Age Group':
+                insert_records(self, 'age_group', cond2)
 
             elif combo_filter1.get() == 'Course':
-                insert_records(self, 'course', combo_filter2.get())
+                insert_records(self, 'course', cond2)
 
-        def set_filter1(self, event):  # Funtion for the first combo box
+        def set_filter1(self, event, cond1, combo2):  # Funtion for the first combo box
             # Checking selected contition and loading the next combo box
-            if combo_filter1.get() == 'Age Group':
+            if cond1 == 'Age Group':
                 value = ['U-12', 'U-14', 'U-16', 'U-18', 'U-25', 'Open']
-            elif combo_filter1.get() == 'Course':
+            elif cond1 == 'Course':
                 value = ['A', 'B', 'C']
-            elif combo_filter1.get() == 'None':
-                combo_filter2.configure(state='disabled')
+            elif cond1 == 'None':
+                combo2.configure(state='disabled')
                 # Refreshing the tree
                 for i in tree_std.get_children():
                     tree_std.delete(i)
@@ -38,7 +38,7 @@ class ViewStudent:
                 insert_records(self, '', '')
             # Fixing unknown error
             try:
-                combo_filter2.configure(values=value, state='readonly')
+                combo2.configure(values=value, state='readonly')
 
             except UnboundLocalError:
                 pass
@@ -130,13 +130,16 @@ class ViewStudent:
         # Widgets - Labels
         # Defining
         combo_filter1 = ttk.Combobox(self.frm,
-                                     values=['None', 'Age Group', 'Course'], state='readonly')
+                                     values=['None', 'Age Group', 'Course'], 
+                                     state='readonly')
         combo_filter2 = ttk.Combobox(self.frm, state='disabled')
 
         combo_filter1.current(0)
         # Event binding
-        combo_filter1.bind("<FocusIn>", lambda event: set_filter1(self, event))
-        combo_filter2.bind("<FocusIn>", lambda event: set_filter2(self, event))
+        combo_filter1.bind("<FocusIn>", lambda event: set_filter1(self, event, 
+                                          combo_filter1.get(), combo_filter2))
+        combo_filter2.bind("<FocusIn>", lambda event: set_filter2(self, event, 
+                                    combo_filter1.get(), combo_filter2.get()))
 
         # Placing
         combo_filter1.grid(row=2, column=1, pady=(11, 0))

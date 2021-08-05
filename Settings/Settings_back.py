@@ -39,3 +39,14 @@ def verify_password(user, password):
         return True
     
     return False
+
+def change_password(user, password):
+    file = open("logger.pkl", "rb")
+    acc = load(file)
+    file.close()
+
+    acc[user] = password
+
+    file = open("logger.pkl", "wb")
+    dump(acc, file)
+    file.close()
