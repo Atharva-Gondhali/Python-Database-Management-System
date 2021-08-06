@@ -27,7 +27,7 @@ class ChnPassword:
             btn_new_pass.configure(state=state)
 
         def check_pass(paswd):
-            if check_passwd()(user, paswd):
+            if check_passwd(user, paswd):
                 change_state('normal')
                 change_war_state('white')
             else:
