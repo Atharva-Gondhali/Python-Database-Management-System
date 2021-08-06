@@ -9,8 +9,9 @@ mydb = mysql.connector.connect(
     host=info[0],
     user=info[1],
     passwd=info[2])
-    
+
 my_cursor = mydb.cursor()
+
 
 def delete_user(user):
     db_name = user.lower().replace(" ", "") + "db"
@@ -18,8 +19,6 @@ def delete_user(user):
     my_cursor.close()
     mydb.close()
 
-    print("database deleted")
-    
     file = open("logger.pkl", "rb")
     acc = load(file)
     del acc[user]
@@ -27,18 +26,7 @@ def delete_user(user):
     file = open("logger.pkl", "wb")
     dump(acc, file)
     file.close()
-    
-    print("User deleted")
 
-def verify_password(user, password):
-    file = open("logger.pkl", "rb")
-    acc = load(file)
-    file.close()
-
-    if acc[user] == password:
-        return True
-    
-    return False
 
 def change_password(user, password):
     file = open("logger.pkl", "rb")
