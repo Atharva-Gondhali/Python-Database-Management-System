@@ -102,12 +102,13 @@ class Logger:
         btn_sign_up.grid(row=7, column=0, columnspan=2, pady=(5, 0),
                          sticky=EW)
 
+def Start():
+    global root
+    root = Tk()
+    root.resizable(width = False, height = False)
+    main_frame = ttk.Frame(root, borderwidth=5, relief=GROOVE, padding=40)
+    main_frame.grid(row=0, column=0, padx=30, pady=30)
 
-root = Tk()
-root.resizable(width = False, height = False)
-main_frame = ttk.Frame(root, borderwidth=5, relief=GROOVE, padding=40)
-main_frame.grid(row=0, column=0, padx=30, pady=30)
+    Logger(main_frame)
 
-Logger(main_frame)
-
-root.mainloop()
+    root.mainloop()
