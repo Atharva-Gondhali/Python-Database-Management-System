@@ -39,7 +39,7 @@ class Menu:
         btn_student = ttk.Button(self.frm, text="    Student\nManagement",
                                  style='menu.TButton',
                                  command=lambda: open_menu_items("Student"))
-        btn_unknown1 = ttk.Button(self.frm, text="    Course\nManagement",
+        btn_course = ttk.Button(self.frm, text="    Course\nManagement",
                                   style='menu.TButton',
                                  command=lambda: open_menu_items("Course"))
         btn_unknown2 = ttk.Button(self.frm, text=".........",
@@ -49,8 +49,8 @@ class Menu:
                                   command = lambda: open_menu_items("Settings"))
 
         btn_dash.grid(row=0, column=0, ipady=23)
-        btn_student.grid(row=1, column=0, ipady=23, pady=(10, 0))
-        btn_unknown1.grid(row=2, column=0, ipady=23, pady=(10, 0))
+        btn_student.grid(row=1, column=0, ipady=16, pady=(10, 0))
+        btn_course.grid(row=2, column=0, ipady=16, pady=(10, 0))
         btn_unknown2.grid(row=3, column=0, ipady=23, pady=(10, 0))
         btn_settings.grid(row=4, column=0, ipady=23, pady=(10, 0))
 
