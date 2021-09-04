@@ -20,6 +20,9 @@ class Menu:
             elif frame == "Student":
                 frm_workspace.change_std()
 
+            elif frame == "Course":
+                frm_workspace.change_cor()
+
             elif frame == "Settings":
                 frm_workspace.change_set(main_frame, user)
 
@@ -37,7 +40,8 @@ class Menu:
                                  style='menu.TButton',
                                  command=lambda: open_menu_items("Student"))
         btn_unknown1 = ttk.Button(self.frm, text="    Course\nManagement",
-                                  style='menu.TButton')
+                                  style='menu.TButton',
+                                 command=lambda: open_menu_items("Course"))
         btn_unknown2 = ttk.Button(self.frm, text=".........",
                                   style='menu.TButton')
         btn_settings = ttk.Button(self.frm, text="Settings",

@@ -1,5 +1,6 @@
 from tkinter import ttk
 from Dashboard_front import Dashboard
+from Course.Course_front import Course
 from Student.Student_front import Student
 from Settings.Settings_front import Settings
 
@@ -21,6 +22,11 @@ class Workspace:
         for widgets in self.frm.winfo_children():
             widgets.destroy()
         Student(self.frm)
+
+    def change_cor(self):
+        for widgets in self.frm.winfo_children():
+            widgets.destroy()
+        Course(self.frm)
 
     def change_set(self, main_frame, user):
         for widgets in self.frm.winfo_children():
