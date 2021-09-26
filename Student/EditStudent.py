@@ -61,6 +61,7 @@ class EditStudent:
                     pos += 1
 
             except IndexError:  # Check if entered id is invalid
+                clear_fields(wdg)
                 change_state(self, 'disabled')
 
         def widgets(self):  # Placing widgets
