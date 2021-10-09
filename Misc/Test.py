@@ -4,19 +4,21 @@ from tkinter import ttk
 root = Tk()
 root.geometry("500x300")
 
-lst = ["Dell", "Lenovo", "Asus", "Acer", "HP"]
+isTextStar = True
 
-def update(event):
-    values = []
-    for i in lst:
-        if combo.get() in i and combo.get() != '':
-            values.append(i) 
-    
-    combo.configure(values = values )
+def change():
+    global isTextStar
+    if isTextStar:
+        ent.configure(show = '')
+        isTextStar = False
+    else:
+        ent.configure(show = '*')
+        isTextStar = True
 
+btn = ttk.Button(root, text = "change", command = change)
+ent = ttk.Entry(root, show = '*')
 
-combo = ttk.Combobox(root)
-combo.grid(row = 0, column = 0, padx = 30, pady = 30)
-combo.bind("<KeyRelease>", update)
+btn.grid(row = 0, column = 0)
+ent.grid(row = 0, column = 1)
 
 root.mainloop()
