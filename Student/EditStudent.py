@@ -19,6 +19,9 @@ class EditStudent:
         def change_state(self, state):  # To change state of widgets
             for i in self.tpl_all_entries:
                 i.configure(state=state)
+            if(state == 'normal'):
+                for i in self.tpl_combo_box:
+                    i.configure(state='readonly')
 
         def callback(P):  # To validate some entry box to an integer input
             if str.isdigit(P) or P == "":

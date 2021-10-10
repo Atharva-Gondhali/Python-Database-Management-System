@@ -127,7 +127,7 @@ class ViewStudent:
         # Placing
         lbl_filter.grid(row=2, column=0, pady=(11, 0), sticky=E)
 
-        # Widgets - Labels
+        # Widgets - Combobox
         # Defining
         combo_filter1 = ttk.Combobox(self.frm,
                                      values=['None', 'Age Group', 'Course'], 

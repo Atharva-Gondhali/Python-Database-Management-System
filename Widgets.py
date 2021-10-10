@@ -1,3 +1,4 @@
+from tkinter import Text
 from tkinter import ttk     # Tkiner Imports
 
 
@@ -54,12 +55,12 @@ class StudentWidgets:
 
         # Widget - Combo box
         # Defining
-        self.combo_age_group = ttk.Combobox(self.frm,
+        self.combo_age_group = ttk.Combobox(self.frm, state='readonly',
                                             values=['U-12', 'U-14', 'U-16',
                                                     'U-18', 'U-25', 'Open'])
-        self.combo_gender = ttk.Combobox(self.frm,
+        self.combo_gender = ttk.Combobox(self.frm, state='readonly',
                                          values=['Male', 'Female', 'Other'])
-        self.combo_course = ttk.Combobox(self.frm,
+        self.combo_course = ttk.Combobox(self.frm, state='readonly',
                                          values=['A', 'B', 'C'])
 
         # Variables
@@ -92,8 +93,46 @@ class StudentWidgets:
         for i in self.tpl_combo_box:
             i.current(0)
 
-class StudentWidgets:
+class CourseWidgets:
     def __init__(self, frm):    # initaializing frame and class
         self.frm = frm
 
-    
+    # name, description, duration, test1[name, period], test2[name, period], test3[name, period]
+        # WIDGETS
+        # Widget - Labels
+        # Defining
+        self.lbl_course_name = ttk.Label(self.frm, text="Course Name",
+                                        font=('Helvetica', 11))
+        self.lbl_course_desc = ttk.Label(self.frm, text="Course Description",
+                                       font=('Helvetica', 11))
+        self.lbl_course_dur = ttk.Label(self.frm, text="Course Duration",
+                                         font=('Helvetica', 11))
+        self.lbl_test1 = ttk.Label(self.frm, text="Test Plan 1",
+                                      font=('Helvetica', 11))
+        self.test_name1 = ttk.Label(self.frm, text="Test Name",
+                                 font=('Helvetica', 11))
+        self.test_period1 = ttk.Label(self.frm, text="Test Period",
+                                       font=('Helvetica', 11))
+        self.lbl_test2 = ttk.Label(self.frm, text="Test Plan 2",
+                                      font=('Helvetica', 11))
+        self.test_name2 = ttk.Label(self.frm, text="Test Name",
+                                 font=('Helvetica', 11))
+        self.test_period2 = ttk.Label(self.frm, text="Test Period",
+                                       font=('Helvetica', 11))
+        self.lbl_test3 = ttk.Label(self.frm, text="Test Plan 3",
+                                      font=('Helvetica', 11))
+        self.test_name3 = ttk.Label(self.frm, text="Test Name",
+                                 font=('Helvetica', 11))
+        self.test_period3 = ttk.Label(self.frm, text="Test Period",
+                                       font=('Helvetica', 11))
+                                    
+        # Widget - Entry box
+        # Defining
+        self.ent_course_name = ttk.Entry(self.frm, width=30)
+        self.ent_test_name1 = ttk.Entry(self.frm)
+        self.ent_test_name2 = ttk.Entry(self.frm)
+        self.ent_test_name3 = ttk.Entry(self.frm)
+
+        # Widget - Text box
+        # Defining
+        self.txt_course_desc = Text(self.frm, font = ('Helvetica'))
