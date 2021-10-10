@@ -1,12 +1,18 @@
 # IMPORTS
 from tkinter import *
 from tkinter import ttk  # Tkiner Imports
+from Course.CreateCourse import CreateCourse   # All Course function
 
 
 class Course:
     def __init__(self, frm):
         self.frm = frm      # initaializing frame and class
 
+        # FUNCTIONS
+        def create_course(self):  # To open create Course Menu
+            frame_create_course = ttk.Frame(self.frm, width=635, height=535)
+
+            course = CreateCourse(frame_create_course)
 
     # Widgets - Labels
         # Defining
@@ -19,17 +25,17 @@ class Course:
 
     # Widgets - Buttons
         # Defining
-        btn_add_std = ttk.Button(self.frm, text="Create New Cousre",
-                                 width=20)
-        btn_edit_std = ttk.Button(self.frm, text="Edit Course",
+        btn_create_course = ttk.Button(self.frm, text="Create New Cousre",
+                                 width=20, command = lambda:create_course(self))
+        btn_edit_course = ttk.Button(self.frm, text="Edit Course",
                                   width=20)
-        btn_view_std = ttk.Button(self.frm, text=".....",
+        btn_view_course = ttk.Button(self.frm, text=".....",
                                   width=20)
 
         # Placing
-        btn_add_std.grid(row=4, column=0, padx=10, pady=15,
+        btn_create_course.grid(row=4, column=0, padx=10, pady=15,
                          ipady=8)
-        btn_edit_std.grid(row=5, column=0, padx=10, pady=15,
+        btn_edit_course.grid(row=5, column=0, padx=10, pady=15,
                           ipady=8)
-        btn_view_std.grid(row=6, column=0, padx=10, pady=15,
+        btn_view_course.grid(row=6, column=0, padx=10, pady=15,
                           ipady=8)

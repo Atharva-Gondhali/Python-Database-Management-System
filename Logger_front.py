@@ -21,13 +21,13 @@ class Logger:
 
         def sign_in_view():
             error_lbl_reset()
-
+            ent_password.configure(show = '*')
             btn_sign_in.configure(text="Sign In", command=sign_in)
             btn_sign_up.configure(text="Sign Up", command=sign_up_view)
 
         def sign_up_view():
             error_lbl_reset()
-
+            ent_password.configure(show = '')
             btn_sign_in.configure(text="Create User",
                                   command=create_user)
             btn_sign_up.configure(text="Sign In",
@@ -86,7 +86,7 @@ class Logger:
 
         # ENTRY BOX
         ent_username = ttk.Entry(self.frm, width=28)
-        ent_password = ttk.Entry(self.frm, width=28)
+        ent_password = ttk.Entry(self.frm, width=28, show = '*')
 
         ent_username.grid(row=1, column=1, pady=(20, 0))
         ent_password.grid(row=3, column=1, pady=(5, 0))

@@ -1,7 +1,7 @@
 # IMPORTS
 from tkinter import *
 from tkinter import ttk     # Tkinter imports
-from Student.Widgets import Widgets     # Widgets imports
+from Widgets import StudentWidgets     # Widgets imports
 
 
 class SearchStudent:
@@ -37,7 +37,7 @@ class SearchStudent:
                                        pady=(15, 0), sticky=W)
 
         # WIDGETS
-        wdg = Widgets(self.frm)     # Initaializing widget class
+        wdg = StudentWidgets(self.frm)     # Initaializing widget class
         widgets(wdg)
 
         # Widgets - Labels

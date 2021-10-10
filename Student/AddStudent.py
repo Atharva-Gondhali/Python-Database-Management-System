@@ -1,7 +1,7 @@
 # IMPORTS
 from tkinter import *
 from tkinter import ttk     # Tkinter imports
-from Student.Widgets import Widgets     # Widgets imports
+from Widgets import StudentWidgets     # Widgets imports
 from Student.Student_back import add_std_database
 # Backend functions imports
 
@@ -85,7 +85,7 @@ class AddStudent:
                                    pady=8, ipady=1, sticky=EW)
 
         # WIDGETS
-        wdg = Widgets(self.frm)     # Initaializing widget class
+        wdg = StudentWidgets(self.frm)     # Initaializing widget class
         widgets(wdg)
 
         # Widgets - Labels

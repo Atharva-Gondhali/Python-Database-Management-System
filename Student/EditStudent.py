@@ -1,7 +1,7 @@
 # IMPORTS
 from tkinter import *
 from tkinter import ttk     # Tkinter imports
-from Student.Widgets import Widgets     # Widgets imports
+from Widgets import StudentWidgets     # Widgets imports
 from Student.Student_back import get_std_databse, update_std_database
 # Backend functions imports
 
@@ -116,7 +116,7 @@ class EditStudent:
                                    pady=8, ipady=1, sticky=EW)
 
         # WIDGETS
-        wdg = Widgets(self.frm)     # Initaializing widget class
+        wdg = StudentWidgets(self.frm)     # Initaializing widget class
         widgets(wdg)
         change_state(wdg, 'disabled')  # Init for first run
 

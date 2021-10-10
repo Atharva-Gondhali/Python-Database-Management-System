@@ -1,7 +1,7 @@
 from tkinter import ttk     # Tkiner Imports
 
 
-class Widgets:
+class StudentWidgets:
     def __init__(self, frm):    # initaializing frame and class
         self.frm = frm
 
@@ -91,3 +91,9 @@ class Widgets:
         # Setting initial values to combo box
         for i in self.tpl_combo_box:
             i.current(0)
+
+class StudentWidgets:
+    def __init__(self, frm):    # initaializing frame and class
+        self.frm = frm
+
+    
