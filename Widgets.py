@@ -97,7 +97,14 @@ class CourseWidgets:
     def __init__(self, frm):    # initaializing frame and class
         self.frm = frm
 
-    # name, description, duration, test1[name, period], test2[name, period], test3[name, period]
+        def callback(P):  # To validate some entry box to an integer input
+            if str.isdigit(P) or P == "":
+                return True
+            else:
+                return False
+
+        vcmd = (self.frm.register(callback))  # Validating input
+
         # WIDGETS
         # Widget - Labels
         # Defining
@@ -132,7 +139,28 @@ class CourseWidgets:
         self.ent_test_name1 = ttk.Entry(self.frm)
         self.ent_test_name2 = ttk.Entry(self.frm)
         self.ent_test_name3 = ttk.Entry(self.frm)
+        self.ent_test_dur1 = ttk.Entry(self.frm, validate='all',
+                                 validatecommand=(vcmd, '%P'))
+        self.ent_test_dur2 = ttk.Entry(self.frm, validate='all',
+                                 validatecommand=(vcmd, '%P'))
+        self.ent_test_dur3 = ttk.Entry(self.frm, validate='all',
+                                 validatecommand=(vcmd, '%P'))
 
         # Widget - Text box
         # Defining
-        self.txt_course_desc = Text(self.frm, font = ('Helvetica'))
+        self.txt_course_desc = Text(self.frm, font = ('Helvetica', 10), 
+                                    height = 4, width  = 35)
+
+        # Widget - Combo box
+        # Defining
+        self.combo_course_dur_y = ttk.Combobox(self.frm, state='readonly',
+                                         values=[ "Years", 0, 1, 2, 3, 4, 5])
+        self.combo_course_dur_m = ttk.Combobox(self.frm, state='readonly',
+                                         values=[ "Months", 0, 1, 2, 3, 4, 5, 
+                                                6, 7, 8, 9, 10, 11, 12])
+        
+        
+        self.tpl_combo_box = (self.combo_course_dur_y, self.combo_course_dur_m)
+        
+        for i in self.tpl_combo_box:
+            i.current(0)
