@@ -149,7 +149,7 @@ class CourseWidgets:
         # Widget - Text box
         # Defining
         self.txt_course_desc = Text(self.frm, font = ('Helvetica', 10), 
-                                    height = 4, width  = 35)
+                                    height = 5, width  = 45)
 
         # Widget - Combo box
         # Defining
