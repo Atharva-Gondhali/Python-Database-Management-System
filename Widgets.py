@@ -1,4 +1,4 @@
-from tkinter import Text
+from tkinter import Text, END
 from tkinter import ttk  # Tkinter Imports
 
 
@@ -162,5 +162,9 @@ class CourseWidgets:
 
         self.tpl_combo_box = (self.combo_course_dur_y, self.combo_course_dur_m)
 
+        self.set_default()
+
+    def set_default(self):
+        self.ent_course_name.delete(0, END)
         for i in self.tpl_combo_box:
             i.current(0)
