@@ -1,9 +1,9 @@
 import mysql.connector
 from pickle import load, dump
 
-file = open("back_info.pkl", "rb")
-info = load(file)
-file.close()
+b_file = open("back_info.pkl", "rb")
+info = load(b_file)
+b_file.close()
 
 mydb = mysql.connector.connect(
     host=info[0],
