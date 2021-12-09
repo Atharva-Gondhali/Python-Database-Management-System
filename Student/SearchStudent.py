@@ -1,43 +1,43 @@
 # IMPORTS
 from tkinter import *
 from tkinter import ttk     # Tkinter imports
-from Widgets import StudentWidgets     # Widgets imports
+from Widgets import StudentWidgets     # Widget imports
 
 
 class SearchStudent:
     def __init__(self, frm, tpl):
         self.tpl = tpl
         self.frm = frm
-        self.frm.grid_propagate(0)          # initaializing frame and class
+        self.frm.grid_propagate(0)          # initializing frame and class
         self.frm.grid(row=0, column=0)
 
-        # FUNCTONS
-        def back(self):     # Back Function to go back a menu
-            self.frm.destroy()
+        # FUNCTIONS
+        def back(cls):     # Back Function to go back a menu
+            cls.frm.destroy()
 
-        def widgets(self):  # Placing widgets
+        def widgets(cls):  # Placing widgets
             # Placing label widgets
-            self.lbl_father_name.grid(row=1, column=1, padx=(40, 5),
-                                      pady=(20, 5), sticky=W)
-            self.lbl_email_id.grid(row=3, column=0, padx=(30, 40), pady=(15, 5),
-                                   sticky=W)
-            self.lbl_age.grid(row=3, column=1, padx=(40, 5),
-                              pady=(15, 5), sticky=W)
-            self.lbl_age_group.grid(row=5, column=0, padx=(30, 40), pady=(15, 5),
-                                    sticky=W)
-            self.lbl_gender.grid(row=5, column=1, padx=(40, 5),
-                                 pady=(15, 5), sticky=W)
-            self.lbl_course.grid(row=7, column=0, padx=(30, 40), pady=(15, 5),
-                                 sticky=W)
-            self.lbl_medical_com.grid(row=7, column=1, padx=(40, 5),
-                                      pady=(15, 5), sticky=W)
-            self.lbl_address.grid(row=9, column=0, padx=(30, 40), pady=(15, 5),
+            cls.lbl_father_name.grid(row=1, column=1, padx=(40, 5),
+                                     pady=(20, 5), sticky=W)
+            cls.lbl_email_id.grid(row=3, column=0, padx=(30, 40), pady=(15, 5),
                                   sticky=W)
-            self.lbl_phone_number.grid(row=9, column=1, padx=(40, 5),
-                                       pady=(15, 0), sticky=W)
+            cls.lbl_age.grid(row=3, column=1, padx=(40, 5),
+                             pady=(15, 5), sticky=W)
+            cls.lbl_age_group.grid(row=5, column=0, padx=(30, 40), pady=(15, 5),
+                                   sticky=W)
+            cls.lbl_gender.grid(row=5, column=1, padx=(40, 5),
+                                pady=(15, 5), sticky=W)
+            cls.lbl_course.grid(row=7, column=0, padx=(30, 40), pady=(15, 5),
+                                sticky=W)
+            cls.lbl_medical_com.grid(row=7, column=1, padx=(40, 5),
+                                     pady=(15, 5), sticky=W)
+            cls.lbl_address.grid(row=9, column=0, padx=(30, 40), pady=(15, 5),
+                                 sticky=W)
+            cls.lbl_phone_number.grid(row=9, column=1, padx=(40, 5),
+                                      pady=(15, 0), sticky=W)
 
         # WIDGETS
-        wdg = StudentWidgets(self.frm)     # Initaializing widget class
+        wdg = StudentWidgets(self.frm)     # Initializing widget class
         widgets(wdg)
 
         # Widgets - Labels
@@ -55,8 +55,8 @@ class SearchStudent:
                               font=('Helvetica', 13))
         lbl_age = ttk.Label(self.frm, text=self.tpl[5],
                             font=('Helvetica', 13))
-        lbl_agegroup = ttk.Label(self.frm, text=self.tpl[6],
-                                 font=('Helvetica', 13))
+        lbl_age_group = ttk.Label(self.frm, text=self.tpl[6],
+                                  font=('Helvetica', 13))
         lbl_gender = ttk.Label(self.frm, text=self.tpl[7],
                                font=('Helvetica', 13))
         lbl_course = ttk.Label(self.frm, text=self.tpl[8],
@@ -81,8 +81,8 @@ class SearchStudent:
                        sticky=W)
         lbl_age.grid(row=4, column=1, padx=(40, 5),
                      pady=3, sticky=NW)
-        lbl_agegroup.grid(row=6, column=0, padx=(30, 40), pady=(3, 15),
-                          sticky=W)
+        lbl_age_group.grid(row=6, column=0, padx=(30, 40), pady=(3, 15),
+                           sticky=W)
         lbl_gender.grid(row=6, column=1, padx=(40, 5),
                         pady=3, sticky=NW)
         lbl_course.grid(row=8, column=0, padx=(30, 40), pady=(3, 15),

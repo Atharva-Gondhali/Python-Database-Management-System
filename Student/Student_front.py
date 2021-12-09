@@ -1,6 +1,6 @@
 # IMPORTS
 from tkinter import *
-from tkinter import ttk  # Tkiner Imports
+from tkinter import ttk  # Tkinter Imports
 from Student.AddStudent import AddStudent   # All student function
 from Student.EditStudent import EditStudent  # classes imports
 from Student.ViewStudent import ViewStudent
@@ -11,34 +11,34 @@ from Student.Student_back import get_all_std_database
 
 class Student:
     def __init__(self, frm):
-        self.frm = frm      # initaializing frame and class
+        self.frm = frm      # initializing frame and class
 
         # FUNCTIONS
-        def add_std(self):  # To open Add Student Menu
-            frame_add_std = ttk.Frame(self.frm, width=635, height=535)
+        def add_std(cls):  # To open Add Student Menu
+            frame_add_std = ttk.Frame(cls.frm, width=635, height=535)
 
-            std = AddStudent(frame_add_std)
+            AddStudent(frame_add_std)
 
-        def edit_std(self):  # To open Edit Student Menu
-            frame_edit_std = ttk.Frame(self.frm, width=635, height=535)
+        def edit_std(cls):  # To open Edit Student Menu
+            frame_edit_std = ttk.Frame(cls.frm, width=635, height=535)
 
-            std = EditStudent(frame_edit_std)
+            EditStudent(frame_edit_std)
 
-        def view_std(self):  # To open View Student Menu
-            frame_view_std = ttk.Frame(self.frm, width=635, height=535)
+        def view_std(cls):  # To open View Student Menu
+            frame_view_std = ttk.Frame(cls.frm, width=635, height=535)
 
-            std = ViewStudent(frame_view_std)
+            ViewStudent(frame_view_std)
 
-        def update_record(self, event, condition):  # To fetch search results
+        def update_record(condition):  # To fetch search results
             values = []
-            tpl = get_data(self, condition)
+            tpl = get_data(condition)
             for i in tpl:
                 if combo_main.get() in str(i[1]) and combo_main.get() != '':
                     values.append(str(i[0])+'. '+str(i[1]))
 
             combo_main.configure(values=values)
 
-        def get_data(self, condition):  # To fetch student acc to the
+        def get_data(condition):  # To fetch student acc to the
             if condition == 'First name':  # condition selected
                 return get_all_std_database('first_name', '')
             elif condition == 'Last name':
@@ -53,11 +53,11 @@ class Student:
                 return get_all_std_database('first_name', '')
 
         def show_std(value):  # To open student view menu
-            id = value[0]
-            tpl = get_all_std_database('student_id', id)
+            std_id = value[0]
+            tpl = get_all_std_database('student_id', std_id)
 
             frame_sea_std = ttk.Frame(self.frm, width=635, height=535)
-            std = SearchStudent(frame_sea_std, tpl[0])
+            SearchStudent(frame_sea_std, tpl[0])
 
         # Widgets - Labels
         # Defining
@@ -108,7 +108,7 @@ class Student:
 
         combo_select.current(0)
         combo_main.bind("<KeyRelease>", lambda event:
-                        update_record(self, event, combo_select.get()))
+                        update_record(combo_select.get()))
         # Placing
         combo_main.grid(row=2, column=0, padx=(30, 5),
                         pady=(20, 20))

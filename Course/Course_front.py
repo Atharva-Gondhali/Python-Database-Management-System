@@ -12,7 +12,7 @@ class Course:
         def create_course(cls):  # To open create Course Menu
             frame_create_course = ttk.Frame(cls.frm, width=635, height=535)
 
-            course = CreateCourse(frame_create_course)
+            CreateCourse(frame_create_course)
 
         # Widgets - Labels
         # Defining

@@ -2,7 +2,7 @@ from tkinter import *
 from tkinter import ttk
 
 
-class Dashboard():
+class Dashboard:
     def __init__(self, frm):
         self.frm = frm
 

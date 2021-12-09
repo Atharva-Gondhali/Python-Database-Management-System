@@ -1,7 +1,7 @@
 # IMPORTS
 from tkinter import *
 from tkinter import ttk     # Tkinter imports
-from Widgets import StudentWidgets     # Widgets imports
+from Widgets import StudentWidgets     # Widget imports
 from Student.Student_back import add_std_database
 # Backend functions imports
 
@@ -9,83 +9,83 @@ from Student.Student_back import add_std_database
 class AddStudent:
     def __init__(self, frm):
         self.frm = frm
-        self.frm.grid_propagate(0)      # initaializing frame and class
+        self.frm.grid_propagate(0)      # initializing frame and class
         self.frm.grid(row=0, column=0)
 
         # FUNCTIONS
-        def back(self):     # Back Function to go back a menu
-            self.frm.destroy()
+        def back(cls):     # Back Function to go back a menu
+            cls.frm.destroy()
 
-        def clear_fields(self):     # To clear all fields
-            for i in self.tpl_entry_box:
+        def clear_fields(cls):     # To clear all fields
+            for i in cls.tpl_entry_box:
                 i.delete(0, END)
 
-            for i in self.tpl_combo_box:
+            for i in cls.tpl_combo_box:
                 i.current(0)
 
-        def add_std(self):      # To add student to database
-            # Function from backend file
-            add_std_database(self.ent_first_name, self.ent_last_name,
-                             self.ent_father_name, self.ent_email_id,
-                             self.ent_age, self.combo_age_group,
-                             self.combo_gender, self.combo_course,
-                             self.ent_medical_com, self.ent_address,
-                             self.ent_phone_number)
-            clear_fields(self)
+        def add_std(cls):      # To add student to database
+            # Function from backend b_file
+            add_std_database(cls.ent_first_name, cls.ent_last_name,
+                             cls.ent_father_name, cls.ent_email_id,
+                             cls.ent_age, cls.combo_age_group,
+                             cls.combo_gender, cls.combo_course,
+                             cls.ent_medical_com, cls.ent_address,
+                             cls.ent_phone_number)
+            clear_fields(cls)
 
-        def widgets(self):  # Placing widgets
+        def widgets(cls):  # Placing widgets
             # Placing label widgets
-            self.lbl_first_name.grid(row=1, column=0, padx=(40, 5),
-                                     pady=8, sticky=W)
-            self.lbl_last_name.grid(row=2, column=0, padx=(40, 5),
+            cls.lbl_first_name.grid(row=1, column=0, padx=(40, 5),
                                     pady=8, sticky=W)
-            self.lbl_father_name.grid(row=3, column=0, padx=(40, 5),
-                                      pady=8, sticky=W)
-            self.lbl_email_id.grid(row=4, column=0, padx=(40, 5),
+            cls.lbl_last_name.grid(row=2, column=0, padx=(40, 5),
                                    pady=8, sticky=W)
-            self.lbl_age.grid(row=5, 	column=0, padx=(40, 5),
-                              pady=8, sticky=W)
-            self.lbl_age_group.grid(row=6, column=0, padx=(40, 5),
-                                    pady=8, sticky=W)
-            self.lbl_gender.grid(row=7, column=0, padx=(40, 5),
-                                 pady=8, sticky=W)
-            self.lbl_course.grid(row=8, column=0, padx=(40, 5),
-                                 pady=8, sticky=W)
-            self.lbl_medical_com.grid(row=9, column=0, padx=(40, 5),
-                                      pady=8, sticky=W)
-            self.lbl_address.grid(row=10, column=0, padx=(40, 5),
+            cls.lbl_father_name.grid(row=3, column=0, padx=(40, 5),
+                                     pady=8, sticky=W)
+            cls.lbl_email_id.grid(row=4, column=0, padx=(40, 5),
                                   pady=8, sticky=W)
-            self.lbl_phone_number.grid(row=11, column=0, padx=(40, 5),
-                                       pady=8, sticky=W)
+            cls.lbl_age.grid(row=5, column=0, padx=(40, 5),
+                             pady=8, sticky=W)
+            cls.lbl_age_group.grid(row=6, column=0, padx=(40, 5),
+                                   pady=8, sticky=W)
+            cls.lbl_gender.grid(row=7, column=0, padx=(40, 5),
+                                pady=8, sticky=W)
+            cls.lbl_course.grid(row=8, column=0, padx=(40, 5),
+                                pady=8, sticky=W)
+            cls.lbl_medical_com.grid(row=9, column=0, padx=(40, 5),
+                                     pady=8, sticky=W)
+            cls.lbl_address.grid(row=10, column=0, padx=(40, 5),
+                                 pady=8, sticky=W)
+            cls.lbl_phone_number.grid(row=11, column=0, padx=(40, 5),
+                                      pady=8, sticky=W)
 
             # Placing entry box widgets
-            self.ent_first_name.grid(row=1, column=1, padx=15,
-                                     pady=8, sticky=E, ipady=1)
-            self.ent_last_name.grid(row=2, column=1, padx=15,
-                                    pady=8, sticky=EW, ipady=1)
-            self.ent_father_name.grid(row=3, column=1, padx=15,
-                                      pady=8, sticky=EW, ipady=1)
-            self.ent_email_id.grid(row=4, column=1, padx=15,
+            cls.ent_first_name.grid(row=1, column=1, padx=15,
+                                    pady=8, sticky=E, ipady=1)
+            cls.ent_last_name.grid(row=2, column=1, padx=15,
                                    pady=8, sticky=EW, ipady=1)
-            self.ent_age.grid(row=5, column=1, padx=15,
-                              pady=8, sticky=EW, ipady=1)
-            self.ent_medical_com.grid(row=9, column=1, padx=15,
-                                      pady=8, sticky=EW, ipady=1)
-            self.ent_address.grid(row=10, column=1, padx=15,
+            cls.ent_father_name.grid(row=3, column=1, padx=15,
+                                     pady=8, sticky=EW, ipady=1)
+            cls.ent_email_id.grid(row=4, column=1, padx=15,
                                   pady=8, sticky=EW, ipady=1)
-            self.ent_phone_number.grid(row=11, column=1, padx=15,
-                                       pady=8, sticky=EW, ipady=1)
+            cls.ent_age.grid(row=5, column=1, padx=15,
+                             pady=8, sticky=EW, ipady=1)
+            cls.ent_medical_com.grid(row=9, column=1, padx=15,
+                                     pady=8, sticky=EW, ipady=1)
+            cls.ent_address.grid(row=10, column=1, padx=15,
+                                 pady=8, sticky=EW, ipady=1)
+            cls.ent_phone_number.grid(row=11, column=1, padx=15,
+                                      pady=8, sticky=EW, ipady=1)
 
             # Placing combo box widgets
-            self.combo_age_group.grid(row=6, column=1, padx=15,
-                                      pady=8, ipady=1, sticky=EW)
-            self.combo_gender.grid(row=7, column=1, padx=15,
-                                   pady=8, ipady=1, sticky=EW)
-            self.combo_course.grid(row=8, column=1, padx=15,
-                                   pady=8, ipady=1, sticky=EW)
+            cls.combo_age_group.grid(row=6, column=1, padx=15,
+                                     pady=8, ipady=1, sticky=EW)
+            cls.combo_gender.grid(row=7, column=1, padx=15,
+                                  pady=8, ipady=1, sticky=EW)
+            cls.combo_course.grid(row=8, column=1, padx=15,
+                                  pady=8, ipady=1, sticky=EW)
 
         # WIDGETS
-        wdg = StudentWidgets(self.frm)     # Initaializing widget class
+        wdg = StudentWidgets(self.frm)     # Initializing widget class
         widgets(wdg)
 
         # Widgets - Labels

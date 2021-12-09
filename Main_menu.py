@@ -40,13 +40,13 @@ class Menu:
                                  style='menu.TButton',
                                  command=lambda: open_menu_items("Student"))
         btn_course = ttk.Button(self.frm, text="    Course\nManagement",
-                                  style='menu.TButton',
-                                 command=lambda: open_menu_items("Course"))
+                                style='menu.TButton',
+                                command=lambda: open_menu_items("Course"))
         btn_unknown2 = ttk.Button(self.frm, text=".........",
                                   style='menu.TButton')
         btn_settings = ttk.Button(self.frm, text="Settings",
                                   style='menu.TButton',
-                                  command = lambda: open_menu_items("Settings"))
+                                  command=lambda: open_menu_items("Settings"))
 
         btn_dash.grid(row=0, column=0, ipady=23)
         btn_student.grid(row=1, column=0, ipady=16, pady=(10, 0))

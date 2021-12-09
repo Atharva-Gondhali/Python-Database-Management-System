@@ -1,9 +1,9 @@
 from tkinter import Text
-from tkinter import ttk     # Tkiner Imports
+from tkinter import ttk  # Tkinter Imports
 
 
 class StudentWidgets:
-    def __init__(self, frm):    # initaializing frame and class
+    def __init__(self, frm):  # initializing frame and class
         self.frm = frm
 
         def callback(P):  # To validate some entry box to an integer input
@@ -38,7 +38,7 @@ class StudentWidgets:
         self.lbl_phone_number = ttk.Label(self.frm, text="Phone Number",
                                           font=('Helvetica', 11))
 
-        vcmd = (self.frm.register(callback))  # Validating input
+        v_cmd = (self.frm.register(callback))  # Validating input
 
         # Widget - Entry box
         # Defining
@@ -47,11 +47,11 @@ class StudentWidgets:
         self.ent_father_name = ttk.Entry(self.frm)
         self.ent_email_id = ttk.Entry(self.frm)
         self.ent_age = ttk.Entry(self.frm, validate='all',
-                                 validatecommand=(vcmd, '%P'))
+                                 validatecommand=(v_cmd, '%P'))
         self.ent_medical_com = ttk.Entry(self.frm)
         self.ent_address = ttk.Entry(self.frm)
         self.ent_phone_number = ttk.Entry(self.frm, validate='all',
-                                          validatecommand=(vcmd, '%P'))
+                                          validatecommand=(v_cmd, '%P'))
 
         # Widget - Combo box
         # Defining
@@ -93,8 +93,9 @@ class StudentWidgets:
         for i in self.tpl_combo_box:
             i.current(0)
 
+
 class CourseWidgets:
-    def __init__(self, frm):    # initaializing frame and class
+    def __init__(self, frm):  # initializing frame and class
         self.frm = frm
 
         def callback(P):  # To validate some entry box to an integer input
@@ -103,36 +104,36 @@ class CourseWidgets:
             else:
                 return False
 
-        vcmd = (self.frm.register(callback))  # Validating input
+        v_cmd = (self.frm.register(callback))  # Validating input
 
         # WIDGETS
         # Widget - Labels
         # Defining
         self.lbl_course_name = ttk.Label(self.frm, text="Course Name",
-                                        font=('Helvetica', 11))
-        self.lbl_course_desc = ttk.Label(self.frm, text="Course Description",
-                                       font=('Helvetica', 11))
-        self.lbl_course_dur = ttk.Label(self.frm, text="Course Duration",
                                          font=('Helvetica', 11))
+        self.lbl_course_desc = ttk.Label(self.frm, text="Course Description",
+                                         font=('Helvetica', 11))
+        self.lbl_course_dur = ttk.Label(self.frm, text="Course Duration",
+                                        font=('Helvetica', 11))
         self.lbl_test1 = ttk.Label(self.frm, text="Test Plan 1",
-                                      font=('Helvetica', 11))
+                                   font=('Helvetica', 11))
         self.test_name1 = ttk.Label(self.frm, text="Test Name",
-                                 font=('Helvetica', 11))
+                                    font=('Helvetica', 11))
         self.test_period1 = ttk.Label(self.frm, text="Test Period",
-                                       font=('Helvetica', 11))
+                                      font=('Helvetica', 11))
         self.lbl_test2 = ttk.Label(self.frm, text="Test Plan 2",
-                                      font=('Helvetica', 11))
+                                   font=('Helvetica', 11))
         self.test_name2 = ttk.Label(self.frm, text="Test Name",
-                                 font=('Helvetica', 11))
+                                    font=('Helvetica', 11))
         self.test_period2 = ttk.Label(self.frm, text="Test Period",
-                                       font=('Helvetica', 11))
-        self.lbl_test3 = ttk.Label(self.frm, text="Test Plan 3",
                                       font=('Helvetica', 11))
+        self.lbl_test3 = ttk.Label(self.frm, text="Test Plan 3",
+                                   font=('Helvetica', 11))
         self.test_name3 = ttk.Label(self.frm, text="Test Name",
-                                 font=('Helvetica', 11))
+                                    font=('Helvetica', 11))
         self.test_period3 = ttk.Label(self.frm, text="Test Period",
-                                       font=('Helvetica', 11))
-                                    
+                                      font=('Helvetica', 11))
+
         # Widget - Entry box
         # Defining
         self.ent_course_name = ttk.Entry(self.frm, width=30)
@@ -140,27 +141,26 @@ class CourseWidgets:
         self.ent_test_name2 = ttk.Entry(self.frm)
         self.ent_test_name3 = ttk.Entry(self.frm)
         self.ent_test_dur1 = ttk.Entry(self.frm, validate='all',
-                                 validatecommand=(vcmd, '%P'))
+                                       validatecommand=(v_cmd, '%P'))
         self.ent_test_dur2 = ttk.Entry(self.frm, validate='all',
-                                 validatecommand=(vcmd, '%P'))
+                                       validatecommand=(v_cmd, '%P'))
         self.ent_test_dur3 = ttk.Entry(self.frm, validate='all',
-                                 validatecommand=(vcmd, '%P'))
+                                       validatecommand=(v_cmd, '%P'))
 
         # Widget - Text box
         # Defining
-        self.txt_course_desc = Text(self.frm, font = ('Helvetica', 10), 
-                                    height = 5, width  = 45)
+        self.txt_course_desc = Text(self.frm, font=('Helvetica', 10),
+                                    height=5, width=45)
 
         # Widget - Combo box
         # Defining
         self.combo_course_dur_y = ttk.Combobox(self.frm, state='readonly',
-                                         values=[ "Years", 0, 1, 2, 3, 4, 5])
+                                               values=["Years", 0, 1, 2, 3, 4, 5])
         self.combo_course_dur_m = ttk.Combobox(self.frm, state='readonly',
-                                         values=[ "Months", 0, 1, 2, 3, 4, 5, 
-                                                6, 7, 8, 9, 10, 11, 12])
-        
-        
+                                               values=["Months", 0, 1, 2, 3, 4, 5,
+                                                       6, 7, 8, 9, 10, 11, 12])
+
         self.tpl_combo_box = (self.combo_course_dur_y, self.combo_course_dur_m)
-        
+
         for i in self.tpl_combo_box:
             i.current(0)

@@ -1,8 +1,7 @@
-from tkinter import ttk
-from Dashboard_front import Dashboard
 from Course.Course_front import Course
-from Student.Student_front import Student
+from Dashboard_front import Dashboard
 from Settings.Settings_front import Settings
+from Student.Student_front import Student
 
 
 class Workspace:
@@ -11,7 +10,7 @@ class Workspace:
         self.frm.grid(row=1, column=1, padx=(10, 15), pady=(10, 15))
         self.frm.grid_propagate(0)
 
-        obj = Dashboard(self.frm)
+        Dashboard(self.frm)
 
     def change_dash(self):
         for widgets in self.frm.winfo_children():

@@ -5,8 +5,9 @@ from Main_window import Main
 
 
 class Logger:
-    def __init__(self, frm):
+    def __init__(self, frm, win):
         self.frm = frm
+        self.win = win
 
         # FUNCTIONS
         def clear():
@@ -21,26 +22,25 @@ class Logger:
 
         def sign_in_view():
             error_lbl_reset()
-            ent_password.configure(show = '*')
+            ent_password.configure(show='*')
             btn_sign_in.configure(text="Sign In", command=sign_in)
             btn_sign_up.configure(text="Sign Up", command=sign_up_view)
 
         def sign_up_view():
             error_lbl_reset()
-            ent_password.configure(show = '')
+            ent_password.configure(show='')
             btn_sign_in.configure(text="Create User",
                                   command=create_user)
             btn_sign_up.configure(text="Sign In",
                                   command=sign_in_view)
 
-        def sign_in(): 
+        def sign_in():
             username, password = ent_username.get(), ent_password.get()
             if if_user_exists(username):
                 if check_passwd(username, password):
                     clear()
                     error_lbl_reset()
-                    frm = ttk.Frame(root)
-                    obj = Main(frm, username)
+                    Main(ttk.Frame(self.win), username)
                     login(login_db(username))
 
                 else:
@@ -86,7 +86,7 @@ class Logger:
 
         # ENTRY BOX
         ent_username = ttk.Entry(self.frm, width=28)
-        ent_password = ttk.Entry(self.frm, width=28, show = '*')
+        ent_password = ttk.Entry(self.frm, width=28, show='*')
 
         ent_username.grid(row=1, column=1, pady=(20, 0))
         ent_password.grid(row=3, column=1, pady=(5, 0))
@@ -102,13 +102,13 @@ class Logger:
         btn_sign_up.grid(row=7, column=0, columnspan=2, pady=(5, 0),
                          sticky=EW)
 
-def Start():
-    global root
+
+def start():
     root = Tk()
-    root.resizable(width = False, height = False)
+    root.resizable(width=False, height=False)
     main_frame = ttk.Frame(root, borderwidth=5, relief=GROOVE, padding=40)
     main_frame.grid(row=0, column=0, padx=30, pady=30)
 
-    Logger(main_frame)
+    Logger(main_frame, root)
 
     root.mainloop()

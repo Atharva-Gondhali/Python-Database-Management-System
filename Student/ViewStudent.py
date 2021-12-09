@@ -1,41 +1,44 @@
 # IMPORT
 from tkinter import *
-from tkinter import ttk  # Tkiner Imports
+from tkinter import ttk  # Tkinter Imports
 from Student.Student_back import get_all_std_database
+
+
 # Backend functions imports
 
 
 class ViewStudent:
-    def __init__(self, frm):    # initaializing frame and class
+    def __init__(self, frm):  # initializing frame and class
         self.frm = frm
         self.frm.grid_propagate(0)
         self.frm.grid(row=0, column=0)
 
         # FUNCTIONS
-        def back(self):  # Back Function to go back a menu
-            self.frm.destroy()
+        def back(cls):  # Back Function to go back a menu
+            cls.frm.destroy()
 
-        def set_filter2(self, event, cond1, cond2):  # Funtion for the second combo box
+        def set_filter2(cond1, cond2):  # Function for the second combo box
             # Getting final condition and updating tree
             if cond1 == 'Age Group':
-                insert_records(self, 'age_group', cond2)
+                insert_records('age_group', cond2)
 
             elif combo_filter1.get() == 'Course':
-                insert_records(self, 'course', cond2)
+                insert_records('course', cond2)
 
-        def set_filter1(self, event, cond1, combo2):  # Funtion for the first combo box
-            # Checking selected contition and loading the next combo box
+        def set_filter1(cond1, combo2):  # Function for the first combo box
+            # Checking selected condition and loading the next combo box
+            value = ()
             if cond1 == 'Age Group':
-                value = ['U-12', 'U-14', 'U-16', 'U-18', 'U-25', 'Open']
+                value = ('U-12', 'U-14', 'U-16', 'U-18', 'U-25', 'Open')
             elif cond1 == 'Course':
-                value = ['A', 'B', 'C']
-            elif cond1 == 'None':
+                value = ('A', 'B', 'C')
+            else:
                 combo2.configure(state='disabled')
                 # Refreshing the tree
                 for i in tree_std.get_children():
                     tree_std.delete(i)
 
-                insert_records(self, '', '')
+                insert_records('', '')
             # Fixing unknown error
             try:
                 combo2.configure(values=value, state='readonly')
@@ -43,19 +46,18 @@ class ViewStudent:
             except UnboundLocalError:
                 pass
 
-        def insert_records(self, condition, value):  # Function to
+        def insert_records(condition, value):  # Function to
             for i in tree_std.get_children():  # insert filtered values
                 tree_std.delete(i)
 
             result = get_all_std_database(condition, value)
-            id = 0
+            std_id = 0
 
             try:
                 for i in result:
-                    tree_std.insert(parent='', index='end', iid=id, text="",
-                                    value=(i[0], i[1], i[2], i[3], i[6],
-                                           i[8], i[11]))
-                    id += 1
+                    tree_std.insert(parent='', index='end', iid=str(std_id), text="",
+                                    values=(i[0], i[1], i[2], i[3], i[6], i[8], i[11]))
+                    std_id += 1
             except IndexError:
                 pass
 
@@ -63,7 +65,7 @@ class ViewStudent:
         # Initializing tree view
         tree_std = ttk.Treeview(self.frm, height=22)
         tree_std.grid(row=0, column=0, columnspan=3)
-        # Treview fields
+        # Treeview fields
         tree_std['columns'] = ("ID No.", "First Name", "Last Name",
                                "Father's Name", "Age Group",
                                "Course", "Phone No.")
@@ -85,7 +87,7 @@ class ViewStudent:
         tree_std.column("Phone No.", width=100, minwidth=110,
                         anchor=CENTER)
 
-        # TREEVIEW - Define colmn headings
+        # TREEVIEW - Define column headings
         tree_std.heading("ID No.", text="ID No.", anchor=CENTER)
         tree_std.heading("First Name", text="First Name", anchor=W)
         tree_std.heading("Last Name", text="Last Name", anchor=W)
@@ -95,7 +97,7 @@ class ViewStudent:
         tree_std.heading("Phone No.", text="Phone No.", anchor=CENTER)
 
         # TREEVIEW - Adding records
-        insert_records(self, '', '')
+        insert_records('', '')
 
         # TREEVIEW - Scrollbar
         v_scrollbar = ttk.Scrollbar(self.frm, orient='vertical')
@@ -130,16 +132,14 @@ class ViewStudent:
         # Widgets - Combobox
         # Defining
         combo_filter1 = ttk.Combobox(self.frm,
-                                     values=['None', 'Age Group', 'Course'], 
+                                     values=['None', 'Age Group', 'Course'],
                                      state='readonly')
         combo_filter2 = ttk.Combobox(self.frm, state='disabled')
 
         combo_filter1.current(0)
         # Event binding
-        combo_filter1.bind("<FocusIn>", lambda event: set_filter1(self, event, 
-                                          combo_filter1.get(), combo_filter2))
-        combo_filter2.bind("<FocusIn>", lambda event: set_filter2(self, event, 
-                                    combo_filter1.get(), combo_filter2.get()))
+        combo_filter1.bind("<FocusIn>", lambda event: set_filter1(combo_filter1.get(), combo_filter2))
+        combo_filter2.bind("<FocusIn>", lambda event: set_filter2(combo_filter1.get(), combo_filter2.get()))
 
         # Placing
         combo_filter1.grid(row=2, column=1, pady=(11, 0))

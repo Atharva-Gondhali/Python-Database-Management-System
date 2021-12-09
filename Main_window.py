@@ -31,7 +31,7 @@ class Main:
         account_frame = ttk.Frame(main_frame, borderwidth=3,
                                   relief=GROOVE, height=65)
 
-        account_frame.pack_propagate(0)
+        account_frame.pack_propagate(False)
 
         main_frame.grid(row=0, column=0, padx=10, pady=10)
         account_frame.grid(row=0, column=0, padx=15, pady=(15, 0),
