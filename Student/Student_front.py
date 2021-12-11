@@ -1,17 +1,19 @@
 # IMPORTS
 from tkinter import *
 from tkinter import ttk  # Tkinter Imports
-from Student.AddStudent import AddStudent   # All student function
+from Student.AddStudent import AddStudent  # All student function
 from Student.EditStudent import EditStudent  # classes imports
 from Student.ViewStudent import ViewStudent
 from Student.SearchStudent import SearchStudent
-from Student.Student_back import get_all_std_database
+from Student.Student_back import get_all_std_database, key
+
+
 # Backend functions imports
 
 
 class Student:
     def __init__(self, frm):
-        self.frm = frm      # initializing frame and class
+        self.frm = frm  # initializing frame and class
 
         # FUNCTIONS
         def add_std(cls):  # To open Add Student Menu
@@ -31,26 +33,12 @@ class Student:
 
         def update_record(condition):  # To fetch search results
             values = []
-            tpl = get_data(condition)
+            tpl = get_all_std_database(key[condition])
             for i in tpl:
                 if combo_main.get() in str(i[1]) and combo_main.get() != '':
-                    values.append(str(i[0])+'. '+str(i[1]))
+                    values.append(str(i[0]) + '. ' + str(i[1]))
 
             combo_main.configure(values=values)
-
-        def get_data(condition):  # To fetch student acc to the
-            if condition == 'First name':  # condition selected
-                return get_all_std_database('first_name', '')
-            elif condition == 'Last name':
-                return get_all_std_database('last_name', '')
-            elif condition == 'Father\'s name':
-                return get_all_std_database('father_name', '')
-            elif condition == 'Email id':
-                return get_all_std_database('email_id', '')
-            elif condition == 'Phone number':
-                return get_all_std_database('phone_no', '')
-            else:
-                return get_all_std_database('first_name', '')
 
         def show_std(value):  # To open student view menu
             std_id = value[0]
@@ -108,7 +96,7 @@ class Student:
 
         combo_select.current(0)
         combo_main.bind("<KeyRelease>", lambda event:
-                        update_record(combo_select.get()))
+        update_record(combo_select.get()))
         # Placing
         combo_main.grid(row=2, column=0, padx=(30, 5),
                         pady=(20, 20))

@@ -1,7 +1,7 @@
 # IMPORT
 from tkinter import *
 from tkinter import ttk  # Tkinter Imports
-from Student.Student_back import get_all_std_database
+from Student.Student_back import get_all_std_database, key
 
 
 # Backend functions imports
@@ -18,41 +18,30 @@ class ViewStudent:
             cls.frm.destroy()
 
         def set_filter2(cond1, cond2):  # Function for the second combo box
-            # Getting final condition and updating tree
-            if cond1 == 'Age Group':
-                insert_records('age_group', cond2)
-
-            elif combo_filter1.get() == 'Course':
-                insert_records('course', cond2)
+            insert_records(key[cond1], cond2)
 
         def set_filter1(cond1, combo2):  # Function for the first combo box
             # Checking selected condition and loading the next combo box
             value = ()
             if cond1 == 'Age Group':
                 value = ('U-12', 'U-14', 'U-16', 'U-18', 'U-25', 'Open')
+                combo2.configure(values=value, state='readonly')
             elif cond1 == 'Course':
                 value = ('A', 'B', 'C')
+                combo2.configure(values=value, state='readonly')
             else:
                 combo2.configure(state='disabled')
                 # Refreshing the tree
                 for i in tree_std.get_children():
                     tree_std.delete(i)
+                insert_records()
 
-                insert_records('', '')
-            # Fixing unknown error
-            try:
-                combo2.configure(values=value, state='readonly')
-
-            except UnboundLocalError:
-                pass
-
-        def insert_records(condition, value):  # Function to
+        def insert_records(condition='', value=''):  # Function to
             for i in tree_std.get_children():  # insert filtered values
                 tree_std.delete(i)
 
             result = get_all_std_database(condition, value)
             std_id = 0
-
             try:
                 for i in result:
                     tree_std.insert(parent='', index='end', iid=str(std_id), text="",

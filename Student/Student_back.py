@@ -2,6 +2,11 @@
 import mysql.connector  # MySQL Connector import
 from pickle import load  # Pickle module import
 
+key = {'Search by...': 'first_name', 'First name': 'first_name',
+       'Last name': 'last_name', 'Father\'s name': 'father_name',
+       'Email id': 'email_id', 'Phone number': 'phone_no',
+       'Age Group': 'age_group', 'Course': 'course'}
+
 # Extracting database login b_info from pickle b_file
 b_file = open("back_info.pkl", "rb")
 b_info = load(b_file)
@@ -17,6 +22,7 @@ my_cursor = mydb.cursor()
 
 
 # FUNCTIONS
+# Internal Functions
 def get_database():  # To get user specific database
     file = open("back_info.pkl", "rb")
     info = load(file)
@@ -25,20 +31,22 @@ def get_database():  # To get user specific database
     return info[3]
 
 
+# External Functions
+# Used in EditStudent.py
 def get_std_database(std_id):  # To get a student from database
     mydb.connect(database=get_database())  # using student id
-    my_cursor.execute(f"SELECT * FROM students WHERE\
-                        student_id = '{std_id}'")
-    std = my_cursor.fetchall()
+    std = get_all_std_database('student_id', std_id)
 
     return std
 
 
-def get_all_std_database(condition, value):  # To get all students
+# Used in Update.py and View.py
+def get_all_std_database(condition='', value=''):  # To get all students
     mydb.connect(database=get_database())
+
     if len(condition) == 0 and len(value) == 0:  # All students
         my_cursor.execute("SELECT * FROM students")
-    elif len(condition) != 0 and len(value) == 0:  # Specific fields
+    elif len(value) == 0 and not len(condition) == 0:  # Specific fields
         my_cursor.execute(f"SELECT student_id,\
                           {condition} FROM students")
     else:  # To get a specific student based on condition
@@ -48,6 +56,7 @@ def get_all_std_database(condition, value):  # To get all students
     return my_cursor.fetchall()
 
 
+# Used in AddStudent.py
 def add_std_database(values):  # Add Student to database
     mydb.connect(database=get_database())
     command = "INSERT INTO students (first_name, last_name,\
@@ -59,6 +68,7 @@ def add_std_database(values):  # Add Student to database
     mydb.commit()
 
 
+# Used in EditStudent.py
 def update_std_database(values):  # Update a student
     mydb.connect(database=get_database())
     my_cursor.execute(f"UPDATE students SET\
