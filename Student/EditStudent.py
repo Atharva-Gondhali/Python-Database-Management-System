@@ -17,7 +17,7 @@ class EditStudent:
             cls.frm.destroy()
 
         def change_state(cls, state):  # To change state of widgets
-            for i in cls.tpl_all_entries:
+            for i in cls.tpl_entry_box:
                 i.configure(state=state)
             if state == 'normal':
                 for i in cls.tpl_combo_box:
@@ -38,12 +38,11 @@ class EditStudent:
 
         def update_std(cls):   # To update student in database
             # Function from backend b_file
-            update_std_database(cls.ent_first_name, cls.ent_last_name,
-                                cls.ent_father_name, cls.ent_email_id,
-                                cls.ent_age, cls.combo_age_group,
-                                cls.combo_gender, cls.combo_course,
-                                cls.ent_medical_com, cls.ent_address,
-                                cls.ent_phone_number, ent_std_id)
+            values = ()
+            for i in cls.tpl_all_entries:
+                values += (i.get(),)
+            values += (ent_std_id.get(),)
+            update_std_database(values)
 
             # Resetting widgets
             clear_fields(wdg)

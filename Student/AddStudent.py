@@ -1,36 +1,38 @@
 # IMPORTS
 from tkinter import *
-from tkinter import ttk     # Tkinter imports
-from Widgets import StudentWidgets     # Widget imports
+from tkinter import ttk  # Tkinter imports
+from Widgets import StudentWidgets  # Widget imports
 from Student.Student_back import add_std_database
+
+
 # Backend functions imports
 
 
 class AddStudent:
     def __init__(self, frm):
         self.frm = frm
-        self.frm.grid_propagate(0)      # initializing frame and class
+        self.frm.grid_propagate(0)  # initializing frame and class
         self.frm.grid(row=0, column=0)
 
         # FUNCTIONS
-        def back(cls):     # Back Function to go back a menu
+        def back(cls):  # Back Function to go back a menu
             cls.frm.destroy()
 
-        def clear_fields(cls):     # To clear all fields
+        def clear_fields(cls):  # To clear all fields
             for i in cls.tpl_entry_box:
                 i.delete(0, END)
 
             for i in cls.tpl_combo_box:
                 i.current(0)
 
-        def add_std(cls):      # To add student to database
+        def add_std(cls):  # To add student to database
             # Function from backend b_file
-            add_std_database(cls.ent_first_name, cls.ent_last_name,
-                             cls.ent_father_name, cls.ent_email_id,
-                             cls.ent_age, cls.combo_age_group,
-                             cls.combo_gender, cls.combo_course,
-                             cls.ent_medical_com, cls.ent_address,
-                             cls.ent_phone_number)
+            values = ()
+            for i in cls.tpl_all_entries:
+                values += (i.get(),)
+
+            print(values)
+            add_std_database(values)
             clear_fields(cls)
 
         def widgets(cls):  # Placing widgets
@@ -85,7 +87,7 @@ class AddStudent:
                                   pady=8, ipady=1, sticky=EW)
 
         # WIDGETS
-        wdg = StudentWidgets(self.frm)     # Initializing widget class
+        wdg = StudentWidgets(self.frm)  # Initializing widget class
         widgets(wdg)
 
         # Widgets - Labels

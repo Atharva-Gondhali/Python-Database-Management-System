@@ -2,6 +2,7 @@
 from tkinter import *
 from tkinter import ttk  # Tkinter imports
 from Widgets import CourseWidgets
+from Course.Course_back import add_course_database
 
 
 class CreateCourse:
@@ -15,6 +16,24 @@ class CreateCourse:
             cls.frm.destroy()
 
         def clear(cls):
+            cls.set_default()
+
+        def add_course(cls):
+            print(type(cls.combo_course_dur_y.get()))
+            if (cls.combo_course_dur_y.get().isalnum() and
+                    cls.combo_course_dur_m.get().isalnum()):
+                duration = ((int(cls.combo_course_dur_y.get()) * 100) +
+                            int(cls.combo_course_dur_m.get()))
+            else:
+                duration = 0
+
+            values = (cls.ent_course_name.get(),
+                      cls.txt_course_desc.get(1.0, END),
+                      duration,
+                      '', '', '')
+            print(values)
+
+            add_course_database(values)
             cls.set_default()
 
         def widgets(cls):  # Placing widgets
@@ -52,7 +71,7 @@ class CreateCourse:
         # Widgets - Buttons
         # Defining
         btn_create_course = ttk.Button(self.frm, text="Create Course",
-                                       width=13)
+                                       width=13, command=lambda: add_course(wdg))
         btn_back = ttk.Button(self.frm, text="Back",
                               command=lambda: back(self), width=13)
         btn_clr_field = ttk.Button(self.frm, text="Clear fields",

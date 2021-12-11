@@ -71,6 +71,12 @@ def add_user(user, passwd):
         medical_com VARCHAR(255), address  VARCHAR(255), \
         phone_no BIGINT(20))")
 
+    my_cursor.execute("CREATE TABLE IF NOT EXISTS\
+        course (course_id INT AUTO_INCREMENT PRIMARY KEY,\
+        name VARCHAR(50), description TEXT,\
+        duration SMALLINT(4), test1 VARCHAR(50),\
+        test2 VARCHAR(50), test3 VARCHAR(50))")
+
     my_cursor.close()
     mydb.close()
 

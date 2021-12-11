@@ -161,7 +161,7 @@ class CourseWidgets:
                                                        6, 7, 8, 9, 10, 11, 12])
 
         self.tpl_combo_box = (self.combo_course_dur_y, self.combo_course_dur_m)
-
+        self.tpl_entry_box = (self.ent_course_name, self.txt_course_desc)
         self.set_default()
 
     def set_default(self):

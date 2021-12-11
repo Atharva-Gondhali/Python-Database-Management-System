@@ -104,7 +104,7 @@ class Student:
                                   font=('Helvetica', 10))
         combo_select = ttk.Combobox(self.frm, width=15,
                                     font=('Helvetica', 10),
-                                    values=filters)
+                                    values=filters, state='readonly')
 
         combo_select.current(0)
         combo_main.bind("<KeyRelease>", lambda event:
