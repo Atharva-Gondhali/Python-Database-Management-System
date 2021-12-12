@@ -13,21 +13,21 @@ class Workspace:
         Dashboard(self.frm)
 
     def change_dash(self):
-        for widgets in self.frm.winfo_children():
-            widgets.destroy()
+        for widget in self.frm.winfo_children():
+            widget.destroy()
         Dashboard(self.frm)
 
     def change_std(self):
-        for widgets in self.frm.winfo_children():
-            widgets.destroy()
+        for widget in self.frm.winfo_children():
+            widget.destroy()
         Student(self.frm)
 
     def change_cor(self):
-        for widgets in self.frm.winfo_children():
-            widgets.destroy()
+        for widget in self.frm.winfo_children():
+            widget.destroy()
         Course(self.frm)
 
     def change_set(self, main_frame, user):
-        for widgets in self.frm.winfo_children():
-            widgets.destroy()
+        for widget in self.frm.winfo_children():
+            widget.destroy()
         Settings(self.frm, main_frame, user)

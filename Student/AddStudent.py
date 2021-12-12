@@ -16,6 +16,8 @@ class AddStudent:
 
         # FUNCTIONS
         def back(cls):  # Back Function to go back a menu
+            for widget in self.frm.winfo_children():
+                widget.destroy()
             cls.frm.destroy()
 
         def clear_fields(cls):  # To clear all fields

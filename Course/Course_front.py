@@ -2,6 +2,7 @@
 from tkinter import *
 from tkinter import ttk  # Tkinter Imports
 from Course.CreateCourse import CreateCourse  # All Course function
+from Course.EditCourse import EditCourse
 from Course.ViewCourses import ViewCourse
 
 
@@ -14,6 +15,11 @@ class Course:
             frame_create_course = ttk.Frame(cls.frm, width=635, height=535)
 
             CreateCourse(frame_create_course)
+
+        def edit_course(cls):
+            frame_edit_course = ttk.Frame(cls.frm, width=635, height=535)
+
+            EditCourse(frame_edit_course)
 
         def view_course(cls):
             frame_view_course = ttk.Frame(cls.frm, width=635, height=535)
@@ -33,15 +39,15 @@ class Course:
         # Defining
         btn_create_course = ttk.Button(self.frm, text="Create New Course",
                                        width=20, command=lambda: create_course(self))
+        btn_edit_course = ttk.Button(self.frm, text="Edit Course",
+                                     width=20, command=lambda: edit_course(self))
         btn_view_course = ttk.Button(self.frm, text="View Courses",
                                      width=20, command=lambda: view_course(self))
-        btn_edit_course = ttk.Button(self.frm, text=".....",
-                                     width=20)
 
         # Placing
         btn_create_course.grid(row=4, column=0, padx=10, pady=15,
                                ipady=8)
-        btn_view_course.grid(row=5, column=0, padx=10, pady=15,
+        btn_edit_course.grid(row=5, column=0, padx=10, pady=15,
                              ipady=8)
-        btn_edit_course.grid(row=6, column=0, padx=10, pady=15,
+        btn_view_course.grid(row=6, column=0, padx=10, pady=15,
                              ipady=8)

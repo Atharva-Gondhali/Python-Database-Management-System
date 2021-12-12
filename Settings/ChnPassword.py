@@ -11,6 +11,8 @@ class ChnPassword:
         self.frm.grid(row=0, column=0)
 
         def back(cls):
+            for widget in self.frm.winfo_children():
+                widget.destroy()
             cls.frm.destroy()
 
         def clear():

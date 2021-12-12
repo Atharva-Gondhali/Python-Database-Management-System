@@ -15,6 +15,8 @@ class ViewStudent:
 
         # FUNCTIONS
         def back(cls):  # Back Function to go back a menu
+            for widgets in self.frm.winfo_children():
+                widgets.destroy()
             cls.frm.destroy()
 
         def set_filter2(cond1, cond2):  # Function for the second combo box

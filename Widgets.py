@@ -95,8 +95,6 @@ class StudentWidgets:
         self.tpl_all_widgets = self.tpl_all_entries + self.tpl_lbl
 
         # Setting initial values to combo box
-        # for i in self.tpl_combo_box:
-        #     i.current(0)
 
 
 class CourseWidgets:
