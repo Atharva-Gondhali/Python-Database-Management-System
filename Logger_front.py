@@ -42,10 +42,8 @@ class Logger:
                     error_lbl_reset()
                     Main(ttk.Frame(self.win), username)
                     login(login_db(username))
-
                 else:
                     lbl_inc_pass.configure(foreground='black')
-
             else:
                 lbl_inc_user.configure(foreground='black')
 
@@ -58,7 +56,6 @@ class Logger:
 
                     error_lbl_reset()
                     sign_in_view()
-
                 else:
                     lbl_inc_user.configure(text="Username taken",
                                            foreground="black")

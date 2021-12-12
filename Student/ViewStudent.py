@@ -22,7 +22,6 @@ class ViewStudent:
 
         def set_filter1(cond1, combo2):  # Function for the first combo box
             # Checking selected condition and loading the next combo box
-            value = ()
             if cond1 == 'Age Group':
                 value = ('U-12', 'U-14', 'U-16', 'U-18', 'U-25', 'Open')
                 combo2.configure(values=value, state='readonly')

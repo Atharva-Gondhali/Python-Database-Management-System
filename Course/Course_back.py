@@ -24,6 +24,7 @@ def get_database():  # To get user specific database
     return info[3]
 
 
+# Used in CreateCourse.py
 def add_course_database(values):
     mydb.connect(database=get_database())
     command = "INSERT INTO course (name, description,\
@@ -32,3 +33,12 @@ def add_course_database(values):
 
     my_cursor.execute(command, values)
     mydb.commit()
+
+
+# Used in ViewCourses.py
+def get_all_courses():
+    mydb.connect(database=get_database())
+
+    my_cursor.execute("SELECT * FROM course")
+
+    return my_cursor.fetchall()

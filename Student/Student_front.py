@@ -95,8 +95,8 @@ class Student:
                                     values=filters, state='readonly')
 
         combo_select.current(0)
-        combo_main.bind("<KeyRelease>", lambda event:
-        update_record(combo_select.get()))
+        combo_main.bind("<KeyRelease>", lambda event: update_record(combo_select.get()))
+
         # Placing
         combo_main.grid(row=2, column=0, padx=(30, 5),
                         pady=(20, 20))

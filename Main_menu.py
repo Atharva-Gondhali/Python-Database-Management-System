@@ -16,13 +16,10 @@ class Menu:
         def open_menu_items(frame):
             if frame == "Dashboard":
                 frm_workspace.change_dash()
-
             elif frame == "Student":
                 frm_workspace.change_std()
-
             elif frame == "Course":
                 frm_workspace.change_cor()
-
             elif frame == "Settings":
                 frm_workspace.change_set(main_frame, user)
 

@@ -61,7 +61,6 @@ class EditStudent:
                     field.delete(0, END)
                     field.insert(0, str(std[0][pos]))
                     pos += 1
-
             except IndexError:  # Check if entered id is invalid
                 clear_fields(wdg)
                 change_state(cls, 'disabled')
