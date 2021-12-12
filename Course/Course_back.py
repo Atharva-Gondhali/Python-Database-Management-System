@@ -24,6 +24,13 @@ def get_database():  # To get user specific database
     return info[3]
 
 
+def get_course_names():
+    mydb.connect(database=get_database())
+    my_cursor.execute("SELECT course_id, name FROM course")
+
+    return my_cursor.fetchall()
+
+
 # Used in CreateCourse.py
 def add_course_database(values):
     mydb.connect(database=get_database())

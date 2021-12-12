@@ -1,5 +1,6 @@
 from tkinter import Text, END
 from tkinter import ttk  # Tkinter Imports
+from Course.Course_back import get_course_names
 
 
 class StudentWidgets:
@@ -55,13 +56,17 @@ class StudentWidgets:
 
         # Widget - Combo box
         # Defining
+        courses_r = get_course_names()
+        courses_s = ()
+        for i in courses_r:
+            courses_s += (f"{i[1]} ({i[0]})", )
         self.combo_age_group = ttk.Combobox(self.frm, state='readonly',
-                                            values=['U-12', 'U-14', 'U-16',
-                                                    'U-18', 'U-25', 'Open'])
+                                            values=('U-12', 'U-14', 'U-16',
+                                                    'U-18', 'U-25', 'Open'))
         self.combo_gender = ttk.Combobox(self.frm, state='readonly',
-                                         values=['Male', 'Female', 'Other'])
+                                         values=('Male', 'Female', 'Other'))
         self.combo_course = ttk.Combobox(self.frm, state='readonly',
-                                         values=['A', 'B', 'C'])
+                                         values=courses_s)
 
         # Variables
         # Tuples of widgets
@@ -90,8 +95,8 @@ class StudentWidgets:
         self.tpl_all_widgets = self.tpl_all_entries + self.tpl_lbl
 
         # Setting initial values to combo box
-        for i in self.tpl_combo_box:
-            i.current(0)
+        # for i in self.tpl_combo_box:
+        #     i.current(0)
 
 
 class CourseWidgets:

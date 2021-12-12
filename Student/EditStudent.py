@@ -54,12 +54,14 @@ class EditStudent:
             # Then in widgets
             # Function from backend b_file to get student
             std = get_std_database(ent_std_id.get())
-
             try:    # Try and loop to insert details of student
                 pos = 1
                 for field in cls.tpl_all_entries:
-                    field.delete(0, END)
-                    field.insert(0, str(std[0][pos]))
+                    if 8 >= pos >= 6:
+                        field.set(str(std[0][pos]))
+                    else:
+                        field.delete(0, END)
+                        field.insert(0, str(std[0][pos]))
                     pos += 1
             except IndexError:  # Check if entered id is invalid
                 clear_fields(wdg)
