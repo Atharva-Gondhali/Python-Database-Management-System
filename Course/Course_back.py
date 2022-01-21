@@ -42,6 +42,26 @@ def add_course_database(values):
     mydb.commit()
 
 
+def get_update_course(course_id):
+    mydb.connect(database=get_database())
+
+    my_cursor.execute(f"SELECT * FROM course WHERE\
+                      course_id = '{course_id}'")
+    return tuple(my_cursor.fetchall())
+
+def update_course_database(values):
+    mydb.connect(database=get_database())
+    my_cursor.execute(f"UPDATE course SET\
+        name = '{values[0]}',\
+        description = '{values[1]}',\
+        duration = '{int(values[2])}',\
+        test1 = '{values[3]}',\
+        test2 = '{values[4]}',\
+        test3 = '{values[5]}'\
+        WHERE course_id = '{values[6]}'")
+
+    mydb.commit()
+
 # Used in ViewCourses.py
 def get_all_courses():
     mydb.connect(database=get_database())

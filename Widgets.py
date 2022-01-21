@@ -169,5 +169,6 @@ class CourseWidgets:
 
     def set_default(self):
         self.ent_course_name.delete(0, END)
+        self.txt_course_desc.delete('1.0', END)
         for i in self.tpl_combo_box:
             i.current(0)

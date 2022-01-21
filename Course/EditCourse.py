@@ -2,6 +2,7 @@
 from tkinter import *
 from tkinter import ttk  # Tkinter imports
 from Widgets import CourseWidgets
+from Course.Course_back import get_update_course, update_course_database
 
 
 class EditCourse:
@@ -23,6 +24,36 @@ class EditCourse:
                 return True
             else:
                 return False
+
+        def change_state(cls, state):
+            cls.ent_course_name.configure(state = state)
+            cls.txt_course_desc.configure(state = state)
+            cls.combo_course_dur_y.configure(state = state)
+            cls.combo_course_dur_m.configure(state = state)
+            btn_edit_course.configure(state = state)
+
+        def get_course(cls):
+            c_id = ent_course_id.get()
+            course = get_update_course(c_id)
+            try:
+                change_state(cls, 'normal')
+                cls.txt_course_desc.insert(END, course[0][2])
+                cls.ent_course_name.insert(END, course[0][1])
+                cls.combo_course_dur_y.set(int(course[0][3]) % 100)
+                cls.combo_course_dur_m.set(int(course[0][3]) // 100)
+            except IndexError:
+                clear(cls)
+                change_state(cls, 'disabled')
+
+        def update_course(cls):
+            duration = ((int(cls.combo_course_dur_y.get()) * 100) +
+                        int(cls.combo_course_dur_m.get()))
+            values = (cls.ent_course_name.get(), 
+                      cls.txt_course_desc.get(1.0, END),
+                      duration, '', '', '', ent_course_id.get())
+            update_course_database(values)
+            clear(cls)
+            change_state(cls, 'disabled')
 
         def widgets(cls):  # Placing widgets
             # Placing label widgets
@@ -79,13 +110,19 @@ class EditCourse:
 
         # Widgets - Buttons
         # Defining
+        btn_select = ttk.Button(self.frm, text="Select", width=15,
+                                command=lambda: get_course(wdg))
         btn_edit_course = ttk.Button(self.frm, text="Update",
-                                     width=13)
+                                     width=13, 
+                                     command = lambda: update_course(wdg))
         btn_back = ttk.Button(self.frm, text="Back",
                               command=lambda: back(self), width=13)
 
         # Placing
+        btn_select.grid(row=2, column=1, sticky=E)
         btn_edit_course.grid(row=7, column=1, pady=15, padx=5,
                              ipadx=6, sticky=E)
         btn_back.grid(row=7, column=2, pady=15, padx=4,
                       ipadx=6)
+
+        change_state(wdg, 'disabled')

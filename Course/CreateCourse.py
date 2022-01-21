@@ -21,7 +21,6 @@ class CreateCourse:
             cls.set_default()
 
         def add_course(cls):
-            print(type(cls.combo_course_dur_y.get()))
             if (cls.combo_course_dur_y.get().isalnum() and
                     cls.combo_course_dur_m.get().isalnum()):
                 duration = ((int(cls.combo_course_dur_y.get()) * 100) +
