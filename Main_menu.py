@@ -39,7 +39,7 @@ class Menu:
         btn_course = ttk.Button(self.frm, text="    Course\nManagement",
                                 style='menu.TButton',
                                 command=lambda: open_menu_items("Course"))
-        btn_unknown2 = ttk.Button(self.frm, text=".........",
+        btn_unknown2 = ttk.Button(self.frm, text="      Test\nManagement",
                                   style='menu.TButton')
         btn_settings = ttk.Button(self.frm, text="Settings",
                                   style='menu.TButton',
