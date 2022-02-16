@@ -84,7 +84,7 @@ class Student:
                           ipady=8)
         btn_search_std.grid(row=2, column=2, padx=10)
 
-        # Widgets - Buttons
+        # Widgets - ComboBox
         # Defining
         filters = ['Search by...', 'First name', 'Last name', 'Father\'s name',
                    'Email id', 'Phone number']

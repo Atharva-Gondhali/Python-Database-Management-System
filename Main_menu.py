@@ -20,6 +20,8 @@ class Menu:
                 frm_workspace.change_std()
             elif frame == "Course":
                 frm_workspace.change_cor()
+            elif frame == "Analysis":
+                frm_workspace.change_ana()
             elif frame == "Settings":
                 frm_workspace.change_set(main_frame, user)
 
@@ -39,8 +41,9 @@ class Menu:
         btn_course = ttk.Button(self.frm, text="    Course\nManagement",
                                 style='menu.TButton',
                                 command=lambda: open_menu_items("Course"))
-        btn_unknown2 = ttk.Button(self.frm, text="      Test\nManagement",
-                                  style='menu.TButton')
+        btn_analysis = ttk.Button(self.frm, text="Physical\nAnalysis",
+                                  style='menu.TButton',
+                                  command=lambda: open_menu_items("Analysis"))
         btn_settings = ttk.Button(self.frm, text="Settings",
                                   style='menu.TButton',
                                   command=lambda: open_menu_items("Settings"))
@@ -48,7 +51,7 @@ class Menu:
         btn_dash.grid(row=0, column=0, ipady=23)
         btn_student.grid(row=1, column=0, ipady=16, pady=(10, 0))
         btn_course.grid(row=2, column=0, ipady=16, pady=(10, 0))
-        btn_unknown2.grid(row=3, column=0, ipady=23, pady=(10, 0))
+        btn_analysis.grid(row=3, column=0, ipady=16, pady=(10, 0))
         btn_settings.grid(row=4, column=0, ipady=23, pady=(10, 0))
 
         # Label menu
