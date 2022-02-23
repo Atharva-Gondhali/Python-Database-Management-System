@@ -34,7 +34,6 @@ def get_database():  # To get user specific database
 # External Functions
 # Used in EditStudent.py
 def get_std_database(std_id):  # To get a student from database
-    mydb.connect(database=get_database())  # using student id
     std = get_all_std_database('student_id', std_id)
 
     return std

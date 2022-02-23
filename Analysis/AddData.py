@@ -1,6 +1,8 @@
 # IMPORTS
 from tkinter import *
 from tkinter import ttk  # Tkinter imports
+from Analysis.Analysis_back import get_std_by_id
+from Analysis.Analysis_back import update
 
 
 class AddData:
@@ -15,11 +17,43 @@ class AddData:
                 widget.destroy()
             cls.frm.destroy()
 
+        def change_state(state):
+            for i in ent_tpl:
+                i.configure(state = state)
+
         def callback(p):  # To validate some entry box to an integer input
             if str.isdigit(p) or p == "":
                 return True
             else:
                 return False
+        
+        def update_data(cls):
+            values = tuple()
+            for i in ent_intpl:
+                values += (i.get(), )
+            
+            update(ent_std_id.get(), values)
+            change_state('disabled')
+
+        def select_std(cls):
+            try:
+                std = get_std_by_id(ent_std_id.get())[0]
+                change_state("normal")
+                pos = 1
+                for i in ent_tpl:
+                    if pos == 1:
+                        value = str(std[pos-1])+" "+str(std[pos])
+                    else:
+                        value = std[pos] 
+                    i.delete(0, END)
+                    i.insert(0, str(value))
+                    pos += 1
+
+                ent_std_name.configure(state = 'readonly')
+                ent_std_course.configure(state = 'readonly')
+                ent_std_ag.configure(state = 'readonly')
+            except IndexError:
+                change_state("disabled")
 
 
         # Widgets - Labels
@@ -80,9 +114,9 @@ class AddData:
         # Defining
         ent_std_id = ttk.Entry(self.frm, width=30, validate='all',
                                validatecommand=(v_cmd, '%P'))
-        ent_std_name = ttk.Entry(self.frm, width=30, state='readonly')
-        ent_std_course = ttk.Entry(self.frm, width=30, state='readonly')
-        ent_std_ag = ttk.Entry(self.frm, width=30, state='readonly')
+        ent_std_name = ttk.Entry(self.frm, width=30)
+        ent_std_course = ttk.Entry(self.frm, width=30)
+        ent_std_ag = ttk.Entry(self.frm, width=30)
         ent_spt = ttk.Entry(self.frm, width=30, validate='all',
                                validatecommand=(v_cmd, '%P'))
         ent_yt = ttk.Entry(self.frm, width=30, validate='all',
@@ -91,6 +125,10 @@ class AddData:
                                validatecommand=(v_cmd, '%P'))
         ent_stt = ttk.Entry(self.frm, width=30, validate='all',
                                validatecommand=(v_cmd, '%P'))
+        ent_intpl = (ent_spt, ent_yt, ent_wt, ent_stt)
+        ent_tpl = (ent_std_name, ent_std_course, ent_std_ag,
+                   ent_spt, ent_yt, ent_wt, ent_stt)
+
         # Placing
         ent_std_id.grid(row=2, column=1, padx=15)
         ent_std_name.grid(row=4, column=1, padx=15)
@@ -101,10 +139,14 @@ class AddData:
         ent_wt.grid(row=10, column=1, padx=15)
         ent_stt.grid(row=11, column=1, padx=15)
         
+        change_state("disabled")
+
         # Widgets - Buttons
         # Defining
-        btn_select = ttk.Button(self.frm, text="Select", width=15)
-        btn_update = ttk.Button(self.frm, text="Update", width=13)
+        btn_select = ttk.Button(self.frm, text="Select", width=15,
+                                command=lambda: select_std(self))
+        btn_update = ttk.Button(self.frm, text="Update", width=13,
+                                command=lambda: update_data(self))
         btn_back = ttk.Button(self.frm, text="Back", width=13,
                               command=lambda: back(self))
 
