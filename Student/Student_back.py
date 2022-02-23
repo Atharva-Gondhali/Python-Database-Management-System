@@ -63,8 +63,11 @@ def add_std_database(values):  # Add Student to database
                 father_name, email_id, age, age_group, gender,\
                 course, medical_com, address, phone_no)\
                 VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
+    command1 = "INSERT INTO data (spt, yt, wt, stt)\
+                VALUES ( %s, %s, %s, %s)"
 
     my_cursor.execute(command, values)
+    my_cursor.execute(command1, (0, 0, 0, 0))
     mydb.commit()
 
 

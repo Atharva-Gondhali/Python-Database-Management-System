@@ -77,6 +77,11 @@ def add_user(user, passwd):
         duration SMALLINT(4), test1 VARCHAR(50),\
         test2 VARCHAR(50), test3 VARCHAR(50))")
 
+    my_cursor.execute("CREATE TABLE IF NOT EXISTS\
+        data (std_id INT AUTO_INCREMENT, FOREIGN KEY (std_id) \
+        REFERENCES students (student_id), spt SMALLINT,\
+        yt SMALLINT, wt SMALLINT, stt SMALLINT)")
+
     my_cursor.close()
     mydb.close()
 
