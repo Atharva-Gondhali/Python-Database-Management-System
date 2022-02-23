@@ -2,6 +2,8 @@
 import mysql.connector  # MySQL Connector import
 from pickle import load  # Pickle module import
 
+key = {'Age Group': 'age_group', 'Course': 'course'}
+
 # Extracting database login b_info from pickle b_file
 b_file = open("back_info.pkl", "rb")
 b_info = load(b_file)
@@ -40,3 +42,18 @@ def update(id, values):
         stt = {int(values[3])} WHERE std_id = '{id}'")
 
     mydb.commit()
+
+def get_std(condition='', value=''):  # To get all students
+    mydb.connect(database=get_database())
+
+    if len(condition) == 0 and len(value) == 0:  # All students
+        my_cursor.execute("SELECT std_id, first_name, last_name, course,\
+            age_group, spt, yt, wt, stt FROM students, \
+            data where student_id = std_id")
+    else:  # To get a specific student based on condition
+        my_cursor.execute(f"SELECT std_id, first_name, last_name, course,\
+            age_group, spt, yt, wt, stt FROM students, \
+            data where student_id = std_id AND \
+            {condition} = '{value}'")
+
+    return my_cursor.fetchall()

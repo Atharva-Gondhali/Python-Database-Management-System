@@ -2,6 +2,7 @@
 from tkinter import *
 from tkinter import ttk  # Tkinter Imports
 from Student.Student_back import get_all_std_database, key
+from Course.Course_back import get_course_names
 
 
 # Backend functions imports
@@ -28,8 +29,11 @@ class ViewStudent:
                 value = ('U-12', 'U-14', 'U-16', 'U-18', 'U-25', 'Open')
                 combo2.configure(values=value, state='readonly')
             elif cond1 == 'Course':
-                value = ('A', 'B', 'C')
-                combo2.configure(values=value, state='readonly')
+                courses_r = get_course_names()
+                courses_s = ()
+                for i in courses_r:
+                    courses_s += (f"{i[1]} ({i[0]})", )
+                combo2.configure(values=courses_s, state='readonly')
             else:
                 combo2.configure(state='disabled')
                 # Refreshing the tree
@@ -87,7 +91,7 @@ class ViewStudent:
         tree_std.heading("Phone No.", text="Phone No.", anchor=CENTER)
 
         # TREEVIEW - Adding records
-        insert_records('', '')
+        insert_records()
 
         # TREEVIEW - Scrollbar
         v_scrollbar = ttk.Scrollbar(self.frm, orient='vertical')
