@@ -1,4 +1,4 @@
-from Dashboard_front import Dashboard
+from Dashboard.Dashboard_front import Dashboard
 from Student.Student_front import Student
 from Course.Course_front import Course
 from Analysis.Analysis_front import Analysis

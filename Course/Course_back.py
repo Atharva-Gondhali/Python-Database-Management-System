@@ -35,8 +35,7 @@ def get_course_names():
 def add_course_database(values):
     mydb.connect(database=get_database())
     command = "INSERT INTO course (name, description,\
-                duration, test1, test2, test3)\
-                VALUES (%s, %s, %s, %s, %s, %s)"
+                duration) VALUES (%s, %s, %s)"
 
     my_cursor.execute(command, values)
     mydb.commit()
@@ -55,10 +54,7 @@ def update_course_database(values):
         name = '{values[0]}',\
         description = '{values[1]}',\
         duration = '{int(values[2])}',\
-        test1 = '{values[3]}',\
-        test2 = '{values[4]}',\
-        test3 = '{values[5]}'\
-        WHERE course_id = '{values[6]}'")
+        WHERE course_id = '{values[3]}'")
 
     mydb.commit()
 

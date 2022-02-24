@@ -50,7 +50,7 @@ class EditCourse:
                         int(cls.combo_course_dur_m.get()))
             values = (cls.ent_course_name.get(), 
                       cls.txt_course_desc.get(1.0, END),
-                      duration, '', '', '', ent_course_id.get())
+                      duration, ent_course_id.get())
             update_course_database(values)
             clear(cls)
             change_state(cls, 'disabled')

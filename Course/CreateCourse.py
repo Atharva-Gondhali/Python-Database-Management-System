@@ -30,9 +30,7 @@ class CreateCourse:
 
             values = (cls.ent_course_name.get(),
                       cls.txt_course_desc.get(1.0, END),
-                      duration,
-                      '', '', '')
-            print(values)
+                      duration)
 
             add_course_database(values)
             cls.set_default()

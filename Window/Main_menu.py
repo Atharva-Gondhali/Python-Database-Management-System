@@ -1,5 +1,5 @@
 from tkinter import ttk
-from Main_workspace import Workspace
+from Window.Main_workspace import Workspace
 
 
 class Menu:

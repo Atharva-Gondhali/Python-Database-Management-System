@@ -1,6 +1,6 @@
 from tkinter import *
 from tkinter import ttk
-from Logger_back import check_passwd
+from Logger.Logger_back import check_passwd
 from Settings.Settings_back import change_password
 
 

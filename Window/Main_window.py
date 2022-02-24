@@ -1,7 +1,7 @@
 from tkinter import *
 from tkinter import ttk
 from time import strftime
-from Main_menu import Menu
+from Window.Main_menu import Menu
 
 
 class Main:

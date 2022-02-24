@@ -1,7 +1,7 @@
 from tkinter import *
 from tkinter import ttk
-from Logger_back import *
-from Main_window import Main
+from Logger.Logger_back import *
+from Window.Main_window import Main
 
 
 class Logger:
