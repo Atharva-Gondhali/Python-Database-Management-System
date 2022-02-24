@@ -26,11 +26,11 @@ class EditCourse:
                 return False
 
         def change_state(cls, state):
-            cls.ent_course_name.configure(state = state)
-            cls.txt_course_desc.configure(state = state)
-            cls.combo_course_dur_y.configure(state = state)
-            cls.combo_course_dur_m.configure(state = state)
-            btn_edit_course.configure(state = state)
+            cls.ent_course_name.configure(state=state)
+            cls.txt_course_desc.configure(state=state)
+            cls.combo_course_dur_y.configure(state=state)
+            cls.combo_course_dur_m.configure(state=state)
+            btn_edit_course.configure(state=state)
 
         def get_course(cls):
             c_id = ent_course_id.get()
@@ -48,7 +48,7 @@ class EditCourse:
         def update_course(cls):
             duration = ((int(cls.combo_course_dur_y.get()) * 100) +
                         int(cls.combo_course_dur_m.get()))
-            values = (cls.ent_course_name.get(), 
+            values = (cls.ent_course_name.get(),
                       cls.txt_course_desc.get(1.0, END),
                       duration, ent_course_id.get())
             update_course_database(values)
@@ -113,8 +113,8 @@ class EditCourse:
         btn_select = ttk.Button(self.frm, text="Select", width=15,
                                 command=lambda: get_course(wdg))
         btn_edit_course = ttk.Button(self.frm, text="Update",
-                                     width=13, 
-                                     command = lambda: update_course(wdg))
+                                     width=13,
+                                     command=lambda: update_course(wdg))
         btn_back = ttk.Button(self.frm, text="Back",
                               command=lambda: back(self), width=13)
 

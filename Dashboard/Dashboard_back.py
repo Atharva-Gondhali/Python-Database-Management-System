@@ -15,8 +15,8 @@ mydb = mysql.connector.connect(
 # Initializing database cursor
 my_cursor = mydb.cursor()
 
+
 # FUNCTIONS
-# Internal Functions
 def get_database():  # To get user specific database
     file = open("back_info.pkl", "rb")
     info = load(file)
@@ -24,17 +24,20 @@ def get_database():  # To get user specific database
 
     return info[3]
 
+
 def get_number_std():
     mydb.connect(database=get_database())
     my_cursor.execute("SELECT COUNT(*) FROM students")
 
     return my_cursor.fetchall()
 
+
 def get_number_crs():
     mydb.connect(database=get_database())
     my_cursor.execute("SELECT COUNT(*) FROM course")
 
     return my_cursor.fetchall()
+
 
 def get_best():
     mydb.connect(database=get_database())
@@ -58,4 +61,4 @@ def get_best():
     try:
         return sort(3)
     except ValueError:
-        pass 
+        pass

@@ -26,8 +26,8 @@ class ViewCourse:
         # TREEVIEW
         # Initializing tree view
         tree_std = ttk.Treeview(self.frm, height=22)
-        tree_std.grid(row=0, column=0, columnspan=3, padx = (40, 0),
-                      pady = (20, 0))
+        tree_std.grid(row=0, column=0, columnspan=3, padx=(40, 0),
+                      pady=(20, 0))
         # Treeview fields
         tree_std['columns'] = ("ID No.", "Name", "Description",
                                "Duration")
@@ -63,7 +63,7 @@ class ViewCourse:
                            xscrollcommand=h_scrollbar.set)
 
         h_scrollbar.grid(row=1, column=0, columnspan=3, sticky=EW)
-        v_scrollbar.grid(row=0, column=3, sticky=NS, pady = (20, 0))
+        v_scrollbar.grid(row=0, column=3, sticky=NS, pady=(20, 0))
 
         # WIDGETS
         # Widgets - Buttons

@@ -26,7 +26,7 @@ class ViewData:
             try:
                 for i in result:
                     tree_std.insert(parent='', index='end', iid=str(std_id), text="",
-                                    values=(i[0], i[1]+' '+i[2], i[3], i[4], i[5], i[6], 
+                                    values=(i[0], i[1]+' '+i[2], i[3], i[4], i[5], i[6],
                                     i[7], i[8]))
                     std_id += 1
             except IndexError:
@@ -59,8 +59,8 @@ class ViewData:
         tree_std.grid(row=0, column=0, columnspan=3)
         # Treeview fields
         tree_std['columns'] = ("ID No.", "Name", "Course",
-                               "Age Group", "Sprint Test", 
-                               "Yoyo Test", "Weight Sust Test", 
+                               "Age Group", "Sprint Test",
+                               "Yoyo Test", "Weight Sust Test",
                                "Stamina Test")
 
         # TREEVIEW - Define columns
@@ -89,7 +89,8 @@ class ViewData:
         tree_std.heading("Age Group", text="Age Group", anchor=W)
         tree_std.heading("Sprint Test", text="Sprint Test", anchor=CENTER)
         tree_std.heading("Yoyo Test", text="Yoyo Test", anchor=CENTER)
-        tree_std.heading("Weight Sust Test", text="Weight Sust Test", anchor=CENTER)
+        tree_std.heading("Weight Sust Test",
+                         text="Weight Sust Test", anchor=CENTER)
         tree_std.heading("Stamina Test", text="Stamina Test", anchor=CENTER)
 
         # TREEVIEW - Scrollbar
@@ -133,8 +134,10 @@ class ViewData:
 
         combo_filter1.current(0)
         # Event binding
-        combo_filter1.bind("<FocusIn>", lambda event: set_filter1(combo_filter1.get(), combo_filter2))
-        combo_filter2.bind("<FocusIn>", lambda event: set_filter2(combo_filter1.get(), combo_filter2.get()))
+        combo_filter1.bind("<FocusIn>", lambda event: set_filter1(
+            combo_filter1.get(), combo_filter2))
+        combo_filter2.bind("<FocusIn>", lambda event: set_filter2(
+            combo_filter1.get(), combo_filter2.get()))
 
         # Placing
         combo_filter1.grid(row=2, column=1, pady=(11, 0))

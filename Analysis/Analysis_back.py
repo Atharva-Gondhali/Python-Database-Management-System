@@ -26,6 +26,7 @@ def get_database():  # To get user specific database
 
     return info[3]
 
+
 def get_std_by_id(id):
     mydb.connect(database=get_database())
     my_cursor.execute(f"SELECT first_name, last_name,\
@@ -35,6 +36,7 @@ def get_std_by_id(id):
 
     return my_cursor.fetchall()
 
+
 def update(id, values):
     mydb.connect(database=get_database())
     my_cursor.execute(f"UPDATE data SET spt = {int(values[0])},\
@@ -42,6 +44,7 @@ def update(id, values):
         stt = {int(values[3])} WHERE std_id = '{id}'")
 
     mydb.commit()
+
 
 def get_std(condition='', value=''):  # To get all students
     mydb.connect(database=get_database())

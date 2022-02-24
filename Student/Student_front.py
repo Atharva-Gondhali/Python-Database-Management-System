@@ -8,9 +8,6 @@ from Student.SearchStudent import SearchStudent
 from Student.Student_back import get_all_std_database, key
 
 
-# Backend functions imports
-
-
 class Student:
     def __init__(self, frm):
         self.frm = frm  # initializing frame and class
@@ -95,7 +92,8 @@ class Student:
                                     values=filters, state='readonly')
 
         combo_select.current(0)
-        combo_main.bind("<KeyRelease>", lambda event: update_record(combo_select.get()))
+        combo_main.bind(
+            "<KeyRelease>", lambda event: update_record(combo_select.get()))
 
         # Placing
         combo_main.grid(row=2, column=0, padx=(30, 5),

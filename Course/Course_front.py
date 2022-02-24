@@ -26,7 +26,6 @@ class Course:
 
             ViewCourse(frame_view_course)
 
-
         # Widgets - Labels
         # Defining
         lbl_course = ttk.Label(self.frm, text="Manage Courses",

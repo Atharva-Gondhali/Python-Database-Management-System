@@ -20,15 +20,14 @@ class Analysis:
 
             ViewData(frame_edit_std)
 
-        
         # Widgets - Labels
         # Defining
         lbl_student = ttk.Label(self.frm, text="Physical Analysis",
-                                font=('Helvetica', 15)) 
+                                font=('Helvetica', 15))
 
         # Placing
         lbl_student.grid(row=0, column=0, padx=30, pady=15,
-                         sticky=W) 
+                         sticky=W)
 
         # Widgets - Buttons
         # Defining

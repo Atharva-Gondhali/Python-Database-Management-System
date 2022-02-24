@@ -8,7 +8,7 @@ class Main:
     def __init__(self, frm, user):
         self.user = user
         self.frm = frm
-        
+
         self.frm.grid(row=0, column=0, padx=8, pady=8)
 
         def clock():

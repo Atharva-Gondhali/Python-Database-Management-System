@@ -27,7 +27,7 @@ class Workspace:
         for widget in self.frm.winfo_children():
             widget.destroy()
         Course(self.frm)
-    
+
     def change_ana(self):
         for widget in self.frm.winfo_children():
             widget.destroy()

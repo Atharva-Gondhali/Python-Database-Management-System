@@ -48,6 +48,7 @@ def get_update_course(course_id):
                       course_id = '{course_id}'")
     return tuple(my_cursor.fetchall())
 
+
 def update_course_database(values):
     mydb.connect(database=get_database())
     my_cursor.execute(f"UPDATE course SET\
@@ -59,6 +60,8 @@ def update_course_database(values):
     mydb.commit()
 
 # Used in ViewCourses.py
+
+
 def get_all_courses():
     mydb.connect(database=get_database())
 

@@ -132,8 +132,10 @@ class ViewStudent:
 
         combo_filter1.current(0)
         # Event binding
-        combo_filter1.bind("<FocusIn>", lambda event: set_filter1(combo_filter1.get(), combo_filter2))
-        combo_filter2.bind("<FocusIn>", lambda event: set_filter2(combo_filter1.get(), combo_filter2.get()))
+        combo_filter1.bind("<FocusIn>", lambda event: set_filter1(
+            combo_filter1.get(), combo_filter2))
+        combo_filter2.bind("<FocusIn>", lambda event: set_filter2(
+            combo_filter1.get(), combo_filter2.get()))
 
         # Placing
         combo_filter1.grid(row=2, column=1, pady=(11, 0))
