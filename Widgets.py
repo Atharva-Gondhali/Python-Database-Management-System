@@ -118,37 +118,10 @@ class CourseWidgets:
                                          font=('Helvetica', 11))
         self.lbl_course_dur = ttk.Label(self.frm, text="Course Duration",
                                         font=('Helvetica', 11))
-        self.lbl_test1 = ttk.Label(self.frm, text="Test Plan 1",
-                                   font=('Helvetica', 11))
-        self.test_name1 = ttk.Label(self.frm, text="Test Name",
-                                    font=('Helvetica', 11))
-        self.test_period1 = ttk.Label(self.frm, text="Test Period",
-                                      font=('Helvetica', 11))
-        self.lbl_test2 = ttk.Label(self.frm, text="Test Plan 2",
-                                   font=('Helvetica', 11))
-        self.test_name2 = ttk.Label(self.frm, text="Test Name",
-                                    font=('Helvetica', 11))
-        self.test_period2 = ttk.Label(self.frm, text="Test Period",
-                                      font=('Helvetica', 11))
-        self.lbl_test3 = ttk.Label(self.frm, text="Test Plan 3",
-                                   font=('Helvetica', 11))
-        self.test_name3 = ttk.Label(self.frm, text="Test Name",
-                                    font=('Helvetica', 11))
-        self.test_period3 = ttk.Label(self.frm, text="Test Period",
-                                      font=('Helvetica', 11))
 
         # Widget - Entry box
         # Defining
         self.ent_course_name = ttk.Entry(self.frm, width=30)
-        self.ent_test_name1 = ttk.Entry(self.frm)
-        self.ent_test_name2 = ttk.Entry(self.frm)
-        self.ent_test_name3 = ttk.Entry(self.frm)
-        self.ent_test_dur1 = ttk.Entry(self.frm, validate='all',
-                                       validatecommand=(v_cmd, '%P'))
-        self.ent_test_dur2 = ttk.Entry(self.frm, validate='all',
-                                       validatecommand=(v_cmd, '%P'))
-        self.ent_test_dur3 = ttk.Entry(self.frm, validate='all',
-                                       validatecommand=(v_cmd, '%P'))
 
         # Widget - Text box
         # Defining

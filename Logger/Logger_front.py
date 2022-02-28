@@ -103,6 +103,7 @@ class Logger:
 def start():
     root = Tk()
     root.resizable(width=False, height=False)
+    root.title("SCMS")
     main_frame = ttk.Frame(root, borderwidth=5, relief=GROOVE, padding=40)
     main_frame.grid(row=0, column=0, padx=30, pady=30)
 

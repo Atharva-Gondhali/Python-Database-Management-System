@@ -45,7 +45,6 @@ def get_best():
         , yt, wt, stt from students, data where \
         student_id = std_id")
     raw_lst = my_cursor.fetchall()
-
     def sort(rng):
         lst_total = []
         for i in raw_lst:
@@ -55,8 +54,10 @@ def get_best():
         for i in range(rng):
             index = lst_total.index(max(lst_total))
             lst_final.append(str(raw_lst[index][0])+" "+str(raw_lst[index][1]))
+            raw_lst.pop(index)
             lst_total.pop(index)
         return lst_final
+        
 
     try:
         return sort(3)

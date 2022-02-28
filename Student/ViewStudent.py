@@ -49,8 +49,9 @@ class ViewStudent:
             std_id = 0
             try:
                 for i in result:
-                    tree_std.insert(parent='', index='end', iid=str(std_id), text="",
-                                    values=(i[0], i[1], i[2], i[3], i[6], i[8], i[11]))
+                    tree_std.insert(parent='', index='end', iid=str(std_id), 
+                                    text="", values=(i[0], i[1], i[2], i[3], 
+                                    i[6], i[8], i[11]))
                     std_id += 1
             except IndexError:
                 pass

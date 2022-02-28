@@ -18,7 +18,8 @@ class Dashboard:
 
         # Frame
         frm1 = ttk.Frame(self.frm, width=300, height=220, padding=50)
-        frm2 = ttk.Frame(self.frm, width=610, height=220, padding=(50, 30))
+        frm2 = ttk.Frame(self.frm, width=610, height=220, padding=(50, 30),
+                        borderwidth=3, relief=GROOVE)
         frm3 = ttk.Frame(self.frm, width=300, height=220, padding=50)
 
         frm1.grid(row=1, column=0, padx=(10, 5), pady=(10, 5))
@@ -75,6 +76,6 @@ class Dashboard:
                     sticky=NSEW)
         lbl_p3.grid(row=1, column=2, padx=25, pady=10,
                     sticky=NSEW)
-        lbl_1.grid(row=2, column=0, padx=25, pady=10)
+        lbl_1.grid(row=2, column=0, padx=  20, pady=10)
         lbl_2.grid(row=2, column=1, padx=25, pady=10)
         lbl_3.grid(row=2, column=2, padx=25, pady=10)

@@ -55,6 +55,6 @@ class Menu:
         btn_settings.grid(row=4, column=0, ipady=23, pady=(10, 0))
 
         # Label menu
-        lbl_logo = ttk.Label(self.frm, text="logo/app name")
+        lbl_logo = ttk.Label(self.frm, text="SCMS", font = ('Helvetica', 15))
 
         lbl_logo.grid(row=5, column=0, pady=(30, 0))
